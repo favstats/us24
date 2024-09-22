@@ -6,7 +6,6 @@ source("utils.R")
 library(httr)
 library(tidyverse)
 library(lubridate)
-library(metatargetr)
 
 installed <- installed.packages() %>% 
   as_tibble() %>% 
@@ -16,6 +15,8 @@ installed <- installed.packages() %>%
 if(installed == 0){
   remotes::install_github("favstats/metatargetr", force = T)
 }
+
+library(metatargetr)
 
 if(Sys.info()[["sysname"]]=="Windows"){
   ### CHANGE ME WHEN LOCAL!
