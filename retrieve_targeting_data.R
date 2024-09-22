@@ -52,12 +52,14 @@ uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip")
 
   wtm_data <-
     uswtm %>% 
-  filter(entities.short_name %in% c("Harris", "Trump")) %>% 
+  filter(entities.short_name %in% c("Harris", "Trump", "Dems", "DemPAC", "RepPAC", "Prog", "Con", "GOP")) %>%
   distinct(advertisers_platforms.advertiser_platform_ref, .keep_all = T) %>% 
   mutate(party = case_when(
+    entities.short_name == "Dems" ~ "Democrats",
+    entities.short_name == "GOP" ~ "Republicans",
     entities.short_name == "Harris" ~ "Kamala Harris",
     entities.short_name == "Trump" ~ "Donald Trump",
-    T ~ "Other"
+    T ~ entities.name
    )) %>% 
       mutate(affiliation = case_when(
         entities.short_name == "Harris" ~ "Democratic",

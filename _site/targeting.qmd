@@ -98,7 +98,7 @@ This section shows spening per *targeting criteria* used by political candidates
 
 ## Spending per Targeting Criteria 
 
-How much did campaigns spend on different targeting methods? The graphs below show spending *overall* across all candidates and *by candidate*.
+How much did campaigns spend on different targeting methods? The graphs below show spending *overall* across all entities and *by entity*.
 
 > Note: targeting criteria can overlap so the percentages do not sum up to 100%.
 
@@ -181,7 +181,7 @@ gg %>%
 ```
 
 
-#### By Candidate
+#### By Entity
 
 ```{r}
 col_each30 <- election_dat30 %>% 
@@ -239,7 +239,7 @@ plot_geography <- function(x) {
              the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
       hchart(.x, type = "bar", hcaes(x = target, y = perc), color = the_color) %>%
             hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-            hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"), max = 100, min = 0) %>%
+            hc_yAxis(title = list(text = "% Budget spent on targeting method"), max = 100, min = 0) %>%
             hc_xAxis(title = "", labels = list(style = list(fontSize = "10px"))) %>%
             hc_add_theme(hc_theme_google()) %>%
            highcharter::hc_tooltip(
@@ -362,7 +362,7 @@ gg %>%
 ```
 
 
-#### By Candidate
+#### By Entity
 
 ```{r, fig.width=12, fig.height=9, dpi=300}
 
@@ -418,7 +418,7 @@ tags$div(class = "container", do.call(tags$div, rows))
 
 ## Top Targeted (Detailed) Audiences 
 
-Here, we show the *top targeted audiences* for each candidate for the "detailed" targeting that Meta offers (ranked by amount of Euro spend). Most (but not all) of these audiences are “interest” audiences, i.e. the parties targeted people interested in “Books” or “Politics”.
+Here, we show the *top targeted audiences* for each entity for the "detailed" targeting that Meta offers (ranked by amount of Euro spend). Most (but not all) of these audiences are “interest” audiences, i.e. the parties targeted people interested in “Books” or “Politics”.
 
 ::: {.panel-tabset}
 
@@ -547,7 +547,7 @@ generate_plots <- function(data, exclusion = F) {
              color = the_color) %>%
         hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
         hc_yAxis(
-          title = list(text = paste0("% Candidate Budget spent on ", wooord2, " audience")),
+          title = list(text = paste0("% Budget spent on ", wooord2, " audience")),
           max = max(.x$perc)#,
           # min = 0
         ) %>%
@@ -1287,7 +1287,7 @@ if(nrow(region_dat)!=0) {
 ## Age Targeting
 
 
-The graphs below show targeting by age groups and how much percentage of candidate budgets were spent on them.
+The graphs below show targeting by age groups and how much percentage of Budgets were spent on them.
 
 > Note: targeting criteria can overlap so the percentages do not sum up to 100%.
 
@@ -1377,7 +1377,7 @@ charts <- age_targeting %>%
            hcaes(x = age_groups, y = perc),
            color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"), max = 100, min = 0) %>%
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"), max = 100, min = 0) %>%
       hc_xAxis(title = "", labels = list(style = list(fontSize = "10px"))) %>%
       hc_add_theme(hc_theme_google()) %>%
       highcharter::hc_tooltip(
@@ -1476,7 +1476,7 @@ charts <- age_targeting7 %>%
            hcaes(x = age_groups, y = perc),
            color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"), max = 100, min = 0) %>%
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"), max = 100, min = 0) %>%
       hc_xAxis(title = "", labels = list(style = list(fontSize = "10px"))) %>%
       hc_add_theme(hc_theme_google()) %>%
       highcharter::hc_tooltip(
@@ -1532,7 +1532,7 @@ tags$div(class = "container", do.call(tags$div, rows))
 
 ## Gender Targeting
 
-The graphs below show targeting by gender and how much percentage of candidate budgets were spent on them.
+The graphs below show targeting by gender and how much percentage of Budgets were spent on them.
 
 > Note: targeting criteria can overlap so the percentages do not sum up to 100%.
 
@@ -1568,7 +1568,7 @@ charts <- gender_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
@@ -1653,7 +1653,7 @@ charts <- gender_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
@@ -1717,7 +1717,7 @@ tags$div(class = "container", do.call(tags$div, rows))
 
 ## Education Targeting
 
-The graphs below show targeting by education levels and how much percentage of candidate budgets were spent on them.
+The graphs below show targeting by education levels and how much percentage of Budgets were spent on them.
 
 
 ::: {.panel-tabset}
@@ -1793,7 +1793,7 @@ charts <- educ_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
@@ -1880,7 +1880,7 @@ charts <- educ_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
@@ -1944,7 +1944,7 @@ tags$div(class = "container", do.call(tags$div, rows))
 
 ## Job Targeting
 
-The graphs below show targeting by job (sectors) and how much percentage of candidate budgets were spent on them.
+The graphs below show targeting by job (sectors) and how much percentage of Budgets were spent on them.
 
 
 > Note: targeting criteria can overlap so the percentages do not sum up to 100%.
@@ -2023,7 +2023,7 @@ charts <- job_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
@@ -2128,7 +2128,7 @@ charts <- job_targeting %>%
     the_color <- color_dat$colors[color_dat$Candidate == .x$Candidate[1]]
     hchart(.x, type = "bar", hcaes(x = value, y = perc), color = the_color) %>%
       hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-      hc_yAxis(title = list(text = "% Candidate Budget spent on targeting method"),
+      hc_yAxis(title = list(text = "% Budget spent on targeting method"),
         max = max_x) %>%   # Set the maximum x-axis value) %>%
       hc_xAxis(
         title = "",
