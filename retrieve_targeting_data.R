@@ -254,7 +254,7 @@ all_dat %>%
 da30  <- dir("targeting/30", full.names = T) %>%
   discard( ~ str_detect(.x, "/_")) %>%
   map_dfr_progress(readRDS)  %>%
-  mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
+  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
   # rename(page_id = internal_id) %>%
   left_join(all_dat) %>% 
   mutate(tframe = "30")
@@ -262,7 +262,7 @@ da30  <- dir("targeting/30", full.names = T) %>%
 da7  <- dir("targeting/7", full.names = T) %>%
   discard( ~ str_detect(.x, "/_")) %>%
   map_dfr_progress(readRDS) %>%
-  mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
+  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
   # rename(page_id = internal_id) %>%
   left_join(all_dat) %>% 
   mutate(tframe = "7")
@@ -270,10 +270,24 @@ da7  <- dir("targeting/7", full.names = T) %>%
 da90  <- dir("targeting/90", full.names = T) %>%
   discard( ~ str_detect(.x, "/_")) %>%
   map_dfr_progress(readRDS) %>%
-  mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
+  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
   # rename(page_id = internal_id) %>%
   left_join(all_dat) %>% 
   mutate(tframe = "90")
+
+try({
+  da30  <- da30 %>%
+    mutate(total_spend_formatted = parse_number(total_spend_formatted))
+})
+try({
+  da90  <- da90 %>%
+    mutate(total_spend_formatted = parse_number(total_spend_formatted))
+})
+try({
+  da7  <- da7 %>%
+    mutate(total_spend_formatted = parse_number(total_spend_formatted))
+})
+
 
 saveRDS(da90, "data/election_dat90.rds")
 saveRDS(da30, "data/election_dat30.rds")
