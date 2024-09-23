@@ -6,7 +6,7 @@ source("utils.R")
 library(httr)
 library(tidyverse)
 library(lubridate)
-
+library(httr2)
 
 
 get_page_insights <- function (pageid, timeframe = "LAST_30_DAYS", lang = "en-GB", 
@@ -19,7 +19,7 @@ get_page_insights <- function (pageid, timeframe = "LAST_30_DAYS", lang = "en-GB
   ua <- sample(ua_list, 1)
   fetch_page_info <- ifelse("page_info" %in% include_info, 
                             "true", "false")
-  resp <- request("https://www.facebook.com/api/graphql/") %>% 
+  resp <- httr2::request("https://www.facebook.com/api/graphql/") %>% 
     httr2::req_headers(`Accept-Language` = paste0(lang, 
                                                   ",", stringr::str_split(lang, "-") %>% unlist() %>% 
                                                     .[1], ";q=0.5"), `sec-fetch-site` = "same-origin", 
