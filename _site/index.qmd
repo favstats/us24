@@ -1,5 +1,5 @@
 ---
-title: "2024 US Presidential Primaries"
+title: "2024 US Presidential Election"
 format:
   html:
     theme: lumen
