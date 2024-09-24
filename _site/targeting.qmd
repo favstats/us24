@@ -8,7 +8,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-election_title <- "2024 US Presidential Primaries"
+election_title <- "2024 US Presidential Election"
 the_country <- "United States"
 
 
