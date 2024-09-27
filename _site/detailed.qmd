@@ -161,7 +161,7 @@ generate_plots <- function(data, exclusion = F) {
     group_by(party) %>%
     arrange(desc(perc)) %>%
     distinct(value, .keep_all = T) %>%
-    slice(1:10)
+    slice(1:20)
 
   plots <- gg %>%
     mutate(spend_perlab = scales::comma(round(total_spend))) %>%
@@ -473,16 +473,14 @@ The charts below show the target audiences where most competition takes place. F
 
 ```{r, fig.width  = 13, fig.height=15}
 
-
-get_contested_graph <- function(ppp, minamount = 1000, n_parties = 3) {
+most_left_party <- "Pro-Democrat"
+get_contested_graph <- function(ppp, minamount = 1000, n_parties = 2) {
 
     # ppp <- election_dat30
 interest_targeting <-  ppp %>%
     mutate(total_spend = total_spend_formatted) %>%
     filter(type == "detailed") %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
-    mutate(total_spend = total_spend * total_spend_pct) %>%
     # filter(main_currency == the_currency)   %>%
     # left_join(page_names %>% select(internal_id = page_id, page_name) %>% distinct(internal_id, .keep_all =T)) %>%
     # left_join(us_advertisers %>% rename(internal_id = page_id)) %>%
@@ -490,7 +488,7 @@ interest_targeting <-  ppp %>%
     mutate(value = paste0(detailed_type,": ", value)) %>%
     group_by(party, value, is_exclusion, detailed_type) %>%
   # mutate(value = str_replace_all(value, " \\s*\\([^\\)]+\\)", "")) %>%
-    summarise(total_spend = sum(total_spend)) %>%
+    summarise(total_spend = sum(total_spend_formatted)) %>%
     ungroup() %>%
     arrange(desc(total_spend))
 
@@ -594,22 +592,57 @@ contested_dat <- contested_dat %>%
 ### `r last30days_string`
 
 ```{r}
+
+aggregated_data <- election_dat30   %>%
+  filter(type == "detailed") %>% 
+    mutate(total_spend_formatted = ifelse(total_spend_formatted == 100, 1, total_spend_formatted)) %>%
+    mutate(total_spend_formatted = total_spend_formatted * total_spend_pct) %>% 
+  mutate(party = case_when(
+    str_detect(party, "Democrat|Kamala|Prog") ~ "Pro-Democrat",
+    str_detect(party, "Republican|Trump|Conserv") ~ "Pro-Republican",
+    TRUE ~ party # Keep other parties unchanged
+  )) %>%
+  # Retain the necessary columns and compute total spend
+  group_by(party, value, is_exclusion, detailed_type, type, color) %>%
+  summarise(
+    total_spend_formatted = sum(total_spend_formatted, na.rm = TRUE),
+    num_ads = sum(num_ads, na.rm = TRUE)
+  ) %>%
+  ungroup()
 # debugonce(get_contested_graph)
-thegraph30 <- get_contested_graph(election_dat30, minamount = 100)
+color_dat <- tibble(party = c("Pro-Democrat", "Pro-Republican"), colors = c("#293ad6", "#ee111a"))
+
+thegraph30 <- get_contested_graph(aggregated_data, minamount = 100)
 
 if(length(thegraph30$x$hc_opts$series)!=0){
   thegraph30
 } else {
   shiny::HTML("No data (yet).")
 }
+
 ```
 
 
 ### `r last7days_string`
 
 ```{r}
-
-thegraph7 <- get_contested_graph(election_dat7, minamount = 100)
+aggregated_data <- election_dat7   %>%
+  filter(type == "detailed") %>% 
+    mutate(total_spend_formatted = ifelse(total_spend_formatted == 100, 1, total_spend_formatted)) %>%
+    mutate(total_spend_formatted = total_spend_formatted * total_spend_pct) %>% 
+  mutate(party = case_when(
+    str_detect(party, "Democrat|Kamala|Prog") ~ "Pro-Democrat",
+    str_detect(party, "Republican|Trump|Conserv") ~ "Pro-Republican",
+    TRUE ~ party # Keep other parties unchanged
+  )) %>%
+  # Retain the necessary columns and compute total spend
+  group_by(party, value, is_exclusion, detailed_type, type, color) %>%
+  summarise(
+    total_spend_formatted = sum(total_spend_formatted, na.rm = TRUE),
+    num_ads = sum(num_ads, na.rm = TRUE)
+  ) %>%
+  ungroup()
+thegraph7 <- get_contested_graph(aggregated_data, minamount = 100)
 
 
 if(length(thegraph7$x$hc_opts$series)!=0){
