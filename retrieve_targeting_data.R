@@ -157,8 +157,8 @@ dir.create(paste0("historic/", new_ds), recursive = T)
 c(7, 30, 90) %>%
   walk(prepp)
 
-wtm_data <-
-  openxlsx::read.xlsx("data/Presidential candidates, last 30 days.xlsx", sheet = 2) %>% janitor::clean_names()
+# wtm_data <-
+#   openxlsx::read.xlsx("data/Presidential candidates, last 30 days.xlsx", sheet = 2) %>% janitor::clean_names()
 
 uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip") 
   # count(enti)
@@ -166,6 +166,8 @@ uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip")
   wtm_data <-
     uswtm %>% 
   filter(entities.short_name %in% c("Harris", "Trump", "Dems", "DemPAC", "RepPAC", "Prog", "Con", "GOP")) %>%
+  mutate(entities.short_name = fct_relevel(entities.short_name, c("Harris", "Trump", "Dems", "DemPAC", "RepPAC", "Prog", "Con", "GOP"))) %>% 
+    arrange(entities.short_name) %>% 
   distinct(advertisers_platforms.advertiser_platform_ref, .keep_all = T) %>% 
   mutate(party = case_when(
     entities.short_name == "Dems" ~ "Democrats",
@@ -186,7 +188,7 @@ uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip")
       mutate(page_name = name)
   # View()
   
-  # uswtm %>% count(entities.short_name, sort = T) %>% View()
+  # uswtm %>% count(entities.short_name, platforms.name, sort = T) %>% View()
   
 all_dat <- wtm_data %>%
   # bind_rows(more_data) %>%
@@ -198,10 +200,18 @@ all_dat <- wtm_data %>%
   # filter(n >= 2 & str_ends(page_id, "0", negate = T)) %>%
   select(-n)
 
+# wtm_data %>% 
+#   filter(party == "Donald Trump") %>% View()
+#   count(party)
+# #   
+#   uswtm %>% 
+#     count(entities.short_name, sort = T) %>% View()
+
 # all_dat %>% count(party, sort = T)
 # all_dat %>% nrow
 
 write_lines(all_dat %>% count(page_id, sort = T) %>% nrow, "n_advertisers.txt")
+
 
 
 
@@ -239,54 +249,228 @@ scraper <- possibly(scraper, otherwise = NULL, quiet = F)
 # da7 <- readRDS("data/election_dat7.rds")
 
 ### save seperately
-all_dat %>%
-  split(1:nrow(.)) %>%
-  walk_progress(scraper, 7)
+# all_dat %>%
+#   split(1:nrow(.)) %>%
+#   walk_progress(scraper, 7)
+# 
+# all_dat %>%
+#   split(1:nrow(.)) %>%
+#   walk_progress(scraper, 30)
+# 
+# all_dat %>%
+#   split(1:nrow(.)) %>%
+#   walk_progress(scraper, 90)
 
-all_dat %>%
-  split(1:nrow(.)) %>%
-  walk_progress(scraper, 30)
 
-all_dat %>%
-  split(1:nrow(.)) %>%
-  walk_progress(scraper, 90)
+library(rvest)
 
-da30  <- dir("targeting/30", full.names = T) %>%
-  discard( ~ str_detect(.x, "/_")) %>%
-  map_dfr_progress(readRDS)  %>%
-  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
-  # rename(page_id = internal_id) %>%
-  left_join(all_dat) %>% 
-  mutate(tframe = "30")
+out <- "US" %>%
+  map( ~ {
+    .x %>%
+      paste0(c("-last_7_days", "-last_30_days",
+               "-last_90_days"))
+  }) %>%
+  unlist() %>%
+  # keep( ~ str_detect(.x, tf)) %>%
+  # .[100:120] %>%
+  map_dfr( ~ {
+    the_assets <-
+      httr::GET(
+        paste0(
+          "https://github.com/favstats/meta_ad_targeting/releases/expanded_assets/",
+          .x
+        )
+      )
+    
+    the_assets %>% httr::content() %>%
+      html_elements(".Box-row") %>%
+      html_text()  %>%
+      tibble(raw = .)   %>%
+      # Split the raw column into separate lines
+      mutate(raw = strsplit(as.character(raw), "\n")) %>%
+      # Extract the relevant lines for filename, file size, and timestamp
+      transmute(
+        filename = sapply(raw, function(x)
+          trimws(x[3])),
+        file_size = sapply(raw, function(x)
+          trimws(x[6])),
+        timestamp = sapply(raw, function(x)
+          trimws(x[7]))
+      ) %>%
+      filter(filename != "Source code") %>%
+      mutate(release = .x) %>%
+      mutate_all(as.character)
+  })
 
-da7  <- dir("targeting/7", full.names = T) %>%
-  discard( ~ str_detect(.x, "/_")) %>%
-  map_dfr_progress(readRDS) %>%
-  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
-  # rename(page_id = internal_id) %>%
-  left_join(all_dat) %>% 
-  mutate(tframe = "7")
 
-da90  <- dir("targeting/90", full.names = T) %>%
-  discard( ~ str_detect(.x, "/_")) %>%
-  map_dfr_progress(readRDS) %>%
-  # mutate(total_spend_formatted = parse_number(total_spend_formatted)) %>%
-  # rename(page_id = internal_id) %>%
-  left_join(all_dat) %>% 
-  mutate(tframe = "90")
+
+
+
+print("################ CHECK LATEST REPORT ################")
+
 
 try({
-  da30  <- da30 %>%
-    mutate(total_spend_formatted = parse_number(total_spend_formatted))
+  out <- "US" %>%
+    map( ~ {
+      .x %>%
+        paste0(c(
+          "-yesterday",
+          "-last_7_days",
+          "-last_30_days",
+          "-last_90_days"
+        ))
+    }) %>%
+    unlist() %>%
+    .[str_detect(., "last_90_days")] %>%
+    # .[100:120] %>%
+    map_dfr( ~ {
+      the_assets <-
+        httr::GET(
+          paste0(
+            "https://github.com/favstats/meta_ad_reports/releases/expanded_assets/",
+            .x
+          )
+        )
+      
+      the_assets %>% httr::content() %>%
+        html_elements(".Box-row") %>%
+        html_text()  %>%
+        tibble(raw = .)   %>%
+        # Split the raw column into separate lines
+        mutate(raw = strsplit(as.character(raw), "\n")) %>%
+        # Extract the relevant lines for filename, file size, and timestamp
+        transmute(
+          filename = sapply(raw, function(x)
+            trimws(x[3])),
+          file_size = sapply(raw, function(x)
+            trimws(x[6])),
+          timestamp = sapply(raw, function(x)
+            trimws(x[7]))
+        ) %>%
+        filter(filename != "Source code") %>%
+        mutate(release = .x) %>%
+        mutate_all(as.character)
+    })
+  
+  
+  latest <- out  %>%
+    rename(tag = release,
+           file_name = filename) %>%
+    arrange(desc(tag)) %>%
+    separate(
+      tag,
+      into = c("country", "timeframe"),
+      remove = F,
+      sep = "-"
+    ) %>%
+    filter(str_detect(file_name, "rds")) %>%
+    mutate(day  = str_remove(file_name, "\\.rds|\\.zip|\\.parquet") %>% lubridate::ymd()) %>%
+    arrange(desc(day)) %>%
+    group_by(country) %>%
+    slice(1) %>%
+    ungroup()
+  
+  
+  download.file(
+    paste0(
+      "https://github.com/favstats/meta_ad_reports/releases/download/",
+      sets$cntry,
+      "-last_90_days/",
+      latest$file_name
+    ),
+    destfile = "report.rds"
+  )
+  
+  last7 <- readRDS("report.rds") %>%
+    mutate(sources = "report") %>%
+    mutate(party = "unknown")
+  
+  file.remove("report.rds")
 })
-try({
-  da90  <- da90 %>%
-    mutate(total_spend_formatted = parse_number(total_spend_formatted))
-})
-try({
-  da7  <- da7 %>%
-    mutate(total_spend_formatted = parse_number(total_spend_formatted))
-})
+
+if (!exists("last7")) {
+  last7 <- tibble()
+}
+
+
+# out
+fin <- out %>%
+  rename(tag = release,
+         file_name = filename) %>%
+  arrange(desc(tag)) %>%
+  separate(
+    tag,
+    into = c("cntry", "tframe"),
+    remove = F,
+    sep = "-"
+  ) %>%
+  mutate(ds  = str_remove(file_name, "\\.rds|\\.zip|\\.parquet")) %>%
+  distinct(cntry, ds, tframe) %>%
+  drop_na(ds) %>%
+  arrange(desc(ds)) # %>% 
+
+
+us_markers <- fin %>% 
+  group_by(tframe) %>% 
+  arrange(desc(ds)) %>% 
+  slice(1) %>% 
+  ungroup()
+
+
+mark_list <- us_markers %>% 
+  mutate(tframe = fct_relevel(tframe, c("last_7_days",
+                                        "last_30_days",
+                                        "last_90_days"))) %>% 
+  arrange(tframe) %>% 
+  mutate(ds = as.Date(ds)) %>% 
+  split(1:nrow(.)) %>% 
+  map(~{
+    thetframe <- .x$tframe
+   the_data <- arrow::read_parquet(glue::glue("https://github.com/favstats/meta_ad_targeting/releases/download/US-{.x$tframe}/{.x$ds}.parquet"))  %>% 
+      select(-page_name, -party, -remove_em) %>%
+      left_join(all_dat) %>% 
+      mutate(tframe = parse_number(as.character(.x$tframe))) %>%
+      mutate(total_spend_formatted = parse_number(as.character(total_spend_formatted)))
+    
+   the_data <- the_data %>% 
+     filter(is.na(no_data))
+   
+   djt_page <- the_data %>% 
+     filter(page_id %in% unique(last7$page_id)[1:1000])
+   
+   if(length(unique(djt_page$page_id))<1000){
+     print("djt not found")
+     djt_page <- unique(last7$page_id)[1:1000] %>% 
+       setdiff(the_data$page_id) %>% 
+       map_dfr_progress(
+       ~{get_page_insights(.x, timeframe = thetframe, include_info = "targeting_info")}, 
+       .progress = T 
+     ) %>%
+       as_tibble() %>% 
+       # select(-page_name, -party, -remove_em) %>%
+       left_join(all_dat) %>% 
+       mutate(tframe = parse_number(as.character(.x$tframe))) %>%
+       mutate(total_spend_formatted = parse_number(as.character(total_spend_formatted)))    
+     
+     the_data <- djt_page %>% 
+       bind_rows(the_data)
+   }
+
+   
+
+    
+   return(the_data)
+  }) 
+
+
+# get_page_insights("153080620724", timeframe = "LAST_30_DAYS", include_info = "targeting_info") %>%
+#   as_tibble()
+# 
+da7 <- mark_list[[1]]
+da30 <- mark_list[[2]]
+da90 <- mark_list[[3]]
+# 
+# da7 %>%  filter(page_id == "153080620724")
 
 
 saveRDS(da90, "data/election_dat90.rds")
@@ -297,5 +481,5 @@ saveRDS(da90, paste0("historic/", new_ds, "/90.rds"))
 saveRDS(da30, paste0("historic/", new_ds, "/30.rds"))
 saveRDS(da7, paste0("historic/", new_ds, "/7.rds"))
 
-list(da7, da30, da90) %>%
-  walk(combine_em)
+# list(da7, da30, da90) %>%
+#   walk(combine_em)

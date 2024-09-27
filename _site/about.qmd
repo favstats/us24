@@ -3,26 +3,33 @@ title: " "
 format:
   html:
     theme: lumen
+    page-layout: full
 ---
 
-```{r, echo = F, warning=F, message=F}
+```{r setup, include=FALSE}
+# dir()
+# here::i_am("ep2024.Rproj")
+
 library(tidyverse)
+library(htmltools)
 
-election_title <- "2024 US Presidential Primaries"
-the_country <- "United State"
+# sets <- jsonlite::fromJSON(here::here("settings.json"))
 
+# source(here::here("party_utils.R"))
 ```
 
 
 ### Methodology
 
 
-In collaboration with [Who Targets Me](https://whotargets.me/), we monitored `r read_lines("../n_advertisers.txt")` political advertisers in `r the_country` during the `r election_title` to better understand how campaigns use different targeting methods made available by Meta. To do this, we used data from the [Meta Ad Library](https://www.facebook.com/ads/library/), using the new 'Audience' data which gives some detail on how pages target their ads. 
+In collaboration with [Who Targets Me](https://whotargets.me/), we monitored `r read_lines("../n_advertisers.txt")` political advertisers to better understand how campaigns use different targeting methods made available by Meta. To do this, we used data from the [Meta Ad Library](https://www.facebook.com/ads/library/), using the new 'Audience' data which gives some detail on how pages target their ads. 
+
+
 
 To better understand the election, we kept only advertisers who:
 
-1. Advertised in the last 7 days (`r read_csv("../data/lastdays.csv")$last7days`)
-2. Advertised in the last 30 days (`r read_csv("../data/lastdays.csv")$last30days`)
+1. Advertised in the last 7 days (`r read_lines("last7days_string.txt")`)
+2. Advertised in the last 30 days (`r read_lines("last30days_string.txt")`)
 
 
 ::: {.callout-note}
@@ -42,8 +49,6 @@ The data shown in this dashboard is based on the platform's respective ad librar
 
 ```{r, echo=F}
 
-library(htmltools)
-
 card <- div(
   class = "card",
   div(
@@ -54,7 +59,7 @@ card <- div(
         style = "display: flex; justify-content: center;",
         img(
           class = "card-img", 
-          src = "https://www.uva.nl/binaries/_ht_1677599571673/cardmedium/content/gallery/personen/v/o/fabio-votta.jpg",
+          src = "https://verkiezingspropaganda.apache.be/photo_2024-01-16_23-01-45.jpg",
           style = "max-width: 500px;"  # Adjusted max-width to control image size
         )
       )
@@ -65,7 +70,7 @@ card <- div(
         class = "card-body",
         p(
           class = "card-text", 
-          "Fabio Votta is a Ph.D. candidate in Political Communication at the University of Amsterdam who studies (online) political microtargeting and its usage around the world."
+          "Fabio Votta is a Postdoc at the University of Amsterdam who studies (online) political microtargeting and its usage around the world."
         )
       )
     )
@@ -81,7 +86,11 @@ card
 ```
 
 
+|                            |                            |                            |
+|----------------------------|----------------------------|----------------------------|
+| <a href="https://bsky.app/profile/favstats.bsky.social"> {{< iconify arcticons bluesky size=22px >}}</a> BlueSky |  <a href="https://x.com/favstats"> {{< iconify arcticons twitter size=22px >}}</a> Twitter | <a href="https://favstats.eu"> {{< iconify arcticons emoji-web size=22px >}}</a> Personal Website |
 
+<br>
 
 
 :::: {style="display: flex; justify-content: center; align-items: center;" }
@@ -140,9 +149,6 @@ A list of election dashboards:
 + 🇳🇿 [2023 New Zealand general election](https://favstats.github.io/NZ2023/) (14 October 2023)
 + `r emo::ji("poland")` [2023 Polish parliamentary election](https://favstats.github.io/poland2023/) (15 October 2023)
 + `r emo::ji("us")` [US Presidential Primaries](https://favstats.github.io/USprimaries2024/) (2023-2024)
-
-
-
 
 
 

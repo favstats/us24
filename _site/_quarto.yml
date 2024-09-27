@@ -3,21 +3,32 @@ project:
   output-dir: ../docs
 
 website:
-  title: "🇺🇸 2024 US Presidential Election Targeting Dashboard"
+  title: "Who Targets Me - United States"
+  favicon: "wtm_logo_2020_transparent-150x150.png"
   navbar:
+    logo: "wtm_logo_2020_transparent-300x300.png"
     left:
       - href: index.qmd
-        text: Spending
-      - targeting.qmd
+        text: "{{< iconify ph coins >}} Spending"
+      - sidebar:targeting
       - href: about.qmd
-        text: About
-    right:
-      - icon: github
-        href: https://github.com/favstats
-      - icon: twitter
-        href: https://twitter.com/favstats
-    
+        text: "{{< iconify ph info-thin >}} About"
+  sidebar:
+    - id: ""
+    - id: targeting
+      title: "{{< iconify ph users-three-thin >}} Targeting"
+      style: "docked"
+      collapse-level: 2
+      contents:
+        - targeting.qmd
+        - detailed.qmd
+        - location.qmd
+        - demographics.qmd
+
 format:
   html:
-    theme: litera
-    
+    theme:
+      - cosmo
+      - custom.scss
+    fontsize: 1.2em
+

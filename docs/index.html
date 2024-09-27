@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="How do political parties chase your vote, what do they want to keep hidden, and how much money do they spend on it? In the lead-up to the elections, we monitor political microtargeting.">
 
-<title>🇺🇸 2024 US Presidential Election Targeting Dashboard - 2024 US Presidential Primaries</title>
+<title>Who Targets Me - United States - Spending</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./wtm_logo_2020_transparent-150x150.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -39,6 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,107 +69,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
-
-<script src="site_libs/proj4js-2.3.15/proj4.js"></script>
-
-<link href="site_libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
-
-<script src="site_libs/highcharts-9.3.1/highcharts.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/highcharts-3d.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/highcharts-more.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/stock.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/map.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/data.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/exporting.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/drilldown.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/item-series.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/annotations.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/export-data.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/funnel.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/heatmap.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/treemap.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/sankey.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/organization.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/streamgraph.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/sunburst.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/vector.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/wordcloud.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/xrange.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/tilemap.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/venn.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/gantt.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/timeline.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/bullet.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/coloraxis.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/dumbbell.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/lollipop.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/series-label.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/plugins/motion.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/custom/reset.js"></script>
-
-<script src="site_libs/highcharts-9.3.1/modules/boost.js"></script>
-
-<script src="site_libs/highchart-binding-0.9.4/highchart.js"></script>
-
 
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./wtm_logo_2020_transparent-300x300.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">🇺🇸 2024 US Presidential Election Targeting Dashboard</span>
+    <span class="navbar-title">Who Targets Me - United States</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -177,27 +95,34 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Spending</span></a>
+<span class="menu-text"><iconify-icon inline="" icon="ph:coins" aria-label="Icon coins from ph Iconify.design set." title="Icon coins from ph Iconify.design set."></iconify-icon> Spending</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./targeting.html"> 
-<span class="menu-text">Targeting</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-iconify-ph-users-three-thin--targeting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><iconify-icon inline="" icon="ph:users-three-thin" aria-label="Icon users-three-thin from ph Iconify.design set." title="Icon users-three-thin from ph Iconify.design set."></iconify-icon> Targeting</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-iconify-ph-users-three-thin--targeting">    
+        <li>
+    <a class="dropdown-item" href="./targeting.html">
+ <span class="dropdown-text">Spending per Targeting</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./detailed.html">
+ <span class="dropdown-text">Detailed Targeting</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./location.html">
+ <span class="dropdown-text">Location</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./demographics.html">
+ <span class="dropdown-text">Demographics</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/favstats"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/favstats"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
+<span class="menu-text"><iconify-icon inline="" icon="ph:info-thin" aria-label="Icon info-thin from ph Iconify.design set." title="Icon info-thin from ph Iconify.design set."></iconify-icon> About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -207,21 +132,21 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2024 US Presidential Primaries</h1>
+<h1 class="title">Spending</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -233,100 +158,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<style>
-    body .main-container {
-        max-width: 1920px !important;
-    }
-</style>
-
-<style>
-#overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
-  cursor: pointer;
-  text-align: center;
-  padding-top: 10%;
-}
-
-#text {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  font-size: 20px;
-  color: black;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 50%;
-}
-</style>
-
-<div id="overlay" onclick="off()">
-  <div id="text">
-    <img src="wtm_logo_2020.png" alt="Logo" style="width:200px;height:200px;">
-    <h2 class="anchored">Welcome to the 2024 US Presidential Election Dashboard</h2>
-    <p>This dashboard aggregates data from the <a href="https://www.facebook.com/ads/library/" target="_blank">Meta Ad Library</a> to show how citizens are targeted during the 2024 US Presidential Election.</p>
-    <p>If you want to know more about Who Targets Me and our work on ad transparency, visit us on <a href="https://www.whotargets.me/" target="_blank">whotargets.me</a>!</p>
-  </div>
-</div>
-
-<script>
-window.onload = function() {
-  var popupLastShown = localStorage.getItem("popupLastShown");
-  var now = new Date().getTime();
-
-  if (!popupLastShown || now - popupLastShown > 60*60*1000) {  // 60*60*1000 milliseconds = 1 hour
-    document.getElementById("overlay").style.display = "block";
-    localStorage.setItem("popupLastShown", now);
-  }
-}
-
-function off() {
-  document.getElementById("overlay").style.display = "none";
-}
-</script>
-
-<p>This section shows <em>total</em> and <em>daily spending</em> of political entities in the run-up to the 2023-24 US Primaries election for the latest available data.</p>
-<section id="total-spend" class="level2">
-<h2 class="anchored" data-anchor-id="total-spend">Total Spend</h2>
+<p>Here you can see the expenditures of political parties in the lead-up to the elections according to the latest data.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Jun 21st - Sep 18th 2024 (Last 90 days)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Aug 20th - Sep 18th 2024 (Last 30 days)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Sep 12th - Sep 18th 2024 (Last 7 days)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">26 Aug - 24 Sep 2024</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">18 Sep - 24 Sep 2024</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>In total, political entities spent $85,652,884 and ran 69607 ads on Meta in this period.</p>
+<p>During this period, political parties spent a total of €62,091,391 and displayed 78038 advertisements on Meta.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hltskpalln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jirvmjtzrz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#hltskpalln table {
+#jirvmjtzrz table {
   font-family: Cairo, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hltskpalln thead, #hltskpalln tbody, #hltskpalln tfoot, #hltskpalln tr, #hltskpalln td, #hltskpalln th {
+#jirvmjtzrz thead, #jirvmjtzrz tbody, #jirvmjtzrz tfoot, #jirvmjtzrz tr, #jirvmjtzrz td, #jirvmjtzrz th {
   border-style: none;
 }
 
-#hltskpalln p {
+#jirvmjtzrz p {
   margin: 0;
   padding: 0;
 }
 
-#hltskpalln .gt_table {
+#jirvmjtzrz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -352,12 +212,12 @@ function off() {
   border-left-color: #D3D3D3;
 }
 
-#hltskpalln .gt_caption {
+#jirvmjtzrz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hltskpalln .gt_title {
+#jirvmjtzrz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -369,7 +229,7 @@ function off() {
   border-bottom-width: 0;
 }
 
-#hltskpalln .gt_subtitle {
+#jirvmjtzrz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -381,7 +241,7 @@ function off() {
   border-top-width: 0;
 }
 
-#hltskpalln .gt_heading {
+#jirvmjtzrz .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -393,13 +253,13 @@ function off() {
   border-right-color: #D3D3D3;
 }
 
-#hltskpalln .gt_bottom_border {
+#jirvmjtzrz .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hltskpalln .gt_col_headings {
+#jirvmjtzrz .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -414,7 +274,7 @@ function off() {
   border-right-color: #D3D3D3;
 }
 
-#hltskpalln .gt_col_heading {
+#jirvmjtzrz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -434,7 +294,7 @@ function off() {
   overflow-x: hidden;
 }
 
-#hltskpalln .gt_column_spanner_outer {
+#jirvmjtzrz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -446,15 +306,15 @@ function off() {
   padding-right: 4px;
 }
 
-#hltskpalln .gt_column_spanner_outer:first-child {
+#jirvmjtzrz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hltskpalln .gt_column_spanner_outer:last-child {
+#jirvmjtzrz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hltskpalln .gt_column_spanner {
+#jirvmjtzrz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -466,11 +326,11 @@ function off() {
   width: 100%;
 }
 
-#hltskpalln .gt_spanner_row {
+#jirvmjtzrz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hltskpalln .gt_group_heading {
+#jirvmjtzrz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -496,7 +356,7 @@ function off() {
   text-align: left;
 }
 
-#hltskpalln .gt_empty_group_heading {
+#jirvmjtzrz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -511,15 +371,15 @@ function off() {
   vertical-align: middle;
 }
 
-#hltskpalln .gt_from_md > :first-child {
+#jirvmjtzrz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hltskpalln .gt_from_md > :last-child {
+#jirvmjtzrz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hltskpalln .gt_row {
+#jirvmjtzrz .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -538,7 +398,7 @@ function off() {
   overflow-x: hidden;
 }
 
-#hltskpalln .gt_stub {
+#jirvmjtzrz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -551,7 +411,7 @@ function off() {
   padding-right: 5px;
 }
 
-#hltskpalln .gt_stub_row_group {
+#jirvmjtzrz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -565,15 +425,15 @@ function off() {
   vertical-align: top;
 }
 
-#hltskpalln .gt_row_group_first td {
+#jirvmjtzrz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hltskpalln .gt_row_group_first th {
+#jirvmjtzrz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hltskpalln .gt_summary_row {
+#jirvmjtzrz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -583,16 +443,16 @@ function off() {
   padding-right: 5px;
 }
 
-#hltskpalln .gt_first_summary_row {
+#jirvmjtzrz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hltskpalln .gt_first_summary_row.thick {
+#jirvmjtzrz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hltskpalln .gt_last_summary_row {
+#jirvmjtzrz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -602,7 +462,7 @@ function off() {
   border-bottom-color: #D3D3D3;
 }
 
-#hltskpalln .gt_grand_summary_row {
+#jirvmjtzrz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -612,7 +472,7 @@ function off() {
   padding-right: 5px;
 }
 
-#hltskpalln .gt_first_grand_summary_row {
+#jirvmjtzrz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -622,7 +482,7 @@ function off() {
   border-top-color: #D3D3D3;
 }
 
-#hltskpalln .gt_last_grand_summary_row_top {
+#jirvmjtzrz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -632,11 +492,11 @@ function off() {
   border-bottom-color: #D3D3D3;
 }
 
-#hltskpalln .gt_striped {
+#jirvmjtzrz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hltskpalln .gt_table_body {
+#jirvmjtzrz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -645,7 +505,7 @@ function off() {
   border-bottom-color: #D3D3D3;
 }
 
-#hltskpalln .gt_footnotes {
+#jirvmjtzrz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -659,7 +519,7 @@ function off() {
   border-right-color: #D3D3D3;
 }
 
-#hltskpalln .gt_footnote {
+#jirvmjtzrz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -668,7 +528,7 @@ function off() {
   padding-right: 5px;
 }
 
-#hltskpalln .gt_sourcenotes {
+#jirvmjtzrz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -682,7 +542,7 @@ function off() {
   border-right-color: #D3D3D3;
 }
 
-#hltskpalln .gt_sourcenote {
+#jirvmjtzrz .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -690,72 +550,72 @@ function off() {
   padding-right: 5px;
 }
 
-#hltskpalln .gt_left {
+#jirvmjtzrz .gt_left {
   text-align: left;
 }
 
-#hltskpalln .gt_center {
+#jirvmjtzrz .gt_center {
   text-align: center;
 }
 
-#hltskpalln .gt_right {
+#jirvmjtzrz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hltskpalln .gt_font_normal {
+#jirvmjtzrz .gt_font_normal {
   font-weight: normal;
 }
 
-#hltskpalln .gt_font_bold {
+#jirvmjtzrz .gt_font_bold {
   font-weight: bold;
 }
 
-#hltskpalln .gt_font_italic {
+#jirvmjtzrz .gt_font_italic {
   font-style: italic;
 }
 
-#hltskpalln .gt_super {
+#jirvmjtzrz .gt_super {
   font-size: 65%;
 }
 
-#hltskpalln .gt_footnote_marks {
+#jirvmjtzrz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hltskpalln .gt_asterisk {
+#jirvmjtzrz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hltskpalln .gt_indent_1 {
+#jirvmjtzrz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hltskpalln .gt_indent_2 {
+#jirvmjtzrz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hltskpalln .gt_indent_3 {
+#jirvmjtzrz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hltskpalln .gt_indent_4 {
+#jirvmjtzrz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hltskpalln .gt_indent_5 {
+#jirvmjtzrz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hltskpalln .katex-display {
+#jirvmjtzrz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hltskpalln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jirvmjtzrz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
@@ -776,7 +636,7 @@ tbody tr:last-child {
 <tr class="header gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
 <th id="Number of Advertisers" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Advertisers</th>
-<th id="Top Spenders" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Top Spenders</th>
+<th id="Top Spenders" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Top Spenders</th>
 <th id="Number of Ads" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Ads</th>
 <th id="Total Spend" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Total Spend</th>
 </tr>
@@ -784,17 +644,59 @@ tbody tr:last-child {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Kamala Harris</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #293ad6"><p>9</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Top Spenders"><p><br>1. Kamala Harris ($44,864,343)<br>2. Joe Biden ($10,415,029)<br>3. The Daily Scroll ($9,196,634)</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Ads"><p>62,030</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Total Spend"><p>$79,510,483</p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #293ad6"><p>8</p></td>
+<td class="gt_row gt_left" headers="stub_1_1 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=24413227922">Kamala Harris</a> (€20,630,094)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=255594894306221">The Daily Scroll</a> (€6,581,264)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=167251659804799">Biden-Harris HQ</a> (€3,323,171)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Number of Ads"><p>42,115</p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Total Spend"><p>€34,253,187</p></td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Donald Trump</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #ee111a"><p>7</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Top Spenders"><p><br>1. Donald J. Trump ($4,094,428)<br>2. JD Vance ($939,457)<br>3. Alina Habba ($555,690)</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Ads"><p>7,577</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Total Spend"><p>$6,142,401</p></td>
+<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Progressive orgs and media</p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #8BC7FC"><p>38</p></td>
+<td class="gt_row gt_left" headers="stub_1_2 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=104673218071670">Vote Early 2022</a> (€1,235,923)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=105760061866321">Galvanize Action</a> (€586,901)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=114971076538782">The Keystone</a> (€527,486)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Number of Ads"><p>11,118</p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Total Spend"><p>€7,288,843</p></td>
+</tr>
+<tr class="odd">
+<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Democrats</p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #2d54c2"><p>25</p></td>
+<td class="gt_row gt_left" headers="stub_1_3 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1505244559517282">Colin Allred</a> (€625,784)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=161183970656851">Ruben Gallego</a> (€572,510)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=101704558574021">Lucas Kunce</a> (€433,549)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Number of Ads"><p>7,615</p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Total Spend"><p>€4,865,723</p></td>
+</tr>
+<tr class="even">
+<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Conservative orgs and media</p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #9B151A"><p>43</p></td>
+<td class="gt_row gt_left" headers="stub_1_4 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=570092813023833">Matt Walsh</a> (€553,123)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1435071773455316">Daily Wire</a> (€444,113)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=103875099042033">DailyWire+</a> (€416,024)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Number of Ads"><p>5,470</p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Total Spend"><p>€4,284,561</p></td>
+</tr>
+<tr class="odd">
+<td id="stub_1_5" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Democratic PACs</p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #2c4282"><p>32</p></td>
+<td class="gt_row gt_left" headers="stub_1_5 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=103910725985046">Forward Blue</a> (€590,398)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=20787991568">Senate Democrats</a> (€342,606)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=156994304362574">American Bridge 21st Century</a> (€331,126)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Number of Ads"><p>4,336</p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Total Spend"><p>€3,755,487</p></td>
+</tr>
+<tr class="even">
+<td id="stub_1_6" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Republican PACs</p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #c2372d"><p>15</p></td>
+<td class="gt_row gt_left" headers="stub_1_6 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1155212867963791">AFP Action</a> (€1,785,485)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=24330467048">Americans for Prosperity</a> (€740,745)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1576552839287418">Senate Leadership Fund</a> (€311,886)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Number of Ads"><p>2,839</p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Total Spend"><p>€3,712,991</p></td>
+</tr>
+<tr class="odd">
+<td id="stub_1_7" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Donald Trump</p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #ee111a"><p>4</p></td>
+<td class="gt_row gt_left" headers="stub_1_7 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=153080620724">Donald J. Trump</a> (€1,969,845)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=358087647388044">Alina Habba</a> (€584,612)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=529594453913030">Lara Trump</a> (€380,332)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Number of Ads"><p>4,233</p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Total Spend"><p>€3,108,683</p></td>
+</tr>
+<tr class="even">
+<td id="stub_1_8" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Republicans</p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #E81B23"><p>6</p></td>
+<td class="gt_row gt_left" headers="stub_1_8 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=370681112796620">Connecticut Dave</a> (€595,854)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=141072965762934">Steve Garvey</a> (€79,956)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=108733862157788">Tim Sheehy</a> (€43,852)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Number of Ads"><p>312</p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Total Spend"><p>€821,916</p></td>
 </tr>
 </tbody>
 </table>
@@ -804,30 +706,30 @@ tbody tr:last-child {
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>In total, political entities spent $85,652,884 and ran 69607 ads on Meta in this period.</p>
+<p>During this period, political parties spent a total of €16,384,696 and displayed 31259 advertisements on Meta.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="yilyymdasd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bwthuhrunp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#yilyymdasd table {
+#bwthuhrunp table {
   font-family: Cairo, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yilyymdasd thead, #yilyymdasd tbody, #yilyymdasd tfoot, #yilyymdasd tr, #yilyymdasd td, #yilyymdasd th {
+#bwthuhrunp thead, #bwthuhrunp tbody, #bwthuhrunp tfoot, #bwthuhrunp tr, #bwthuhrunp td, #bwthuhrunp th {
   border-style: none;
 }
 
-#yilyymdasd p {
+#bwthuhrunp p {
   margin: 0;
   padding: 0;
 }
 
-#yilyymdasd .gt_table {
+#bwthuhrunp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -853,12 +755,12 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_caption {
+#bwthuhrunp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yilyymdasd .gt_title {
+#bwthuhrunp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -870,7 +772,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#yilyymdasd .gt_subtitle {
+#bwthuhrunp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -882,7 +784,7 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#yilyymdasd .gt_heading {
+#bwthuhrunp .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -894,13 +796,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_bottom_border {
+#bwthuhrunp .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_col_headings {
+#bwthuhrunp .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -915,7 +817,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_col_heading {
+#bwthuhrunp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -935,7 +837,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#yilyymdasd .gt_column_spanner_outer {
+#bwthuhrunp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -947,15 +849,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#yilyymdasd .gt_column_spanner_outer:first-child {
+#bwthuhrunp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yilyymdasd .gt_column_spanner_outer:last-child {
+#bwthuhrunp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yilyymdasd .gt_column_spanner {
+#bwthuhrunp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #000000;
@@ -967,11 +869,11 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#yilyymdasd .gt_spanner_row {
+#bwthuhrunp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yilyymdasd .gt_group_heading {
+#bwthuhrunp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -997,7 +899,7 @@ tbody tr:last-child {
   text-align: left;
 }
 
-#yilyymdasd .gt_empty_group_heading {
+#bwthuhrunp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1012,15 +914,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#yilyymdasd .gt_from_md > :first-child {
+#bwthuhrunp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yilyymdasd .gt_from_md > :last-child {
+#bwthuhrunp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yilyymdasd .gt_row {
+#bwthuhrunp .gt_row {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 5px;
@@ -1039,7 +941,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#yilyymdasd .gt_stub {
+#bwthuhrunp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1052,7 +954,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#yilyymdasd .gt_stub_row_group {
+#bwthuhrunp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1066,15 +968,15 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#yilyymdasd .gt_row_group_first td {
+#bwthuhrunp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yilyymdasd .gt_row_group_first th {
+#bwthuhrunp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yilyymdasd .gt_summary_row {
+#bwthuhrunp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1084,16 +986,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#yilyymdasd .gt_first_summary_row {
+#bwthuhrunp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_first_summary_row.thick {
+#bwthuhrunp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yilyymdasd .gt_last_summary_row {
+#bwthuhrunp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1103,7 +1005,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_grand_summary_row {
+#bwthuhrunp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1113,7 +1015,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#yilyymdasd .gt_first_grand_summary_row {
+#bwthuhrunp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1123,7 +1025,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_last_grand_summary_row_top {
+#bwthuhrunp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1133,11 +1035,11 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_striped {
+#bwthuhrunp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yilyymdasd .gt_table_body {
+#bwthuhrunp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1146,7 +1048,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_footnotes {
+#bwthuhrunp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1160,7 +1062,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_footnote {
+#bwthuhrunp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1169,7 +1071,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#yilyymdasd .gt_sourcenotes {
+#bwthuhrunp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1183,7 +1085,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#yilyymdasd .gt_sourcenote {
+#bwthuhrunp .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1191,72 +1093,72 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#yilyymdasd .gt_left {
+#bwthuhrunp .gt_left {
   text-align: left;
 }
 
-#yilyymdasd .gt_center {
+#bwthuhrunp .gt_center {
   text-align: center;
 }
 
-#yilyymdasd .gt_right {
+#bwthuhrunp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yilyymdasd .gt_font_normal {
+#bwthuhrunp .gt_font_normal {
   font-weight: normal;
 }
 
-#yilyymdasd .gt_font_bold {
+#bwthuhrunp .gt_font_bold {
   font-weight: bold;
 }
 
-#yilyymdasd .gt_font_italic {
+#bwthuhrunp .gt_font_italic {
   font-style: italic;
 }
 
-#yilyymdasd .gt_super {
+#bwthuhrunp .gt_super {
   font-size: 65%;
 }
 
-#yilyymdasd .gt_footnote_marks {
+#bwthuhrunp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yilyymdasd .gt_asterisk {
+#bwthuhrunp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yilyymdasd .gt_indent_1 {
+#bwthuhrunp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yilyymdasd .gt_indent_2 {
+#bwthuhrunp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yilyymdasd .gt_indent_3 {
+#bwthuhrunp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yilyymdasd .gt_indent_4 {
+#bwthuhrunp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yilyymdasd .gt_indent_5 {
+#bwthuhrunp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yilyymdasd .katex-display {
+#bwthuhrunp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yilyymdasd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bwthuhrunp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 
@@ -1277,7 +1179,7 @@ tbody tr:last-child {
 <tr class="header gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
 <th id="Number of Advertisers" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Advertisers</th>
-<th id="Top Spenders" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Top Spenders</th>
+<th id="Top Spenders" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Top Spenders</th>
 <th id="Number of Ads" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Ads</th>
 <th id="Total Spend" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Total Spend</th>
 </tr>
@@ -1285,518 +1187,59 @@ tbody tr:last-child {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Kamala Harris</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #293ad6"><p>9</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Top Spenders"><p><br>1. Kamala Harris ($44,864,343)<br>2. Joe Biden ($10,415,029)<br>3. The Daily Scroll ($9,196,634)</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Ads"><p>62,030</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Total Spend"><p>$79,510,483</p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #293ad6"><p>6</p></td>
+<td class="gt_row gt_left" headers="stub_1_1 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=24413227922">Kamala Harris</a> (€4,920,208)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=255594894306221">The Daily Scroll</a> (€1,526,828)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=167251659804799">Biden-Harris HQ</a> (€969,667)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Number of Ads"><p>10,236</p></td>
+<td class="gt_row gt_center" headers="stub_1_1 Total Spend"><p>€7,708,237</p></td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Donald Trump</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #ee111a"><p>7</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Top Spenders"><p><br>1. Donald J. Trump ($4,094,428)<br>2. JD Vance ($939,457)<br>3. Alina Habba ($555,690)</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Ads"><p>7,577</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Total Spend"><p>$6,142,401</p></td>
+<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Progressive orgs and media</p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #8BC7FC"><p>57</p></td>
+<td class="gt_row gt_left" headers="stub_1_2 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=104673218071670">Vote Early 2022</a> (€560,355)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=105760061866321">Galvanize Action</a> (€283,682)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=908009612563863">NowThis News</a> (€227,308)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Number of Ads"><p>6,583</p></td>
+<td class="gt_row gt_center" headers="stub_1_2 Total Spend"><p>€2,658,600</p></td>
 </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>In total, political entities spent $85,652,884 and ran 69607 ads on Meta in this period</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fpsuauqjxh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cairo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#fpsuauqjxh table {
-  font-family: Cairo, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#fpsuauqjxh thead, #fpsuauqjxh tbody, #fpsuauqjxh tfoot, #fpsuauqjxh tr, #fpsuauqjxh td, #fpsuauqjxh th {
-  border-style: none;
-}
-
-#fpsuauqjxh p {
-  margin: 0;
-  padding: 0;
-}
-
-#fpsuauqjxh .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: none;
-  border-top-width: 3px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#fpsuauqjxh .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#fpsuauqjxh .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#fpsuauqjxh .gt_heading {
-  background-color: #FFFFFF;
-  text-align: left;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_bottom_border {
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_col_headings {
-  border-top-style: none;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #000000;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#fpsuauqjxh .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#fpsuauqjxh .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#fpsuauqjxh .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#fpsuauqjxh .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #000000;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#fpsuauqjxh .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#fpsuauqjxh .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: none;
-  border-top-width: 2px;
-  border-top-color: #000000;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#fpsuauqjxh .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: none;
-  border-top-width: 2px;
-  border-top-color: #000000;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #FFFFFF;
-  vertical-align: middle;
-}
-
-#fpsuauqjxh .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#fpsuauqjxh .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#fpsuauqjxh .gt_row {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#fpsuauqjxh .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 0px;
-  border-right-color: #FFFFFF;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#fpsuauqjxh .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#fpsuauqjxh .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#fpsuauqjxh .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#fpsuauqjxh .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#fpsuauqjxh .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#fpsuauqjxh .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#fpsuauqjxh .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#fpsuauqjxh .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#fpsuauqjxh .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#fpsuauqjxh .gt_sourcenote {
-  font-size: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#fpsuauqjxh .gt_left {
-  text-align: left;
-}
-
-#fpsuauqjxh .gt_center {
-  text-align: center;
-}
-
-#fpsuauqjxh .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#fpsuauqjxh .gt_font_normal {
-  font-weight: normal;
-}
-
-#fpsuauqjxh .gt_font_bold {
-  font-weight: bold;
-}
-
-#fpsuauqjxh .gt_font_italic {
-  font-style: italic;
-}
-
-#fpsuauqjxh .gt_super {
-  font-size: 65%;
-}
-
-#fpsuauqjxh .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#fpsuauqjxh .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#fpsuauqjxh .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#fpsuauqjxh .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#fpsuauqjxh .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#fpsuauqjxh .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#fpsuauqjxh .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#fpsuauqjxh .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#fpsuauqjxh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-
-tbody tr:last-child {
-  border-bottom: 2px solid #ffffff00;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th id="Number of Advertisers" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Advertisers</th>
-<th id="Top Spenders" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Top Spenders</th>
-<th id="Number of Ads" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Number of Ads</th>
-<th id="Total Spend" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-top-width: 0px; border-top-style: solid; border-top-color: black; font-family: Chivo; font-size: 14px; vertical-align: bottom; font-weight: 200; text-transform: uppercase" scope="col">Total Spend</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Kamala Harris</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #293ad6"><p>9</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Top Spenders"><p><br>1. Kamala Harris ($44,864,343)<br>2. Joe Biden ($10,415,029)<br>3. The Daily Scroll ($9,196,634)</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Number of Ads"><p>62,030</p></td>
-<td class="gt_row gt_center" headers="stub_1_1 Total Spend"><p>$79,510,483</p></td>
+<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Democrats</p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #2d54c2"><p>56</p></td>
+<td class="gt_row gt_left" headers="stub_1_3 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1505244559517282">Colin Allred</a> (€236,116)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=161183970656851">Ruben Gallego</a> (€138,425)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=101704558574021">Lucas Kunce</a> (€131,382)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Number of Ads"><p>4,967</p></td>
+<td class="gt_row gt_center" headers="stub_1_3 Total Spend"><p>€1,426,717</p></td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Donald Trump</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #ee111a"><p>7</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Top Spenders"><p><br>1. Donald J. Trump ($4,094,428)<br>2. JD Vance ($939,457)<br>3. Alina Habba ($555,690)</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Number of Ads"><p>7,577</p></td>
-<td class="gt_row gt_center" headers="stub_1_2 Total Spend"><p>$6,142,401</p></td>
+<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Democratic PACs</p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #2c4282"><p>43</p></td>
+<td class="gt_row gt_left" headers="stub_1_4 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=156994304362574">American Bridge 21st Century</a> (€233,520)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=103910725985046">Forward Blue</a> (€136,161)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=228754857151053">House Majority PAC</a> (€97,037)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Number of Ads"><p>2,194</p></td>
+<td class="gt_row gt_center" headers="stub_1_4 Total Spend"><p>€1,260,818</p></td>
+</tr>
+<tr class="odd">
+<td id="stub_1_5" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Conservative orgs and media</p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #9B151A"><p>65</p></td>
+<td class="gt_row gt_left" headers="stub_1_5 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=570092813023833">Matt Walsh</a> (€154,873)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=129255907131113">NumbersUSA</a> (€96,625)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=325778468178035">CVA_Action</a> (€61,305)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Number of Ads"><p>3,856</p></td>
+<td class="gt_row gt_center" headers="stub_1_5 Total Spend"><p>€1,021,674</p></td>
+</tr>
+<tr class="even">
+<td id="stub_1_6" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Donald Trump</p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #ee111a"><p>4</p></td>
+<td class="gt_row gt_left" headers="stub_1_6 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=153080620724">Donald J. Trump</a> (€667,948)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=358087647388044">Alina Habba</a> (€192,760)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=529594453913030">Lara Trump</a> (€88,019)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Number of Ads"><p>1,205</p></td>
+<td class="gt_row gt_center" headers="stub_1_6 Total Spend"><p>€980,542</p></td>
+</tr>
+<tr class="odd">
+<td id="stub_1_7" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Republican PACs</p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #c2372d"><p>32</p></td>
+<td class="gt_row gt_left" headers="stub_1_7 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1155212867963791">AFP Action</a> (€484,705)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=123192635089">GOP</a> (€107,523)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=1576552839287418">Senate Leadership Fund</a> (€75,650)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Number of Ads"><p>1,771</p></td>
+<td class="gt_row gt_center" headers="stub_1_7 Total Spend"><p>€971,050</p></td>
+</tr>
+<tr class="even">
+<td id="stub_1_8" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row"><p>Republicans</p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Number of Advertisers" style="border-left-width: 18.5px; border-left-style: solid; border-left-color: #E81B23"><p>29</p></td>
+<td class="gt_row gt_left" headers="stub_1_8 Top Spenders" style="vertical-align: center"><p><br>1. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=370681112796620">Connecticut Dave</a> (€185,713)<br>2. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=141072965762934">Steve Garvey</a> (€52,142)<br>3. <a href="https://www.facebook.com/ads/library/?ad_type=political_and_issue_ads&amp;country=US&amp;view_all_page_id=134517281170">Kelly Ayotte</a> (€16,945)<br><br></p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Number of Ads"><p>447</p></td>
+<td class="gt_row gt_center" headers="stub_1_8 Total Spend"><p>€357,058</p></td>
 </tr>
 </tbody>
 </table>
@@ -1807,30 +1250,8 @@ tbody tr:last-child {
 </div>
 </div>
 </div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Cumulative</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Daily</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="cell">
-<div class="cell-output-display">
-<div class="highchart html-widget html-fill-item" id="htmlwidget-94cd5f77dda2c05ac1bc" style="width:100%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-94cd5f77dda2c05ac1bc">{"x":{"hc_opts":{"chart":{"reflow":true},"title":{"text":null},"yAxis":{"title":{"text":"Daily Spend"},"type":"linear"},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"showInLegend":true},"treemap":{"layoutAlgorithm":"squarified"},"scatter":{"marker":{"symbol":"circle"}},"area":{"stacking":"normal","lineWidth":1,"marker":{"enabled":false}}},"series":[{"name":"Donald Trump","data":[{"date_produced":"2023-06-02","Candidate":"Donald Trump","spend":113708601,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-02","Daily_Diff":1478,"Daily Spend":2956,"x":1685664000000,"y":2956,"fill":"#ee111a"},{"date_produced":"2023-06-03","Candidate":"Donald Trump","spend":113709991,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-03","Daily_Diff":1390,"Daily Spend":4346,"x":1685750400000,"y":4346,"fill":"#ee111a"},{"date_produced":"2023-06-04","Candidate":"Donald Trump","spend":113711510,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-04","Daily_Diff":1519,"Daily Spend":5865,"x":1685836800000,"y":5865,"fill":"#ee111a"},{"date_produced":"2023-06-05","Candidate":"Donald Trump","spend":113712999,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-05","Daily_Diff":1489,"Daily Spend":7354,"x":1685923200000,"y":7354,"fill":"#ee111a"},{"date_produced":"2023-06-06","Candidate":"Donald Trump","spend":113714244,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-06","Daily_Diff":1245,"Daily Spend":8599,"x":1686009600000,"y":8599,"fill":"#ee111a"},{"date_produced":"2023-06-07","Candidate":"Donald Trump","spend":113715594,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-07","Daily_Diff":1350,"Daily Spend":9949,"x":1686096000000,"y":9949,"fill":"#ee111a"},{"date_produced":"2023-06-08","Candidate":"Donald Trump","spend":113717025,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-08","Daily_Diff":1431,"Daily Spend":11380,"x":1686182400000,"y":11380,"fill":"#ee111a"},{"date_produced":"2023-06-09","Candidate":"Donald Trump","spend":113722693,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-09","Daily_Diff":5668,"Daily Spend":17048,"x":1686268800000,"y":17048,"fill":"#ee111a"},{"date_produced":"2023-06-10","Candidate":"Donald Trump","spend":113732036,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-10","Daily_Diff":9343,"Daily Spend":26391,"x":1686355200000,"y":26391,"fill":"#ee111a"},{"date_produced":"2023-06-11","Candidate":"Donald Trump","spend":113740703,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-11","Daily_Diff":8667,"Daily Spend":35058,"x":1686441600000,"y":35058,"fill":"#ee111a"},{"date_produced":"2023-06-12","Candidate":"Donald Trump","spend":113745559,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-12","Daily_Diff":4856,"Daily Spend":39914,"x":1686528000000,"y":39914,"fill":"#ee111a"},{"date_produced":"2023-06-13","Candidate":"Donald Trump","spend":113756184,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-13","Daily_Diff":10625,"Daily Spend":50539,"x":1686614400000,"y":50539,"fill":"#ee111a"},{"date_produced":"2023-06-14","Candidate":"Donald Trump","spend":113769354,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-14","Daily_Diff":13170,"Daily Spend":63709,"x":1686700800000,"y":63709,"fill":"#ee111a"},{"date_produced":"2023-06-15","Candidate":"Donald Trump","spend":113779277,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-15","Daily_Diff":9923,"Daily Spend":73632,"x":1686787200000,"y":73632,"fill":"#ee111a"},{"date_produced":"2023-06-16","Candidate":"Donald Trump","spend":113787581,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-16","Daily_Diff":8304,"Daily Spend":81936,"x":1686873600000,"y":81936,"fill":"#ee111a"},{"date_produced":"2023-06-17","Candidate":"Donald Trump","spend":113794786,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-17","Daily_Diff":7205,"Daily Spend":89141,"x":1686960000000,"y":89141,"fill":"#ee111a"},{"date_produced":"2023-06-18","Candidate":"Donald Trump","spend":113802018,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-18","Daily_Diff":7232,"Daily Spend":96373,"x":1687046400000,"y":96373,"fill":"#ee111a"},{"date_produced":"2023-06-19","Candidate":"Donald Trump","spend":113805681,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-19","Daily_Diff":3663,"Daily Spend":100036,"x":1687132800000,"y":100036,"fill":"#ee111a"},{"date_produced":"2023-06-20","Candidate":"Donald Trump","spend":113806798,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-20","Daily_Diff":1117,"Daily Spend":101153,"x":1687219200000,"y":101153,"fill":"#ee111a"},{"date_produced":"2023-06-21","Candidate":"Donald Trump","spend":113807581,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-21","Daily_Diff":783,"Daily Spend":101936,"x":1687305600000,"y":101936,"fill":"#ee111a"},{"date_produced":"2023-06-22","Candidate":"Donald Trump","spend":113809160,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-22","Daily_Diff":1579,"Daily Spend":103515,"x":1687392000000,"y":103515,"fill":"#ee111a"},{"date_produced":"2023-06-23","Candidate":"Donald Trump","spend":113810933,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-23","Daily_Diff":1773,"Daily Spend":105288,"x":1687478400000,"y":105288,"fill":"#ee111a"},{"date_produced":"2023-06-24","Candidate":"Donald Trump","spend":113812503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-24","Daily_Diff":1570,"Daily Spend":106858,"x":1687564800000,"y":106858,"fill":"#ee111a"},{"date_produced":"2023-06-25","Candidate":"Donald Trump","spend":113814077,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-25","Daily_Diff":1574,"Daily Spend":108432,"x":1687651200000,"y":108432,"fill":"#ee111a"},{"date_produced":"2023-06-26","Candidate":"Donald Trump","spend":113817977,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-26","Daily_Diff":3900,"Daily Spend":112332,"x":1687737600000,"y":112332,"fill":"#ee111a"},{"date_produced":"2023-06-27","Candidate":"Donald Trump","spend":113822764,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-27","Daily_Diff":4787,"Daily Spend":117119,"x":1687824000000,"y":117119,"fill":"#ee111a"},{"date_produced":"2023-06-28","Candidate":"Donald Trump","spend":113827450,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-28","Daily_Diff":4686,"Daily Spend":121805,"x":1687910400000,"y":121805,"fill":"#ee111a"},{"date_produced":"2023-06-29","Candidate":"Donald Trump","spend":113830508,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-29","Daily_Diff":3058,"Daily Spend":124863,"x":1687996800000,"y":124863,"fill":"#ee111a"},{"date_produced":"2023-06-30","Candidate":"Donald Trump","spend":113832885,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-30","Daily_Diff":2377,"Daily Spend":127240,"x":1688083200000,"y":127240,"fill":"#ee111a"},{"date_produced":"2023-07-01","Candidate":"Donald Trump","spend":113835553,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-01","Daily_Diff":2668,"Daily Spend":129908,"x":1688169600000,"y":129908,"fill":"#ee111a"},{"date_produced":"2023-07-02","Candidate":"Donald Trump","spend":113838503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-02","Daily_Diff":2950,"Daily Spend":132858,"x":1688256000000,"y":132858,"fill":"#ee111a"},{"date_produced":"2023-07-03","Candidate":"Donald Trump","spend":113842450,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-03","Daily_Diff":3947,"Daily Spend":136805,"x":1688342400000,"y":136805,"fill":"#ee111a"},{"date_produced":"2023-07-04","Candidate":"Donald Trump","spend":113847206,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-04","Daily_Diff":4756,"Daily Spend":141561,"x":1688428800000,"y":141561,"fill":"#ee111a"},{"date_produced":"2023-07-05","Candidate":"Donald Trump","spend":113853279,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-05","Daily_Diff":6073,"Daily Spend":147634,"x":1688515200000,"y":147634,"fill":"#ee111a"},{"date_produced":"2023-07-06","Candidate":"Donald Trump","spend":113855696,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-06","Daily_Diff":2417,"Daily Spend":150051,"x":1688601600000,"y":150051,"fill":"#ee111a"},{"date_produced":"2023-07-07","Candidate":"Donald Trump","spend":113858119,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-07","Daily_Diff":2423,"Daily Spend":152474,"x":1688688000000,"y":152474,"fill":"#ee111a"},{"date_produced":"2023-07-08","Candidate":"Donald Trump","spend":113860552,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-08","Daily_Diff":2433,"Daily Spend":154907,"x":1688774400000,"y":154907,"fill":"#ee111a"},{"date_produced":"2023-07-09","Candidate":"Donald Trump","spend":113863164,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-09","Daily_Diff":2612,"Daily Spend":157519,"x":1688860800000,"y":157519,"fill":"#ee111a"},{"date_produced":"2023-07-10","Candidate":"Donald Trump","spend":113865743,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-10","Daily_Diff":2579,"Daily Spend":160098,"x":1688947200000,"y":160098,"fill":"#ee111a"},{"date_produced":"2023-07-11","Candidate":"Donald Trump","spend":113868219,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-11","Daily_Diff":2476,"Daily Spend":162574,"x":1689033600000,"y":162574,"fill":"#ee111a"},{"date_produced":"2023-07-12","Candidate":"Donald Trump","spend":113870468,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-12","Daily_Diff":2249,"Daily Spend":164823,"x":1689120000000,"y":164823,"fill":"#ee111a"},{"date_produced":"2023-07-13","Candidate":"Donald Trump","spend":113872429,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-13","Daily_Diff":1961,"Daily Spend":166784,"x":1689206400000,"y":166784,"fill":"#ee111a"},{"date_produced":"2023-07-14","Candidate":"Donald Trump","spend":113874371,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-14","Daily_Diff":1942,"Daily Spend":168726,"x":1689292800000,"y":168726,"fill":"#ee111a"},{"date_produced":"2023-07-15","Candidate":"Donald Trump","spend":113876313,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-15","Daily_Diff":1942,"Daily Spend":170668,"x":1689379200000,"y":170668,"fill":"#ee111a"},{"date_produced":"2023-07-16","Candidate":"Donald Trump","spend":113878439,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-16","Daily_Diff":2126,"Daily Spend":172794,"x":1689465600000,"y":172794,"fill":"#ee111a"},{"date_produced":"2023-07-17","Candidate":"Donald Trump","spend":113880488,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-17","Daily_Diff":2049,"Daily Spend":174843,"x":1689552000000,"y":174843,"fill":"#ee111a"},{"date_produced":"2023-07-18","Candidate":"Donald Trump","spend":113882509,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-18","Daily_Diff":2021,"Daily Spend":176864,"x":1689638400000,"y":176864,"fill":"#ee111a"},{"date_produced":"2023-07-19","Candidate":"Donald Trump","spend":113884503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-19","Daily_Diff":1994,"Daily Spend":178858,"x":1689724800000,"y":178858,"fill":"#ee111a"},{"date_produced":"2023-07-20","Candidate":"Donald Trump","spend":113886470,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-20","Daily_Diff":1967,"Daily Spend":180825,"x":1689811200000,"y":180825,"fill":"#ee111a"},{"date_produced":"2023-07-21","Candidate":"Donald Trump","spend":113890426,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-21","Daily_Diff":3956,"Daily Spend":184781,"x":1689897600000,"y":184781,"fill":"#ee111a"},{"date_produced":"2023-07-22","Candidate":"Donald Trump","spend":113896099,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-22","Daily_Diff":5673,"Daily Spend":190454,"x":1689984000000,"y":190454,"fill":"#ee111a"},{"date_produced":"2023-07-23","Candidate":"Donald Trump","spend":113901132,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-23","Daily_Diff":5033,"Daily Spend":195487,"x":1690070400000,"y":195487,"fill":"#ee111a"},{"date_produced":"2023-07-24","Candidate":"Donald Trump","spend":113904266,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-24","Daily_Diff":3134,"Daily Spend":198621,"x":1690156800000,"y":198621,"fill":"#ee111a"},{"date_produced":"2023-07-25","Candidate":"Donald Trump","spend":113909800,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-25","Daily_Diff":5534,"Daily Spend":204155,"x":1690243200000,"y":204155,"fill":"#ee111a"},{"date_produced":"2023-07-26","Candidate":"Donald Trump","spend":113918306,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-26","Daily_Diff":8506,"Daily Spend":212661,"x":1690329600000,"y":212661,"fill":"#ee111a"},{"date_produced":"2023-07-27","Candidate":"Donald Trump","spend":113926883,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-27","Daily_Diff":8577,"Daily Spend":221238,"x":1690416000000,"y":221238,"fill":"#ee111a"},{"date_produced":"2023-07-28","Candidate":"Donald Trump","spend":113928567,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-28","Daily_Diff":1684,"Daily Spend":222922,"x":1690502400000,"y":222922,"fill":"#ee111a"},{"date_produced":"2023-07-29","Candidate":"Donald Trump","spend":113929519,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-29","Daily_Diff":952,"Daily Spend":223874,"x":1690588800000,"y":223874,"fill":"#ee111a"},{"date_produced":"2023-07-30","Candidate":"Donald Trump","spend":113930576,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-30","Daily_Diff":1057,"Daily Spend":224931,"x":1690675200000,"y":224931,"fill":"#ee111a"},{"date_produced":"2023-07-31","Candidate":"Donald Trump","spend":113932049,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-31","Daily_Diff":1473,"Daily Spend":226404,"x":1690761600000,"y":226404,"fill":"#ee111a"},{"date_produced":"2023-08-01","Candidate":"Donald Trump","spend":113935413,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-01","Daily_Diff":3364,"Daily Spend":229768,"x":1690848000000,"y":229768,"fill":"#ee111a"},{"date_produced":"2023-08-02","Candidate":"Donald Trump","spend":113947926,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-02","Daily_Diff":12513,"Daily Spend":242281,"x":1690934400000,"y":242281,"fill":"#ee111a"},{"date_produced":"2023-08-03","Candidate":"Donald Trump","spend":113968149,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-03","Daily_Diff":20223,"Daily Spend":262504,"x":1691020800000,"y":262504,"fill":"#ee111a"},{"date_produced":"2023-08-04","Candidate":"Donald Trump","spend":113985926,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-04","Daily_Diff":17777,"Daily Spend":280281,"x":1691107200000,"y":280281,"fill":"#ee111a"},{"date_produced":"2023-08-05","Candidate":"Donald Trump","spend":113994153,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-05","Daily_Diff":8227,"Daily Spend":288508,"x":1691193600000,"y":288508,"fill":"#ee111a"},{"date_produced":"2023-08-06","Candidate":"Donald Trump","spend":114004111,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-06","Daily_Diff":9958,"Daily Spend":298466,"x":1691280000000,"y":298466,"fill":"#ee111a"},{"date_produced":"2023-08-07","Candidate":"Donald Trump","spend":114011148,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-07","Daily_Diff":7037,"Daily Spend":305503,"x":1691366400000,"y":305503,"fill":"#ee111a"},{"date_produced":"2023-08-08","Candidate":"Donald Trump","spend":114015542,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-08","Daily_Diff":4394,"Daily Spend":309897,"x":1691452800000,"y":309897,"fill":"#ee111a"},{"date_produced":"2023-08-09","Candidate":"Donald Trump","spend":114019033,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-09","Daily_Diff":3491,"Daily Spend":313388,"x":1691539200000,"y":313388,"fill":"#ee111a"},{"date_produced":"2023-08-10","Candidate":"Donald Trump","spend":114022905,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-10","Daily_Diff":3872,"Daily Spend":317260,"x":1691625600000,"y":317260,"fill":"#ee111a"},{"date_produced":"2023-08-11","Candidate":"Donald Trump","spend":114026726,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-11","Daily_Diff":3821,"Daily Spend":321081,"x":1691712000000,"y":321081,"fill":"#ee111a"},{"date_produced":"2023-08-12","Candidate":"Donald Trump","spend":114030022,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-12","Daily_Diff":3296,"Daily Spend":324377,"x":1691798400000,"y":324377,"fill":"#ee111a"},{"date_produced":"2023-08-13","Candidate":"Donald Trump","spend":114033598,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-13","Daily_Diff":3576,"Daily Spend":327953,"x":1691884800000,"y":327953,"fill":"#ee111a"},{"date_produced":"2023-08-14","Candidate":"Donald Trump","spend":114038419,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-14","Daily_Diff":4821,"Daily Spend":332774,"x":1691971200000,"y":332774,"fill":"#ee111a"},{"date_produced":"2023-08-15","Candidate":"Donald Trump","spend":114071976,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-15","Daily_Diff":33557,"Daily Spend":366331,"x":1692057600000,"y":366331,"fill":"#ee111a"},{"date_produced":"2023-08-16","Candidate":"Donald Trump","spend":114089106,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-16","Daily_Diff":17130,"Daily Spend":383461,"x":1692144000000,"y":383461,"fill":"#ee111a"},{"date_produced":"2023-08-17","Candidate":"Donald Trump","spend":114100351,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-17","Daily_Diff":11245,"Daily Spend":394706,"x":1692230400000,"y":394706,"fill":"#ee111a"},{"date_produced":"2023-08-18","Candidate":"Donald Trump","spend":114108744,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-18","Daily_Diff":8393,"Daily Spend":403099,"x":1692316800000,"y":403099,"fill":"#ee111a"},{"date_produced":"2023-08-19","Candidate":"Donald Trump","spend":114114255,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-19","Daily_Diff":5511,"Daily Spend":408610,"x":1692403200000,"y":408610,"fill":"#ee111a"},{"date_produced":"2023-08-20","Candidate":"Donald Trump","spend":114119628,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-20","Daily_Diff":5373,"Daily Spend":413983,"x":1692489600000,"y":413983,"fill":"#ee111a"},{"date_produced":"2023-08-21","Candidate":"Donald Trump","spend":114123426,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-21","Daily_Diff":3798,"Daily Spend":417781,"x":1692576000000,"y":417781,"fill":"#ee111a"},{"date_produced":"2023-08-22","Candidate":"Donald Trump","spend":114126445,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-22","Daily_Diff":3019,"Daily Spend":420800,"x":1692662400000,"y":420800,"fill":"#ee111a"},{"date_produced":"2023-08-23","Candidate":"Donald Trump","spend":114129422,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-23","Daily_Diff":2977,"Daily Spend":423777,"x":1692748800000,"y":423777,"fill":"#ee111a"},{"date_produced":"2023-08-24","Candidate":"Donald Trump","spend":114137628,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-24","Daily_Diff":8206,"Daily Spend":431983,"x":1692835200000,"y":431983,"fill":"#ee111a"},{"date_produced":"2023-08-25","Candidate":"Donald Trump","spend":114169696,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-25","Daily_Diff":32068,"Daily Spend":464051,"x":1692921600000,"y":464051,"fill":"#ee111a"},{"date_produced":"2023-08-26","Candidate":"Donald Trump","spend":114188379,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-26","Daily_Diff":18683,"Daily Spend":482734,"x":1693008000000,"y":482734,"fill":"#ee111a"},{"date_produced":"2023-08-27","Candidate":"Donald Trump","spend":114200024,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-27","Daily_Diff":11645,"Daily Spend":494379,"x":1693094400000,"y":494379,"fill":"#ee111a"},{"date_produced":"2023-08-28","Candidate":"Donald Trump","spend":114205914,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-28","Daily_Diff":5890,"Daily Spend":500269,"x":1693180800000,"y":500269,"fill":"#ee111a"},{"date_produced":"2023-08-29","Candidate":"Donald Trump","spend":114212424,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-29","Daily_Diff":6510,"Daily Spend":506779,"x":1693267200000,"y":506779,"fill":"#ee111a"},{"date_produced":"2023-08-30","Candidate":"Donald Trump","spend":114220417,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-30","Daily_Diff":7993,"Daily Spend":514772,"x":1693353600000,"y":514772,"fill":"#ee111a"},{"date_produced":"2023-08-31","Candidate":"Donald Trump","spend":114228017,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-31","Daily_Diff":7600,"Daily Spend":522372,"x":1693440000000,"y":522372,"fill":"#ee111a"},{"date_produced":"2023-09-01","Candidate":"Donald Trump","spend":114234764,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-01","Daily_Diff":6747,"Daily Spend":529119,"x":1693526400000,"y":529119,"fill":"#ee111a"},{"date_produced":"2023-09-02","Candidate":"Donald Trump","spend":114238630,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-02","Daily_Diff":3866,"Daily Spend":532985,"x":1693612800000,"y":532985,"fill":"#ee111a"},{"date_produced":"2023-09-03","Candidate":"Donald Trump","spend":114242726,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-03","Daily_Diff":4096,"Daily Spend":537081,"x":1693699200000,"y":537081,"fill":"#ee111a"},{"date_produced":"2023-09-04","Candidate":"Donald Trump","spend":114246237,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-04","Daily_Diff":3511,"Daily Spend":540592,"x":1693785600000,"y":540592,"fill":"#ee111a"},{"date_produced":"2023-09-05","Candidate":"Donald Trump","spend":114248325,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-05","Daily_Diff":2088,"Daily Spend":542680,"x":1693872000000,"y":542680,"fill":"#ee111a"},{"date_produced":"2023-09-06","Candidate":"Donald Trump","spend":114249834,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-06","Daily_Diff":1509,"Daily Spend":544189,"x":1693958400000,"y":544189,"fill":"#ee111a"},{"date_produced":"2023-09-07","Candidate":"Donald Trump","spend":114251326,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-07","Daily_Diff":1492,"Daily Spend":545681,"x":1694044800000,"y":545681,"fill":"#ee111a"},{"date_produced":"2023-09-08","Candidate":"Donald Trump","spend":114253173,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-08","Daily_Diff":1847,"Daily Spend":547528,"x":1694131200000,"y":547528,"fill":"#ee111a"},{"date_produced":"2023-09-09","Candidate":"Donald Trump","spend":114255559,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-09","Daily_Diff":2386,"Daily Spend":549914,"x":1694217600000,"y":549914,"fill":"#ee111a"},{"date_produced":"2023-09-10","Candidate":"Donald Trump","spend":114258201,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-10","Daily_Diff":2642,"Daily Spend":552556,"x":1694304000000,"y":552556,"fill":"#ee111a"},{"date_produced":"2023-09-11","Candidate":"Donald Trump","spend":114260738,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-11","Daily_Diff":2537,"Daily Spend":555093,"x":1694390400000,"y":555093,"fill":"#ee111a"},{"date_produced":"2023-09-12","Candidate":"Donald Trump","spend":114263240,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-12","Daily_Diff":2502,"Daily Spend":557595,"x":1694476800000,"y":557595,"fill":"#ee111a"},{"date_produced":"2023-09-13","Candidate":"Donald Trump","spend":114265749,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-13","Daily_Diff":2509,"Daily Spend":560104,"x":1694563200000,"y":560104,"fill":"#ee111a"},{"date_produced":"2023-09-14","Candidate":"Donald Trump","spend":114268232,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-14","Daily_Diff":2483,"Daily Spend":562587,"x":1694649600000,"y":562587,"fill":"#ee111a"},{"date_produced":"2023-09-15","Candidate":"Donald Trump","spend":114270378,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-15","Daily_Diff":2146,"Daily Spend":564733,"x":1694736000000,"y":564733,"fill":"#ee111a"},{"date_produced":"2023-09-16","Candidate":"Donald Trump","spend":114273668,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-16","Daily_Diff":3290,"Daily Spend":568023,"x":1694822400000,"y":568023,"fill":"#ee111a"},{"date_produced":"2023-09-17","Candidate":"Donald Trump","spend":114275413,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-17","Daily_Diff":1745,"Daily Spend":569768,"x":1694908800000,"y":569768,"fill":"#ee111a"},{"date_produced":"2023-09-18","Candidate":"Donald Trump","spend":114278487,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-18","Daily_Diff":3074,"Daily Spend":572842,"x":1694995200000,"y":572842,"fill":"#ee111a"},{"date_produced":"2023-09-19","Candidate":"Donald Trump","spend":114280465,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-19","Daily_Diff":1978,"Daily Spend":574820,"x":1695081600000,"y":574820,"fill":"#ee111a"},{"date_produced":"2023-09-20","Candidate":"Donald Trump","spend":114281463,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-20","Daily_Diff":998,"Daily Spend":575818,"x":1695168000000,"y":575818,"fill":"#ee111a"},{"date_produced":"2023-09-21","Candidate":"Donald Trump","spend":114282449,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-21","Daily_Diff":986,"Daily Spend":576804,"x":1695254400000,"y":576804,"fill":"#ee111a"},{"date_produced":"2023-09-22","Candidate":"Donald Trump","spend":114283398,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-22","Daily_Diff":949,"Daily Spend":577753,"x":1695340800000,"y":577753,"fill":"#ee111a"},{"date_produced":"2023-09-23","Candidate":"Donald Trump","spend":114284372,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-23","Daily_Diff":974,"Daily Spend":578727,"x":1695427200000,"y":578727,"fill":"#ee111a"},{"date_produced":"2023-09-24","Candidate":"Donald Trump","spend":114285410,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-24","Daily_Diff":1038,"Daily Spend":579765,"x":1695513600000,"y":579765,"fill":"#ee111a"},{"date_produced":"2023-09-25","Candidate":"Donald Trump","spend":114286446,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-25","Daily_Diff":1036,"Daily Spend":580801,"x":1695600000000,"y":580801,"fill":"#ee111a"},{"date_produced":"2023-09-26","Candidate":"Donald Trump","spend":114288760,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-26","Daily_Diff":2314,"Daily Spend":583115,"x":1695686400000,"y":583115,"fill":"#ee111a"}],"type":"area"},{"name":"Kamala Harris","data":[{"date_produced":"2023-06-02","Candidate":"Kamala Harris","spend":113970500,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-02","Daily_Diff":4451,"Daily Spend":8902,"x":1685664000000,"y":8902,"fill":"#293ad6"},{"date_produced":"2023-06-03","Candidate":"Kamala Harris","spend":113974610,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-03","Daily_Diff":4110,"Daily Spend":13012,"x":1685750400000,"y":13012,"fill":"#293ad6"},{"date_produced":"2023-06-04","Candidate":"Kamala Harris","spend":113978733,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-04","Daily_Diff":4123,"Daily Spend":17135,"x":1685836800000,"y":17135,"fill":"#293ad6"},{"date_produced":"2023-06-05","Candidate":"Kamala Harris","spend":113981987,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-05","Daily_Diff":3254,"Daily Spend":20389,"x":1685923200000,"y":20389,"fill":"#293ad6"},{"date_produced":"2023-06-06","Candidate":"Kamala Harris","spend":113984818,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-06","Daily_Diff":2831,"Daily Spend":23220,"x":1686009600000,"y":23220,"fill":"#293ad6"},{"date_produced":"2023-06-07","Candidate":"Kamala Harris","spend":113987578,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-07","Daily_Diff":2760,"Daily Spend":25980,"x":1686096000000,"y":25980,"fill":"#293ad6"},{"date_produced":"2023-06-08","Candidate":"Kamala Harris","spend":113994113,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-08","Daily_Diff":6535,"Daily Spend":32515,"x":1686182400000,"y":32515,"fill":"#293ad6"},{"date_produced":"2023-06-09","Candidate":"Kamala Harris","spend":114001390,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-09","Daily_Diff":7277,"Daily Spend":39792,"x":1686268800000,"y":39792,"fill":"#293ad6"},{"date_produced":"2023-06-10","Candidate":"Kamala Harris","spend":114011023,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-10","Daily_Diff":9633,"Daily Spend":49425,"x":1686355200000,"y":49425,"fill":"#293ad6"},{"date_produced":"2023-06-11","Candidate":"Kamala Harris","spend":114024112,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-11","Daily_Diff":13089,"Daily Spend":62514,"x":1686441600000,"y":62514,"fill":"#293ad6"},{"date_produced":"2023-06-12","Candidate":"Kamala Harris","spend":114038410,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-12","Daily_Diff":14298,"Daily Spend":76812,"x":1686528000000,"y":76812,"fill":"#293ad6"},{"date_produced":"2023-06-13","Candidate":"Kamala Harris","spend":114053465,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-13","Daily_Diff":15055,"Daily Spend":91867,"x":1686614400000,"y":91867,"fill":"#293ad6"},{"date_produced":"2023-06-14","Candidate":"Kamala Harris","spend":114068981,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-14","Daily_Diff":15516,"Daily Spend":107383,"x":1686700800000,"y":107383,"fill":"#293ad6"},{"date_produced":"2023-06-15","Candidate":"Kamala Harris","spend":114084091,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-15","Daily_Diff":15110,"Daily Spend":122493,"x":1686787200000,"y":122493,"fill":"#293ad6"},{"date_produced":"2023-06-16","Candidate":"Kamala Harris","spend":114099127,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-16","Daily_Diff":15036,"Daily Spend":137529,"x":1686873600000,"y":137529,"fill":"#293ad6"},{"date_produced":"2023-06-17","Candidate":"Kamala Harris","spend":114113417,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-17","Daily_Diff":14290,"Daily Spend":151819,"x":1686960000000,"y":151819,"fill":"#293ad6"},{"date_produced":"2023-06-18","Candidate":"Kamala Harris","spend":114130755,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-18","Daily_Diff":17338,"Daily Spend":169157,"x":1687046400000,"y":169157,"fill":"#293ad6"},{"date_produced":"2023-06-19","Candidate":"Kamala Harris","spend":114147213,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-19","Daily_Diff":16458,"Daily Spend":185615,"x":1687132800000,"y":185615,"fill":"#293ad6"},{"date_produced":"2023-06-20","Candidate":"Kamala Harris","spend":114163867,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-20","Daily_Diff":16654,"Daily Spend":202269,"x":1687219200000,"y":202269,"fill":"#293ad6"},{"date_produced":"2023-06-21","Candidate":"Kamala Harris","spend":114180047,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-21","Daily_Diff":16180,"Daily Spend":218449,"x":1687305600000,"y":218449,"fill":"#293ad6"},{"date_produced":"2023-06-22","Candidate":"Kamala Harris","spend":114197508,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-22","Daily_Diff":17461,"Daily Spend":235910,"x":1687392000000,"y":235910,"fill":"#293ad6"},{"date_produced":"2023-06-23","Candidate":"Kamala Harris","spend":114215644,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-23","Daily_Diff":18136,"Daily Spend":254046,"x":1687478400000,"y":254046,"fill":"#293ad6"},{"date_produced":"2023-06-24","Candidate":"Kamala Harris","spend":114243678,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-24","Daily_Diff":28034,"Daily Spend":282080,"x":1687564800000,"y":282080,"fill":"#293ad6"},{"date_produced":"2023-06-25","Candidate":"Kamala Harris","spend":114271735,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-25","Daily_Diff":28057,"Daily Spend":310137,"x":1687651200000,"y":310137,"fill":"#293ad6"},{"date_produced":"2023-06-26","Candidate":"Kamala Harris","spend":114297010,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-26","Daily_Diff":25275,"Daily Spend":335412,"x":1687737600000,"y":335412,"fill":"#293ad6"},{"date_produced":"2023-06-27","Candidate":"Kamala Harris","spend":114319995,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-27","Daily_Diff":22985,"Daily Spend":358397,"x":1687824000000,"y":358397,"fill":"#293ad6"},{"date_produced":"2023-06-28","Candidate":"Kamala Harris","spend":114346166,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-28","Daily_Diff":26171,"Daily Spend":384568,"x":1687910400000,"y":384568,"fill":"#293ad6"},{"date_produced":"2023-06-29","Candidate":"Kamala Harris","spend":114385967,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-29","Daily_Diff":39801,"Daily Spend":424369,"x":1687996800000,"y":424369,"fill":"#293ad6"},{"date_produced":"2023-06-30","Candidate":"Kamala Harris","spend":114448868,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-30","Daily_Diff":62901,"Daily Spend":487270,"x":1688083200000,"y":487270,"fill":"#293ad6"},{"date_produced":"2023-07-01","Candidate":"Kamala Harris","spend":114454077,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-01","Daily_Diff":5209,"Daily Spend":492479,"x":1688169600000,"y":492479,"fill":"#293ad6"},{"date_produced":"2023-07-02","Candidate":"Kamala Harris","spend":114460389,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-02","Daily_Diff":6312,"Daily Spend":498791,"x":1688256000000,"y":498791,"fill":"#293ad6"},{"date_produced":"2023-07-03","Candidate":"Kamala Harris","spend":114471509,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-03","Daily_Diff":11120,"Daily Spend":509911,"x":1688342400000,"y":509911,"fill":"#293ad6"},{"date_produced":"2023-07-04","Candidate":"Kamala Harris","spend":114487022,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-04","Daily_Diff":15513,"Daily Spend":525424,"x":1688428800000,"y":525424,"fill":"#293ad6"},{"date_produced":"2023-07-05","Candidate":"Kamala Harris","spend":114507254,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-05","Daily_Diff":20232,"Daily Spend":545656,"x":1688515200000,"y":545656,"fill":"#293ad6"},{"date_produced":"2023-07-06","Candidate":"Kamala Harris","spend":114528414,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-06","Daily_Diff":21160,"Daily Spend":566816,"x":1688601600000,"y":566816,"fill":"#293ad6"},{"date_produced":"2023-07-07","Candidate":"Kamala Harris","spend":114552329,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-07","Daily_Diff":23915,"Daily Spend":590731,"x":1688688000000,"y":590731,"fill":"#293ad6"},{"date_produced":"2023-07-08","Candidate":"Kamala Harris","spend":114576997,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-08","Daily_Diff":24668,"Daily Spend":615399,"x":1688774400000,"y":615399,"fill":"#293ad6"},{"date_produced":"2023-07-09","Candidate":"Kamala Harris","spend":114605529,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-09","Daily_Diff":28532,"Daily Spend":643931,"x":1688860800000,"y":643931,"fill":"#293ad6"},{"date_produced":"2023-07-10","Candidate":"Kamala Harris","spend":114640825,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-10","Daily_Diff":35296,"Daily Spend":679227,"x":1688947200000,"y":679227,"fill":"#293ad6"},{"date_produced":"2023-07-11","Candidate":"Kamala Harris","spend":114675622,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-11","Daily_Diff":34797,"Daily Spend":714024,"x":1689033600000,"y":714024,"fill":"#293ad6"},{"date_produced":"2023-07-12","Candidate":"Kamala Harris","spend":114710971,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-12","Daily_Diff":35349,"Daily Spend":749373,"x":1689120000000,"y":749373,"fill":"#293ad6"},{"date_produced":"2023-07-13","Candidate":"Kamala Harris","spend":114746855,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-13","Daily_Diff":35884,"Daily Spend":785257,"x":1689206400000,"y":785257,"fill":"#293ad6"},{"date_produced":"2023-07-14","Candidate":"Kamala Harris","spend":114782190,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-14","Daily_Diff":35335,"Daily Spend":820592,"x":1689292800000,"y":820592,"fill":"#293ad6"},{"date_produced":"2023-07-15","Candidate":"Kamala Harris","spend":114816752,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-15","Daily_Diff":34562,"Daily Spend":855154,"x":1689379200000,"y":855154,"fill":"#293ad6"},{"date_produced":"2023-07-16","Candidate":"Kamala Harris","spend":114854426,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-16","Daily_Diff":37674,"Daily Spend":892828,"x":1689465600000,"y":892828,"fill":"#293ad6"},{"date_produced":"2023-07-17","Candidate":"Kamala Harris","spend":114887427,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-17","Daily_Diff":33001,"Daily Spend":925829,"x":1689552000000,"y":925829,"fill":"#293ad6"},{"date_produced":"2023-07-18","Candidate":"Kamala Harris","spend":114917318,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-18","Daily_Diff":29891,"Daily Spend":955720,"x":1689638400000,"y":955720,"fill":"#293ad6"},{"date_produced":"2023-07-19","Candidate":"Kamala Harris","spend":114950816,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-19","Daily_Diff":33498,"Daily Spend":989218,"x":1689724800000,"y":989218,"fill":"#293ad6"},{"date_produced":"2023-07-20","Candidate":"Kamala Harris","spend":114985012,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-20","Daily_Diff":34196,"Daily Spend":1023414,"x":1689811200000,"y":1023414,"fill":"#293ad6"},{"date_produced":"2023-07-21","Candidate":"Kamala Harris","spend":115019227,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-21","Daily_Diff":34215,"Daily Spend":1057629,"x":1689897600000,"y":1057629,"fill":"#293ad6"},{"date_produced":"2023-07-22","Candidate":"Kamala Harris","spend":115052435,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-22","Daily_Diff":33208,"Daily Spend":1090837,"x":1689984000000,"y":1090837,"fill":"#293ad6"},{"date_produced":"2023-07-23","Candidate":"Kamala Harris","spend":115092365,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-23","Daily_Diff":39930,"Daily Spend":1130767,"x":1690070400000,"y":1130767,"fill":"#293ad6"},{"date_produced":"2023-07-24","Candidate":"Kamala Harris","spend":115137493,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-24","Daily_Diff":45128,"Daily Spend":1175895,"x":1690156800000,"y":1175895,"fill":"#293ad6"},{"date_produced":"2023-07-25","Candidate":"Kamala Harris","spend":115188709,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-25","Daily_Diff":51216,"Daily Spend":1227111,"x":1690243200000,"y":1227111,"fill":"#293ad6"},{"date_produced":"2023-07-26","Candidate":"Kamala Harris","spend":115242697,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-26","Daily_Diff":53988,"Daily Spend":1281099,"x":1690329600000,"y":1281099,"fill":"#293ad6"},{"date_produced":"2023-07-27","Candidate":"Kamala Harris","spend":115304613,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-27","Daily_Diff":61916,"Daily Spend":1343015,"x":1690416000000,"y":1343015,"fill":"#293ad6"},{"date_produced":"2023-07-28","Candidate":"Kamala Harris","spend":115362230,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-28","Daily_Diff":57617,"Daily Spend":1400632,"x":1690502400000,"y":1400632,"fill":"#293ad6"},{"date_produced":"2023-07-29","Candidate":"Kamala Harris","spend":115402533,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-29","Daily_Diff":40303,"Daily Spend":1440935,"x":1690588800000,"y":1440935,"fill":"#293ad6"},{"date_produced":"2023-07-30","Candidate":"Kamala Harris","spend":115437403,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-30","Daily_Diff":34870,"Daily Spend":1475805,"x":1690675200000,"y":1475805,"fill":"#293ad6"},{"date_produced":"2023-07-31","Candidate":"Kamala Harris","spend":115468710,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-31","Daily_Diff":31307,"Daily Spend":1507112,"x":1690761600000,"y":1507112,"fill":"#293ad6"},{"date_produced":"2023-08-01","Candidate":"Kamala Harris","spend":115499181,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-01","Daily_Diff":30471,"Daily Spend":1537583,"x":1690848000000,"y":1537583,"fill":"#293ad6"},{"date_produced":"2023-08-02","Candidate":"Kamala Harris","spend":115528372,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-02","Daily_Diff":29191,"Daily Spend":1566774,"x":1690934400000,"y":1566774,"fill":"#293ad6"},{"date_produced":"2023-08-03","Candidate":"Kamala Harris","spend":115557759,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-03","Daily_Diff":29387,"Daily Spend":1596161,"x":1691020800000,"y":1596161,"fill":"#293ad6"},{"date_produced":"2023-08-04","Candidate":"Kamala Harris","spend":115605035,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-04","Daily_Diff":47276,"Daily Spend":1643437,"x":1691107200000,"y":1643437,"fill":"#293ad6"},{"date_produced":"2023-08-05","Candidate":"Kamala Harris","spend":115670968,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-05","Daily_Diff":65933,"Daily Spend":1709370,"x":1691193600000,"y":1709370,"fill":"#293ad6"},{"date_produced":"2023-08-06","Candidate":"Kamala Harris","spend":115759010,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-06","Daily_Diff":88042,"Daily Spend":1797412,"x":1691280000000,"y":1797412,"fill":"#293ad6"},{"date_produced":"2023-08-07","Candidate":"Kamala Harris","spend":115841071,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-07","Daily_Diff":82061,"Daily Spend":1879473,"x":1691366400000,"y":1879473,"fill":"#293ad6"},{"date_produced":"2023-08-08","Candidate":"Kamala Harris","spend":115906353,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-08","Daily_Diff":65282,"Daily Spend":1944755,"x":1691452800000,"y":1944755,"fill":"#293ad6"},{"date_produced":"2023-08-09","Candidate":"Kamala Harris","spend":115964111,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-09","Daily_Diff":57758,"Daily Spend":2002513,"x":1691539200000,"y":2002513,"fill":"#293ad6"},{"date_produced":"2023-08-10","Candidate":"Kamala Harris","spend":116015125,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-10","Daily_Diff":51014,"Daily Spend":2053527,"x":1691625600000,"y":2053527,"fill":"#293ad6"},{"date_produced":"2023-08-11","Candidate":"Kamala Harris","spend":116057073,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-11","Daily_Diff":41948,"Daily Spend":2095475,"x":1691712000000,"y":2095475,"fill":"#293ad6"},{"date_produced":"2023-08-12","Candidate":"Kamala Harris","spend":116086384,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-12","Daily_Diff":29311,"Daily Spend":2124786,"x":1691798400000,"y":2124786,"fill":"#293ad6"},{"date_produced":"2023-08-13","Candidate":"Kamala Harris","spend":116119664,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-13","Daily_Diff":33280,"Daily Spend":2158066,"x":1691884800000,"y":2158066,"fill":"#293ad6"},{"date_produced":"2023-08-14","Candidate":"Kamala Harris","spend":116149667,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-14","Daily_Diff":30003,"Daily Spend":2188069,"x":1691971200000,"y":2188069,"fill":"#293ad6"},{"date_produced":"2023-08-15","Candidate":"Kamala Harris","spend":116176555,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-15","Daily_Diff":26888,"Daily Spend":2214957,"x":1692057600000,"y":2214957,"fill":"#293ad6"},{"date_produced":"2023-08-16","Candidate":"Kamala Harris","spend":116202876,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-16","Daily_Diff":26321,"Daily Spend":2241278,"x":1692144000000,"y":2241278,"fill":"#293ad6"},{"date_produced":"2023-08-17","Candidate":"Kamala Harris","spend":116226296,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-17","Daily_Diff":23420,"Daily Spend":2264698,"x":1692230400000,"y":2264698,"fill":"#293ad6"},{"date_produced":"2023-08-18","Candidate":"Kamala Harris","spend":116251846,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-18","Daily_Diff":25550,"Daily Spend":2290248,"x":1692316800000,"y":2290248,"fill":"#293ad6"},{"date_produced":"2023-08-19","Candidate":"Kamala Harris","spend":116274734,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-19","Daily_Diff":22888,"Daily Spend":2313136,"x":1692403200000,"y":2313136,"fill":"#293ad6"},{"date_produced":"2023-08-20","Candidate":"Kamala Harris","spend":116301497,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-20","Daily_Diff":26763,"Daily Spend":2339899,"x":1692489600000,"y":2339899,"fill":"#293ad6"},{"date_produced":"2023-08-21","Candidate":"Kamala Harris","spend":116327453,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-21","Daily_Diff":25956,"Daily Spend":2365855,"x":1692576000000,"y":2365855,"fill":"#293ad6"},{"date_produced":"2023-08-22","Candidate":"Kamala Harris","spend":116349966,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-22","Daily_Diff":22513,"Daily Spend":2388368,"x":1692662400000,"y":2388368,"fill":"#293ad6"},{"date_produced":"2023-08-23","Candidate":"Kamala Harris","spend":116385733,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-23","Daily_Diff":35767,"Daily Spend":2424135,"x":1692748800000,"y":2424135,"fill":"#293ad6"},{"date_produced":"2023-08-24","Candidate":"Kamala Harris","spend":116422726,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-24","Daily_Diff":36993,"Daily Spend":2461128,"x":1692835200000,"y":2461128,"fill":"#293ad6"},{"date_produced":"2023-08-25","Candidate":"Kamala Harris","spend":116460497,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-25","Daily_Diff":37771,"Daily Spend":2498899,"x":1692921600000,"y":2498899,"fill":"#293ad6"},{"date_produced":"2023-08-26","Candidate":"Kamala Harris","spend":116497888,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-26","Daily_Diff":37391,"Daily Spend":2536290,"x":1693008000000,"y":2536290,"fill":"#293ad6"},{"date_produced":"2023-08-27","Candidate":"Kamala Harris","spend":116539448,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-27","Daily_Diff":41560,"Daily Spend":2577850,"x":1693094400000,"y":2577850,"fill":"#293ad6"},{"date_produced":"2023-08-28","Candidate":"Kamala Harris","spend":116579722,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-28","Daily_Diff":40274,"Daily Spend":2618124,"x":1693180800000,"y":2618124,"fill":"#293ad6"},{"date_produced":"2023-08-29","Candidate":"Kamala Harris","spend":116618873,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-29","Daily_Diff":39151,"Daily Spend":2657275,"x":1693267200000,"y":2657275,"fill":"#293ad6"},{"date_produced":"2023-08-30","Candidate":"Kamala Harris","spend":116656352,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-30","Daily_Diff":37479,"Daily Spend":2694754,"x":1693353600000,"y":2694754,"fill":"#293ad6"},{"date_produced":"2023-08-31","Candidate":"Kamala Harris","spend":116690147,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-31","Daily_Diff":33795,"Daily Spend":2728549,"x":1693440000000,"y":2728549,"fill":"#293ad6"},{"date_produced":"2023-09-01","Candidate":"Kamala Harris","spend":116721053,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-01","Daily_Diff":30906,"Daily Spend":2759455,"x":1693526400000,"y":2759455,"fill":"#293ad6"},{"date_produced":"2023-09-02","Candidate":"Kamala Harris","spend":116751145,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-02","Daily_Diff":30092,"Daily Spend":2789547,"x":1693612800000,"y":2789547,"fill":"#293ad6"},{"date_produced":"2023-09-03","Candidate":"Kamala Harris","spend":116783898,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-03","Daily_Diff":32753,"Daily Spend":2822300,"x":1693699200000,"y":2822300,"fill":"#293ad6"},{"date_produced":"2023-09-04","Candidate":"Kamala Harris","spend":116814758,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-04","Daily_Diff":30860,"Daily Spend":2853160,"x":1693785600000,"y":2853160,"fill":"#293ad6"},{"date_produced":"2023-09-05","Candidate":"Kamala Harris","spend":116845115,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-05","Daily_Diff":30357,"Daily Spend":2883517,"x":1693872000000,"y":2883517,"fill":"#293ad6"},{"date_produced":"2023-09-06","Candidate":"Kamala Harris","spend":116876530,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-06","Daily_Diff":31415,"Daily Spend":2914932,"x":1693958400000,"y":2914932,"fill":"#293ad6"},{"date_produced":"2023-09-07","Candidate":"Kamala Harris","spend":116906231,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-07","Daily_Diff":29701,"Daily Spend":2944633,"x":1694044800000,"y":2944633,"fill":"#293ad6"},{"date_produced":"2023-09-08","Candidate":"Kamala Harris","spend":116933447,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-08","Daily_Diff":27216,"Daily Spend":2971849,"x":1694131200000,"y":2971849,"fill":"#293ad6"},{"date_produced":"2023-09-09","Candidate":"Kamala Harris","spend":116959462,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-09","Daily_Diff":26015,"Daily Spend":2997864,"x":1694217600000,"y":2997864,"fill":"#293ad6"},{"date_produced":"2023-09-10","Candidate":"Kamala Harris","spend":116988275,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-10","Daily_Diff":28813,"Daily Spend":3026677,"x":1694304000000,"y":3026677,"fill":"#293ad6"},{"date_produced":"2023-09-11","Candidate":"Kamala Harris","spend":117002163,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-11","Daily_Diff":13888,"Daily Spend":3040565,"x":1694390400000,"y":3040565,"fill":"#293ad6"},{"date_produced":"2023-09-12","Candidate":"Kamala Harris","spend":117027089,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-12","Daily_Diff":24926,"Daily Spend":3065491,"x":1694476800000,"y":3065491,"fill":"#293ad6"},{"date_produced":"2023-09-13","Candidate":"Kamala Harris","spend":117054066,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-13","Daily_Diff":26977,"Daily Spend":3092468,"x":1694563200000,"y":3092468,"fill":"#293ad6"},{"date_produced":"2023-09-14","Candidate":"Kamala Harris","spend":117084675,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-14","Daily_Diff":30609,"Daily Spend":3123077,"x":1694649600000,"y":3123077,"fill":"#293ad6"},{"date_produced":"2023-09-15","Candidate":"Kamala Harris","spend":117116741,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-15","Daily_Diff":32066,"Daily Spend":3155143,"x":1694736000000,"y":3155143,"fill":"#293ad6"},{"date_produced":"2023-09-16","Candidate":"Kamala Harris","spend":117145457,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-16","Daily_Diff":28716,"Daily Spend":3183859,"x":1694822400000,"y":3183859,"fill":"#293ad6"},{"date_produced":"2023-09-17","Candidate":"Kamala Harris","spend":117175145,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-17","Daily_Diff":29688,"Daily Spend":3213547,"x":1694908800000,"y":3213547,"fill":"#293ad6"},{"date_produced":"2023-09-18","Candidate":"Kamala Harris","spend":117202630,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-18","Daily_Diff":27485,"Daily Spend":3241032,"x":1694995200000,"y":3241032,"fill":"#293ad6"},{"date_produced":"2023-09-19","Candidate":"Kamala Harris","spend":117229969,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-19","Daily_Diff":27339,"Daily Spend":3268371,"x":1695081600000,"y":3268371,"fill":"#293ad6"},{"date_produced":"2023-09-20","Candidate":"Kamala Harris","spend":117256434,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-20","Daily_Diff":26465,"Daily Spend":3294836,"x":1695168000000,"y":3294836,"fill":"#293ad6"},{"date_produced":"2023-09-21","Candidate":"Kamala Harris","spend":117289666,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-21","Daily_Diff":33232,"Daily Spend":3328068,"x":1695254400000,"y":3328068,"fill":"#293ad6"},{"date_produced":"2023-09-22","Candidate":"Kamala Harris","spend":117327500,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-22","Daily_Diff":37834,"Daily Spend":3365902,"x":1695340800000,"y":3365902,"fill":"#293ad6"},{"date_produced":"2023-09-23","Candidate":"Kamala Harris","spend":117367773,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-23","Daily_Diff":40273,"Daily Spend":3406175,"x":1695427200000,"y":3406175,"fill":"#293ad6"},{"date_produced":"2023-09-24","Candidate":"Kamala Harris","spend":117412722,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-24","Daily_Diff":44949,"Daily Spend":3451124,"x":1695513600000,"y":3451124,"fill":"#293ad6"},{"date_produced":"2023-09-25","Candidate":"Kamala Harris","spend":117450295,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-25","Daily_Diff":37573,"Daily Spend":3488697,"x":1695600000000,"y":3488697,"fill":"#293ad6"},{"date_produced":"2023-09-26","Candidate":"Kamala Harris","spend":117482422,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-26","Daily_Diff":32127,"Daily Spend":3520824,"x":1695686400000,"y":3520824,"fill":"#293ad6"}],"type":"area"}],"xAxis":{"type":"datetime","title":{"text":"Date"},"categories":null},"colors":["#ee111a","#293ad6"],"tooltip":{"shared":true,"positioner":"function (labelWidth, labelHeight, point) {\n        return { x: 200, y: this.chart.plotTop };\n    }"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":["hc_opts.tooltip.positioner"],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
-<div class="cell-output-display">
-<div class="highchart html-widget html-fill-item" id="htmlwidget-01497a840ce0de51b7f9" style="width:100%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-01497a840ce0de51b7f9">{"x":{"hc_opts":{"chart":{"reflow":true},"title":{"text":null},"yAxis":{"title":{"text":"Daily Spend"},"type":"linear"},"credits":{"enabled":false},"exporting":{"enabled":false},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"showInLegend":true},"treemap":{"layoutAlgorithm":"squarified"},"scatter":{"marker":{"symbol":"circle"}},"area":{"stacking":"normal","lineWidth":1,"marker":{"enabled":false}}},"series":[{"name":"Donald Trump","data":[{"date_produced":"2023-06-02","Candidate":"Donald Trump","spend":113708601,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-02","Daily Spend":1478,"x":1685664000000,"y":1478,"fill":"#ee111a"},{"date_produced":"2023-06-03","Candidate":"Donald Trump","spend":113709991,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-03","Daily Spend":1390,"x":1685750400000,"y":1390,"fill":"#ee111a"},{"date_produced":"2023-06-04","Candidate":"Donald Trump","spend":113711510,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-04","Daily Spend":1519,"x":1685836800000,"y":1519,"fill":"#ee111a"},{"date_produced":"2023-06-05","Candidate":"Donald Trump","spend":113712999,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-05","Daily Spend":1489,"x":1685923200000,"y":1489,"fill":"#ee111a"},{"date_produced":"2023-06-06","Candidate":"Donald Trump","spend":113714244,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-06","Daily Spend":1245,"x":1686009600000,"y":1245,"fill":"#ee111a"},{"date_produced":"2023-06-07","Candidate":"Donald Trump","spend":113715594,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-07","Daily Spend":1350,"x":1686096000000,"y":1350,"fill":"#ee111a"},{"date_produced":"2023-06-08","Candidate":"Donald Trump","spend":113717025,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-08","Daily Spend":1431,"x":1686182400000,"y":1431,"fill":"#ee111a"},{"date_produced":"2023-06-09","Candidate":"Donald Trump","spend":113722693,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-09","Daily Spend":5668,"x":1686268800000,"y":5668,"fill":"#ee111a"},{"date_produced":"2023-06-10","Candidate":"Donald Trump","spend":113732036,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-10","Daily Spend":9343,"x":1686355200000,"y":9343,"fill":"#ee111a"},{"date_produced":"2023-06-11","Candidate":"Donald Trump","spend":113740703,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-11","Daily Spend":8667,"x":1686441600000,"y":8667,"fill":"#ee111a"},{"date_produced":"2023-06-12","Candidate":"Donald Trump","spend":113745559,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-12","Daily Spend":4856,"x":1686528000000,"y":4856,"fill":"#ee111a"},{"date_produced":"2023-06-13","Candidate":"Donald Trump","spend":113756184,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-13","Daily Spend":10625,"x":1686614400000,"y":10625,"fill":"#ee111a"},{"date_produced":"2023-06-14","Candidate":"Donald Trump","spend":113769354,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-14","Daily Spend":13170,"x":1686700800000,"y":13170,"fill":"#ee111a"},{"date_produced":"2023-06-15","Candidate":"Donald Trump","spend":113779277,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-15","Daily Spend":9923,"x":1686787200000,"y":9923,"fill":"#ee111a"},{"date_produced":"2023-06-16","Candidate":"Donald Trump","spend":113787581,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-16","Daily Spend":8304,"x":1686873600000,"y":8304,"fill":"#ee111a"},{"date_produced":"2023-06-17","Candidate":"Donald Trump","spend":113794786,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-17","Daily Spend":7205,"x":1686960000000,"y":7205,"fill":"#ee111a"},{"date_produced":"2023-06-18","Candidate":"Donald Trump","spend":113802018,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-18","Daily Spend":7232,"x":1687046400000,"y":7232,"fill":"#ee111a"},{"date_produced":"2023-06-19","Candidate":"Donald Trump","spend":113805681,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-19","Daily Spend":3663,"x":1687132800000,"y":3663,"fill":"#ee111a"},{"date_produced":"2023-06-20","Candidate":"Donald Trump","spend":113806798,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-20","Daily Spend":1117,"x":1687219200000,"y":1117,"fill":"#ee111a"},{"date_produced":"2023-06-21","Candidate":"Donald Trump","spend":113807581,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-21","Daily Spend":783,"x":1687305600000,"y":783,"fill":"#ee111a"},{"date_produced":"2023-06-22","Candidate":"Donald Trump","spend":113809160,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-22","Daily Spend":1579,"x":1687392000000,"y":1579,"fill":"#ee111a"},{"date_produced":"2023-06-23","Candidate":"Donald Trump","spend":113810933,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-23","Daily Spend":1773,"x":1687478400000,"y":1773,"fill":"#ee111a"},{"date_produced":"2023-06-24","Candidate":"Donald Trump","spend":113812503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-24","Daily Spend":1570,"x":1687564800000,"y":1570,"fill":"#ee111a"},{"date_produced":"2023-06-25","Candidate":"Donald Trump","spend":113814077,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-25","Daily Spend":1574,"x":1687651200000,"y":1574,"fill":"#ee111a"},{"date_produced":"2023-06-26","Candidate":"Donald Trump","spend":113817977,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-26","Daily Spend":3900,"x":1687737600000,"y":3900,"fill":"#ee111a"},{"date_produced":"2023-06-27","Candidate":"Donald Trump","spend":113822764,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-27","Daily Spend":4787,"x":1687824000000,"y":4787,"fill":"#ee111a"},{"date_produced":"2023-06-28","Candidate":"Donald Trump","spend":113827450,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-28","Daily Spend":4686,"x":1687910400000,"y":4686,"fill":"#ee111a"},{"date_produced":"2023-06-29","Candidate":"Donald Trump","spend":113830508,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-29","Daily Spend":3058,"x":1687996800000,"y":3058,"fill":"#ee111a"},{"date_produced":"2023-06-30","Candidate":"Donald Trump","spend":113832885,"total_spend":114288760,"colors":"#ee111a","Date":"2023-06-30","Daily Spend":2377,"x":1688083200000,"y":2377,"fill":"#ee111a"},{"date_produced":"2023-07-01","Candidate":"Donald Trump","spend":113835553,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-01","Daily Spend":2668,"x":1688169600000,"y":2668,"fill":"#ee111a"},{"date_produced":"2023-07-02","Candidate":"Donald Trump","spend":113838503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-02","Daily Spend":2950,"x":1688256000000,"y":2950,"fill":"#ee111a"},{"date_produced":"2023-07-03","Candidate":"Donald Trump","spend":113842450,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-03","Daily Spend":3947,"x":1688342400000,"y":3947,"fill":"#ee111a"},{"date_produced":"2023-07-04","Candidate":"Donald Trump","spend":113847206,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-04","Daily Spend":4756,"x":1688428800000,"y":4756,"fill":"#ee111a"},{"date_produced":"2023-07-05","Candidate":"Donald Trump","spend":113853279,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-05","Daily Spend":6073,"x":1688515200000,"y":6073,"fill":"#ee111a"},{"date_produced":"2023-07-06","Candidate":"Donald Trump","spend":113855696,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-06","Daily Spend":2417,"x":1688601600000,"y":2417,"fill":"#ee111a"},{"date_produced":"2023-07-07","Candidate":"Donald Trump","spend":113858119,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-07","Daily Spend":2423,"x":1688688000000,"y":2423,"fill":"#ee111a"},{"date_produced":"2023-07-08","Candidate":"Donald Trump","spend":113860552,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-08","Daily Spend":2433,"x":1688774400000,"y":2433,"fill":"#ee111a"},{"date_produced":"2023-07-09","Candidate":"Donald Trump","spend":113863164,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-09","Daily Spend":2612,"x":1688860800000,"y":2612,"fill":"#ee111a"},{"date_produced":"2023-07-10","Candidate":"Donald Trump","spend":113865743,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-10","Daily Spend":2579,"x":1688947200000,"y":2579,"fill":"#ee111a"},{"date_produced":"2023-07-11","Candidate":"Donald Trump","spend":113868219,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-11","Daily Spend":2476,"x":1689033600000,"y":2476,"fill":"#ee111a"},{"date_produced":"2023-07-12","Candidate":"Donald Trump","spend":113870468,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-12","Daily Spend":2249,"x":1689120000000,"y":2249,"fill":"#ee111a"},{"date_produced":"2023-07-13","Candidate":"Donald Trump","spend":113872429,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-13","Daily Spend":1961,"x":1689206400000,"y":1961,"fill":"#ee111a"},{"date_produced":"2023-07-14","Candidate":"Donald Trump","spend":113874371,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-14","Daily Spend":1942,"x":1689292800000,"y":1942,"fill":"#ee111a"},{"date_produced":"2023-07-15","Candidate":"Donald Trump","spend":113876313,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-15","Daily Spend":1942,"x":1689379200000,"y":1942,"fill":"#ee111a"},{"date_produced":"2023-07-16","Candidate":"Donald Trump","spend":113878439,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-16","Daily Spend":2126,"x":1689465600000,"y":2126,"fill":"#ee111a"},{"date_produced":"2023-07-17","Candidate":"Donald Trump","spend":113880488,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-17","Daily Spend":2049,"x":1689552000000,"y":2049,"fill":"#ee111a"},{"date_produced":"2023-07-18","Candidate":"Donald Trump","spend":113882509,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-18","Daily Spend":2021,"x":1689638400000,"y":2021,"fill":"#ee111a"},{"date_produced":"2023-07-19","Candidate":"Donald Trump","spend":113884503,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-19","Daily Spend":1994,"x":1689724800000,"y":1994,"fill":"#ee111a"},{"date_produced":"2023-07-20","Candidate":"Donald Trump","spend":113886470,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-20","Daily Spend":1967,"x":1689811200000,"y":1967,"fill":"#ee111a"},{"date_produced":"2023-07-21","Candidate":"Donald Trump","spend":113890426,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-21","Daily Spend":3956,"x":1689897600000,"y":3956,"fill":"#ee111a"},{"date_produced":"2023-07-22","Candidate":"Donald Trump","spend":113896099,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-22","Daily Spend":5673,"x":1689984000000,"y":5673,"fill":"#ee111a"},{"date_produced":"2023-07-23","Candidate":"Donald Trump","spend":113901132,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-23","Daily Spend":5033,"x":1690070400000,"y":5033,"fill":"#ee111a"},{"date_produced":"2023-07-24","Candidate":"Donald Trump","spend":113904266,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-24","Daily Spend":3134,"x":1690156800000,"y":3134,"fill":"#ee111a"},{"date_produced":"2023-07-25","Candidate":"Donald Trump","spend":113909800,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-25","Daily Spend":5534,"x":1690243200000,"y":5534,"fill":"#ee111a"},{"date_produced":"2023-07-26","Candidate":"Donald Trump","spend":113918306,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-26","Daily Spend":8506,"x":1690329600000,"y":8506,"fill":"#ee111a"},{"date_produced":"2023-07-27","Candidate":"Donald Trump","spend":113926883,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-27","Daily Spend":8577,"x":1690416000000,"y":8577,"fill":"#ee111a"},{"date_produced":"2023-07-28","Candidate":"Donald Trump","spend":113928567,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-28","Daily Spend":1684,"x":1690502400000,"y":1684,"fill":"#ee111a"},{"date_produced":"2023-07-29","Candidate":"Donald Trump","spend":113929519,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-29","Daily Spend":952,"x":1690588800000,"y":952,"fill":"#ee111a"},{"date_produced":"2023-07-30","Candidate":"Donald Trump","spend":113930576,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-30","Daily Spend":1057,"x":1690675200000,"y":1057,"fill":"#ee111a"},{"date_produced":"2023-07-31","Candidate":"Donald Trump","spend":113932049,"total_spend":114288760,"colors":"#ee111a","Date":"2023-07-31","Daily Spend":1473,"x":1690761600000,"y":1473,"fill":"#ee111a"},{"date_produced":"2023-08-01","Candidate":"Donald Trump","spend":113935413,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-01","Daily Spend":3364,"x":1690848000000,"y":3364,"fill":"#ee111a"},{"date_produced":"2023-08-02","Candidate":"Donald Trump","spend":113947926,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-02","Daily Spend":12513,"x":1690934400000,"y":12513,"fill":"#ee111a"},{"date_produced":"2023-08-03","Candidate":"Donald Trump","spend":113968149,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-03","Daily Spend":20223,"x":1691020800000,"y":20223,"fill":"#ee111a"},{"date_produced":"2023-08-04","Candidate":"Donald Trump","spend":113985926,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-04","Daily Spend":17777,"x":1691107200000,"y":17777,"fill":"#ee111a"},{"date_produced":"2023-08-05","Candidate":"Donald Trump","spend":113994153,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-05","Daily Spend":8227,"x":1691193600000,"y":8227,"fill":"#ee111a"},{"date_produced":"2023-08-06","Candidate":"Donald Trump","spend":114004111,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-06","Daily Spend":9958,"x":1691280000000,"y":9958,"fill":"#ee111a"},{"date_produced":"2023-08-07","Candidate":"Donald Trump","spend":114011148,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-07","Daily Spend":7037,"x":1691366400000,"y":7037,"fill":"#ee111a"},{"date_produced":"2023-08-08","Candidate":"Donald Trump","spend":114015542,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-08","Daily Spend":4394,"x":1691452800000,"y":4394,"fill":"#ee111a"},{"date_produced":"2023-08-09","Candidate":"Donald Trump","spend":114019033,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-09","Daily Spend":3491,"x":1691539200000,"y":3491,"fill":"#ee111a"},{"date_produced":"2023-08-10","Candidate":"Donald Trump","spend":114022905,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-10","Daily Spend":3872,"x":1691625600000,"y":3872,"fill":"#ee111a"},{"date_produced":"2023-08-11","Candidate":"Donald Trump","spend":114026726,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-11","Daily Spend":3821,"x":1691712000000,"y":3821,"fill":"#ee111a"},{"date_produced":"2023-08-12","Candidate":"Donald Trump","spend":114030022,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-12","Daily Spend":3296,"x":1691798400000,"y":3296,"fill":"#ee111a"},{"date_produced":"2023-08-13","Candidate":"Donald Trump","spend":114033598,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-13","Daily Spend":3576,"x":1691884800000,"y":3576,"fill":"#ee111a"},{"date_produced":"2023-08-14","Candidate":"Donald Trump","spend":114038419,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-14","Daily Spend":4821,"x":1691971200000,"y":4821,"fill":"#ee111a"},{"date_produced":"2023-08-15","Candidate":"Donald Trump","spend":114071976,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-15","Daily Spend":33557,"x":1692057600000,"y":33557,"fill":"#ee111a"},{"date_produced":"2023-08-16","Candidate":"Donald Trump","spend":114089106,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-16","Daily Spend":17130,"x":1692144000000,"y":17130,"fill":"#ee111a"},{"date_produced":"2023-08-17","Candidate":"Donald Trump","spend":114100351,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-17","Daily Spend":11245,"x":1692230400000,"y":11245,"fill":"#ee111a"},{"date_produced":"2023-08-18","Candidate":"Donald Trump","spend":114108744,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-18","Daily Spend":8393,"x":1692316800000,"y":8393,"fill":"#ee111a"},{"date_produced":"2023-08-19","Candidate":"Donald Trump","spend":114114255,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-19","Daily Spend":5511,"x":1692403200000,"y":5511,"fill":"#ee111a"},{"date_produced":"2023-08-20","Candidate":"Donald Trump","spend":114119628,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-20","Daily Spend":5373,"x":1692489600000,"y":5373,"fill":"#ee111a"},{"date_produced":"2023-08-21","Candidate":"Donald Trump","spend":114123426,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-21","Daily Spend":3798,"x":1692576000000,"y":3798,"fill":"#ee111a"},{"date_produced":"2023-08-22","Candidate":"Donald Trump","spend":114126445,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-22","Daily Spend":3019,"x":1692662400000,"y":3019,"fill":"#ee111a"},{"date_produced":"2023-08-23","Candidate":"Donald Trump","spend":114129422,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-23","Daily Spend":2977,"x":1692748800000,"y":2977,"fill":"#ee111a"},{"date_produced":"2023-08-24","Candidate":"Donald Trump","spend":114137628,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-24","Daily Spend":8206,"x":1692835200000,"y":8206,"fill":"#ee111a"},{"date_produced":"2023-08-25","Candidate":"Donald Trump","spend":114169696,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-25","Daily Spend":32068,"x":1692921600000,"y":32068,"fill":"#ee111a"},{"date_produced":"2023-08-26","Candidate":"Donald Trump","spend":114188379,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-26","Daily Spend":18683,"x":1693008000000,"y":18683,"fill":"#ee111a"},{"date_produced":"2023-08-27","Candidate":"Donald Trump","spend":114200024,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-27","Daily Spend":11645,"x":1693094400000,"y":11645,"fill":"#ee111a"},{"date_produced":"2023-08-28","Candidate":"Donald Trump","spend":114205914,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-28","Daily Spend":5890,"x":1693180800000,"y":5890,"fill":"#ee111a"},{"date_produced":"2023-08-29","Candidate":"Donald Trump","spend":114212424,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-29","Daily Spend":6510,"x":1693267200000,"y":6510,"fill":"#ee111a"},{"date_produced":"2023-08-30","Candidate":"Donald Trump","spend":114220417,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-30","Daily Spend":7993,"x":1693353600000,"y":7993,"fill":"#ee111a"},{"date_produced":"2023-08-31","Candidate":"Donald Trump","spend":114228017,"total_spend":114288760,"colors":"#ee111a","Date":"2023-08-31","Daily Spend":7600,"x":1693440000000,"y":7600,"fill":"#ee111a"},{"date_produced":"2023-09-01","Candidate":"Donald Trump","spend":114234764,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-01","Daily Spend":6747,"x":1693526400000,"y":6747,"fill":"#ee111a"},{"date_produced":"2023-09-02","Candidate":"Donald Trump","spend":114238630,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-02","Daily Spend":3866,"x":1693612800000,"y":3866,"fill":"#ee111a"},{"date_produced":"2023-09-03","Candidate":"Donald Trump","spend":114242726,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-03","Daily Spend":4096,"x":1693699200000,"y":4096,"fill":"#ee111a"},{"date_produced":"2023-09-04","Candidate":"Donald Trump","spend":114246237,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-04","Daily Spend":3511,"x":1693785600000,"y":3511,"fill":"#ee111a"},{"date_produced":"2023-09-05","Candidate":"Donald Trump","spend":114248325,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-05","Daily Spend":2088,"x":1693872000000,"y":2088,"fill":"#ee111a"},{"date_produced":"2023-09-06","Candidate":"Donald Trump","spend":114249834,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-06","Daily Spend":1509,"x":1693958400000,"y":1509,"fill":"#ee111a"},{"date_produced":"2023-09-07","Candidate":"Donald Trump","spend":114251326,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-07","Daily Spend":1492,"x":1694044800000,"y":1492,"fill":"#ee111a"},{"date_produced":"2023-09-08","Candidate":"Donald Trump","spend":114253173,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-08","Daily Spend":1847,"x":1694131200000,"y":1847,"fill":"#ee111a"},{"date_produced":"2023-09-09","Candidate":"Donald Trump","spend":114255559,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-09","Daily Spend":2386,"x":1694217600000,"y":2386,"fill":"#ee111a"},{"date_produced":"2023-09-10","Candidate":"Donald Trump","spend":114258201,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-10","Daily Spend":2642,"x":1694304000000,"y":2642,"fill":"#ee111a"},{"date_produced":"2023-09-11","Candidate":"Donald Trump","spend":114260738,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-11","Daily Spend":2537,"x":1694390400000,"y":2537,"fill":"#ee111a"},{"date_produced":"2023-09-12","Candidate":"Donald Trump","spend":114263240,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-12","Daily Spend":2502,"x":1694476800000,"y":2502,"fill":"#ee111a"},{"date_produced":"2023-09-13","Candidate":"Donald Trump","spend":114265749,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-13","Daily Spend":2509,"x":1694563200000,"y":2509,"fill":"#ee111a"},{"date_produced":"2023-09-14","Candidate":"Donald Trump","spend":114268232,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-14","Daily Spend":2483,"x":1694649600000,"y":2483,"fill":"#ee111a"},{"date_produced":"2023-09-15","Candidate":"Donald Trump","spend":114270378,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-15","Daily Spend":2146,"x":1694736000000,"y":2146,"fill":"#ee111a"},{"date_produced":"2023-09-16","Candidate":"Donald Trump","spend":114273668,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-16","Daily Spend":3290,"x":1694822400000,"y":3290,"fill":"#ee111a"},{"date_produced":"2023-09-17","Candidate":"Donald Trump","spend":114275413,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-17","Daily Spend":1745,"x":1694908800000,"y":1745,"fill":"#ee111a"},{"date_produced":"2023-09-18","Candidate":"Donald Trump","spend":114278487,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-18","Daily Spend":3074,"x":1694995200000,"y":3074,"fill":"#ee111a"},{"date_produced":"2023-09-19","Candidate":"Donald Trump","spend":114280465,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-19","Daily Spend":1978,"x":1695081600000,"y":1978,"fill":"#ee111a"},{"date_produced":"2023-09-20","Candidate":"Donald Trump","spend":114281463,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-20","Daily Spend":998,"x":1695168000000,"y":998,"fill":"#ee111a"},{"date_produced":"2023-09-21","Candidate":"Donald Trump","spend":114282449,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-21","Daily Spend":986,"x":1695254400000,"y":986,"fill":"#ee111a"},{"date_produced":"2023-09-22","Candidate":"Donald Trump","spend":114283398,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-22","Daily Spend":949,"x":1695340800000,"y":949,"fill":"#ee111a"},{"date_produced":"2023-09-23","Candidate":"Donald Trump","spend":114284372,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-23","Daily Spend":974,"x":1695427200000,"y":974,"fill":"#ee111a"},{"date_produced":"2023-09-24","Candidate":"Donald Trump","spend":114285410,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-24","Daily Spend":1038,"x":1695513600000,"y":1038,"fill":"#ee111a"},{"date_produced":"2023-09-25","Candidate":"Donald Trump","spend":114286446,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-25","Daily Spend":1036,"x":1695600000000,"y":1036,"fill":"#ee111a"},{"date_produced":"2023-09-26","Candidate":"Donald Trump","spend":114288760,"total_spend":114288760,"colors":"#ee111a","Date":"2023-09-26","Daily Spend":2314,"x":1695686400000,"y":2314,"fill":"#ee111a"}],"type":"area"},{"name":"Kamala Harris","data":[{"date_produced":"2023-06-02","Candidate":"Kamala Harris","spend":113970500,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-02","Daily Spend":4451,"x":1685664000000,"y":4451,"fill":"#293ad6"},{"date_produced":"2023-06-03","Candidate":"Kamala Harris","spend":113974610,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-03","Daily Spend":4110,"x":1685750400000,"y":4110,"fill":"#293ad6"},{"date_produced":"2023-06-04","Candidate":"Kamala Harris","spend":113978733,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-04","Daily Spend":4123,"x":1685836800000,"y":4123,"fill":"#293ad6"},{"date_produced":"2023-06-05","Candidate":"Kamala Harris","spend":113981987,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-05","Daily Spend":3254,"x":1685923200000,"y":3254,"fill":"#293ad6"},{"date_produced":"2023-06-06","Candidate":"Kamala Harris","spend":113984818,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-06","Daily Spend":2831,"x":1686009600000,"y":2831,"fill":"#293ad6"},{"date_produced":"2023-06-07","Candidate":"Kamala Harris","spend":113987578,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-07","Daily Spend":2760,"x":1686096000000,"y":2760,"fill":"#293ad6"},{"date_produced":"2023-06-08","Candidate":"Kamala Harris","spend":113994113,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-08","Daily Spend":6535,"x":1686182400000,"y":6535,"fill":"#293ad6"},{"date_produced":"2023-06-09","Candidate":"Kamala Harris","spend":114001390,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-09","Daily Spend":7277,"x":1686268800000,"y":7277,"fill":"#293ad6"},{"date_produced":"2023-06-10","Candidate":"Kamala Harris","spend":114011023,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-10","Daily Spend":9633,"x":1686355200000,"y":9633,"fill":"#293ad6"},{"date_produced":"2023-06-11","Candidate":"Kamala Harris","spend":114024112,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-11","Daily Spend":13089,"x":1686441600000,"y":13089,"fill":"#293ad6"},{"date_produced":"2023-06-12","Candidate":"Kamala Harris","spend":114038410,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-12","Daily Spend":14298,"x":1686528000000,"y":14298,"fill":"#293ad6"},{"date_produced":"2023-06-13","Candidate":"Kamala Harris","spend":114053465,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-13","Daily Spend":15055,"x":1686614400000,"y":15055,"fill":"#293ad6"},{"date_produced":"2023-06-14","Candidate":"Kamala Harris","spend":114068981,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-14","Daily Spend":15516,"x":1686700800000,"y":15516,"fill":"#293ad6"},{"date_produced":"2023-06-15","Candidate":"Kamala Harris","spend":114084091,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-15","Daily Spend":15110,"x":1686787200000,"y":15110,"fill":"#293ad6"},{"date_produced":"2023-06-16","Candidate":"Kamala Harris","spend":114099127,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-16","Daily Spend":15036,"x":1686873600000,"y":15036,"fill":"#293ad6"},{"date_produced":"2023-06-17","Candidate":"Kamala Harris","spend":114113417,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-17","Daily Spend":14290,"x":1686960000000,"y":14290,"fill":"#293ad6"},{"date_produced":"2023-06-18","Candidate":"Kamala Harris","spend":114130755,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-18","Daily Spend":17338,"x":1687046400000,"y":17338,"fill":"#293ad6"},{"date_produced":"2023-06-19","Candidate":"Kamala Harris","spend":114147213,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-19","Daily Spend":16458,"x":1687132800000,"y":16458,"fill":"#293ad6"},{"date_produced":"2023-06-20","Candidate":"Kamala Harris","spend":114163867,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-20","Daily Spend":16654,"x":1687219200000,"y":16654,"fill":"#293ad6"},{"date_produced":"2023-06-21","Candidate":"Kamala Harris","spend":114180047,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-21","Daily Spend":16180,"x":1687305600000,"y":16180,"fill":"#293ad6"},{"date_produced":"2023-06-22","Candidate":"Kamala Harris","spend":114197508,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-22","Daily Spend":17461,"x":1687392000000,"y":17461,"fill":"#293ad6"},{"date_produced":"2023-06-23","Candidate":"Kamala Harris","spend":114215644,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-23","Daily Spend":18136,"x":1687478400000,"y":18136,"fill":"#293ad6"},{"date_produced":"2023-06-24","Candidate":"Kamala Harris","spend":114243678,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-24","Daily Spend":28034,"x":1687564800000,"y":28034,"fill":"#293ad6"},{"date_produced":"2023-06-25","Candidate":"Kamala Harris","spend":114271735,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-25","Daily Spend":28057,"x":1687651200000,"y":28057,"fill":"#293ad6"},{"date_produced":"2023-06-26","Candidate":"Kamala Harris","spend":114297010,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-26","Daily Spend":25275,"x":1687737600000,"y":25275,"fill":"#293ad6"},{"date_produced":"2023-06-27","Candidate":"Kamala Harris","spend":114319995,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-27","Daily Spend":22985,"x":1687824000000,"y":22985,"fill":"#293ad6"},{"date_produced":"2023-06-28","Candidate":"Kamala Harris","spend":114346166,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-28","Daily Spend":26171,"x":1687910400000,"y":26171,"fill":"#293ad6"},{"date_produced":"2023-06-29","Candidate":"Kamala Harris","spend":114385967,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-29","Daily Spend":39801,"x":1687996800000,"y":39801,"fill":"#293ad6"},{"date_produced":"2023-06-30","Candidate":"Kamala Harris","spend":114448868,"total_spend":117482422,"colors":"#293ad6","Date":"2023-06-30","Daily Spend":62901,"x":1688083200000,"y":62901,"fill":"#293ad6"},{"date_produced":"2023-07-01","Candidate":"Kamala Harris","spend":114454077,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-01","Daily Spend":5209,"x":1688169600000,"y":5209,"fill":"#293ad6"},{"date_produced":"2023-07-02","Candidate":"Kamala Harris","spend":114460389,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-02","Daily Spend":6312,"x":1688256000000,"y":6312,"fill":"#293ad6"},{"date_produced":"2023-07-03","Candidate":"Kamala Harris","spend":114471509,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-03","Daily Spend":11120,"x":1688342400000,"y":11120,"fill":"#293ad6"},{"date_produced":"2023-07-04","Candidate":"Kamala Harris","spend":114487022,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-04","Daily Spend":15513,"x":1688428800000,"y":15513,"fill":"#293ad6"},{"date_produced":"2023-07-05","Candidate":"Kamala Harris","spend":114507254,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-05","Daily Spend":20232,"x":1688515200000,"y":20232,"fill":"#293ad6"},{"date_produced":"2023-07-06","Candidate":"Kamala Harris","spend":114528414,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-06","Daily Spend":21160,"x":1688601600000,"y":21160,"fill":"#293ad6"},{"date_produced":"2023-07-07","Candidate":"Kamala Harris","spend":114552329,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-07","Daily Spend":23915,"x":1688688000000,"y":23915,"fill":"#293ad6"},{"date_produced":"2023-07-08","Candidate":"Kamala Harris","spend":114576997,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-08","Daily Spend":24668,"x":1688774400000,"y":24668,"fill":"#293ad6"},{"date_produced":"2023-07-09","Candidate":"Kamala Harris","spend":114605529,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-09","Daily Spend":28532,"x":1688860800000,"y":28532,"fill":"#293ad6"},{"date_produced":"2023-07-10","Candidate":"Kamala Harris","spend":114640825,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-10","Daily Spend":35296,"x":1688947200000,"y":35296,"fill":"#293ad6"},{"date_produced":"2023-07-11","Candidate":"Kamala Harris","spend":114675622,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-11","Daily Spend":34797,"x":1689033600000,"y":34797,"fill":"#293ad6"},{"date_produced":"2023-07-12","Candidate":"Kamala Harris","spend":114710971,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-12","Daily Spend":35349,"x":1689120000000,"y":35349,"fill":"#293ad6"},{"date_produced":"2023-07-13","Candidate":"Kamala Harris","spend":114746855,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-13","Daily Spend":35884,"x":1689206400000,"y":35884,"fill":"#293ad6"},{"date_produced":"2023-07-14","Candidate":"Kamala Harris","spend":114782190,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-14","Daily Spend":35335,"x":1689292800000,"y":35335,"fill":"#293ad6"},{"date_produced":"2023-07-15","Candidate":"Kamala Harris","spend":114816752,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-15","Daily Spend":34562,"x":1689379200000,"y":34562,"fill":"#293ad6"},{"date_produced":"2023-07-16","Candidate":"Kamala Harris","spend":114854426,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-16","Daily Spend":37674,"x":1689465600000,"y":37674,"fill":"#293ad6"},{"date_produced":"2023-07-17","Candidate":"Kamala Harris","spend":114887427,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-17","Daily Spend":33001,"x":1689552000000,"y":33001,"fill":"#293ad6"},{"date_produced":"2023-07-18","Candidate":"Kamala Harris","spend":114917318,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-18","Daily Spend":29891,"x":1689638400000,"y":29891,"fill":"#293ad6"},{"date_produced":"2023-07-19","Candidate":"Kamala Harris","spend":114950816,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-19","Daily Spend":33498,"x":1689724800000,"y":33498,"fill":"#293ad6"},{"date_produced":"2023-07-20","Candidate":"Kamala Harris","spend":114985012,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-20","Daily Spend":34196,"x":1689811200000,"y":34196,"fill":"#293ad6"},{"date_produced":"2023-07-21","Candidate":"Kamala Harris","spend":115019227,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-21","Daily Spend":34215,"x":1689897600000,"y":34215,"fill":"#293ad6"},{"date_produced":"2023-07-22","Candidate":"Kamala Harris","spend":115052435,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-22","Daily Spend":33208,"x":1689984000000,"y":33208,"fill":"#293ad6"},{"date_produced":"2023-07-23","Candidate":"Kamala Harris","spend":115092365,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-23","Daily Spend":39930,"x":1690070400000,"y":39930,"fill":"#293ad6"},{"date_produced":"2023-07-24","Candidate":"Kamala Harris","spend":115137493,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-24","Daily Spend":45128,"x":1690156800000,"y":45128,"fill":"#293ad6"},{"date_produced":"2023-07-25","Candidate":"Kamala Harris","spend":115188709,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-25","Daily Spend":51216,"x":1690243200000,"y":51216,"fill":"#293ad6"},{"date_produced":"2023-07-26","Candidate":"Kamala Harris","spend":115242697,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-26","Daily Spend":53988,"x":1690329600000,"y":53988,"fill":"#293ad6"},{"date_produced":"2023-07-27","Candidate":"Kamala Harris","spend":115304613,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-27","Daily Spend":61916,"x":1690416000000,"y":61916,"fill":"#293ad6"},{"date_produced":"2023-07-28","Candidate":"Kamala Harris","spend":115362230,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-28","Daily Spend":57617,"x":1690502400000,"y":57617,"fill":"#293ad6"},{"date_produced":"2023-07-29","Candidate":"Kamala Harris","spend":115402533,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-29","Daily Spend":40303,"x":1690588800000,"y":40303,"fill":"#293ad6"},{"date_produced":"2023-07-30","Candidate":"Kamala Harris","spend":115437403,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-30","Daily Spend":34870,"x":1690675200000,"y":34870,"fill":"#293ad6"},{"date_produced":"2023-07-31","Candidate":"Kamala Harris","spend":115468710,"total_spend":117482422,"colors":"#293ad6","Date":"2023-07-31","Daily Spend":31307,"x":1690761600000,"y":31307,"fill":"#293ad6"},{"date_produced":"2023-08-01","Candidate":"Kamala Harris","spend":115499181,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-01","Daily Spend":30471,"x":1690848000000,"y":30471,"fill":"#293ad6"},{"date_produced":"2023-08-02","Candidate":"Kamala Harris","spend":115528372,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-02","Daily Spend":29191,"x":1690934400000,"y":29191,"fill":"#293ad6"},{"date_produced":"2023-08-03","Candidate":"Kamala Harris","spend":115557759,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-03","Daily Spend":29387,"x":1691020800000,"y":29387,"fill":"#293ad6"},{"date_produced":"2023-08-04","Candidate":"Kamala Harris","spend":115605035,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-04","Daily Spend":47276,"x":1691107200000,"y":47276,"fill":"#293ad6"},{"date_produced":"2023-08-05","Candidate":"Kamala Harris","spend":115670968,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-05","Daily Spend":65933,"x":1691193600000,"y":65933,"fill":"#293ad6"},{"date_produced":"2023-08-06","Candidate":"Kamala Harris","spend":115759010,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-06","Daily Spend":88042,"x":1691280000000,"y":88042,"fill":"#293ad6"},{"date_produced":"2023-08-07","Candidate":"Kamala Harris","spend":115841071,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-07","Daily Spend":82061,"x":1691366400000,"y":82061,"fill":"#293ad6"},{"date_produced":"2023-08-08","Candidate":"Kamala Harris","spend":115906353,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-08","Daily Spend":65282,"x":1691452800000,"y":65282,"fill":"#293ad6"},{"date_produced":"2023-08-09","Candidate":"Kamala Harris","spend":115964111,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-09","Daily Spend":57758,"x":1691539200000,"y":57758,"fill":"#293ad6"},{"date_produced":"2023-08-10","Candidate":"Kamala Harris","spend":116015125,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-10","Daily Spend":51014,"x":1691625600000,"y":51014,"fill":"#293ad6"},{"date_produced":"2023-08-11","Candidate":"Kamala Harris","spend":116057073,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-11","Daily Spend":41948,"x":1691712000000,"y":41948,"fill":"#293ad6"},{"date_produced":"2023-08-12","Candidate":"Kamala Harris","spend":116086384,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-12","Daily Spend":29311,"x":1691798400000,"y":29311,"fill":"#293ad6"},{"date_produced":"2023-08-13","Candidate":"Kamala Harris","spend":116119664,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-13","Daily Spend":33280,"x":1691884800000,"y":33280,"fill":"#293ad6"},{"date_produced":"2023-08-14","Candidate":"Kamala Harris","spend":116149667,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-14","Daily Spend":30003,"x":1691971200000,"y":30003,"fill":"#293ad6"},{"date_produced":"2023-08-15","Candidate":"Kamala Harris","spend":116176555,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-15","Daily Spend":26888,"x":1692057600000,"y":26888,"fill":"#293ad6"},{"date_produced":"2023-08-16","Candidate":"Kamala Harris","spend":116202876,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-16","Daily Spend":26321,"x":1692144000000,"y":26321,"fill":"#293ad6"},{"date_produced":"2023-08-17","Candidate":"Kamala Harris","spend":116226296,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-17","Daily Spend":23420,"x":1692230400000,"y":23420,"fill":"#293ad6"},{"date_produced":"2023-08-18","Candidate":"Kamala Harris","spend":116251846,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-18","Daily Spend":25550,"x":1692316800000,"y":25550,"fill":"#293ad6"},{"date_produced":"2023-08-19","Candidate":"Kamala Harris","spend":116274734,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-19","Daily Spend":22888,"x":1692403200000,"y":22888,"fill":"#293ad6"},{"date_produced":"2023-08-20","Candidate":"Kamala Harris","spend":116301497,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-20","Daily Spend":26763,"x":1692489600000,"y":26763,"fill":"#293ad6"},{"date_produced":"2023-08-21","Candidate":"Kamala Harris","spend":116327453,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-21","Daily Spend":25956,"x":1692576000000,"y":25956,"fill":"#293ad6"},{"date_produced":"2023-08-22","Candidate":"Kamala Harris","spend":116349966,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-22","Daily Spend":22513,"x":1692662400000,"y":22513,"fill":"#293ad6"},{"date_produced":"2023-08-23","Candidate":"Kamala Harris","spend":116385733,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-23","Daily Spend":35767,"x":1692748800000,"y":35767,"fill":"#293ad6"},{"date_produced":"2023-08-24","Candidate":"Kamala Harris","spend":116422726,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-24","Daily Spend":36993,"x":1692835200000,"y":36993,"fill":"#293ad6"},{"date_produced":"2023-08-25","Candidate":"Kamala Harris","spend":116460497,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-25","Daily Spend":37771,"x":1692921600000,"y":37771,"fill":"#293ad6"},{"date_produced":"2023-08-26","Candidate":"Kamala Harris","spend":116497888,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-26","Daily Spend":37391,"x":1693008000000,"y":37391,"fill":"#293ad6"},{"date_produced":"2023-08-27","Candidate":"Kamala Harris","spend":116539448,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-27","Daily Spend":41560,"x":1693094400000,"y":41560,"fill":"#293ad6"},{"date_produced":"2023-08-28","Candidate":"Kamala Harris","spend":116579722,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-28","Daily Spend":40274,"x":1693180800000,"y":40274,"fill":"#293ad6"},{"date_produced":"2023-08-29","Candidate":"Kamala Harris","spend":116618873,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-29","Daily Spend":39151,"x":1693267200000,"y":39151,"fill":"#293ad6"},{"date_produced":"2023-08-30","Candidate":"Kamala Harris","spend":116656352,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-30","Daily Spend":37479,"x":1693353600000,"y":37479,"fill":"#293ad6"},{"date_produced":"2023-08-31","Candidate":"Kamala Harris","spend":116690147,"total_spend":117482422,"colors":"#293ad6","Date":"2023-08-31","Daily Spend":33795,"x":1693440000000,"y":33795,"fill":"#293ad6"},{"date_produced":"2023-09-01","Candidate":"Kamala Harris","spend":116721053,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-01","Daily Spend":30906,"x":1693526400000,"y":30906,"fill":"#293ad6"},{"date_produced":"2023-09-02","Candidate":"Kamala Harris","spend":116751145,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-02","Daily Spend":30092,"x":1693612800000,"y":30092,"fill":"#293ad6"},{"date_produced":"2023-09-03","Candidate":"Kamala Harris","spend":116783898,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-03","Daily Spend":32753,"x":1693699200000,"y":32753,"fill":"#293ad6"},{"date_produced":"2023-09-04","Candidate":"Kamala Harris","spend":116814758,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-04","Daily Spend":30860,"x":1693785600000,"y":30860,"fill":"#293ad6"},{"date_produced":"2023-09-05","Candidate":"Kamala Harris","spend":116845115,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-05","Daily Spend":30357,"x":1693872000000,"y":30357,"fill":"#293ad6"},{"date_produced":"2023-09-06","Candidate":"Kamala Harris","spend":116876530,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-06","Daily Spend":31415,"x":1693958400000,"y":31415,"fill":"#293ad6"},{"date_produced":"2023-09-07","Candidate":"Kamala Harris","spend":116906231,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-07","Daily Spend":29701,"x":1694044800000,"y":29701,"fill":"#293ad6"},{"date_produced":"2023-09-08","Candidate":"Kamala Harris","spend":116933447,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-08","Daily Spend":27216,"x":1694131200000,"y":27216,"fill":"#293ad6"},{"date_produced":"2023-09-09","Candidate":"Kamala Harris","spend":116959462,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-09","Daily Spend":26015,"x":1694217600000,"y":26015,"fill":"#293ad6"},{"date_produced":"2023-09-10","Candidate":"Kamala Harris","spend":116988275,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-10","Daily Spend":28813,"x":1694304000000,"y":28813,"fill":"#293ad6"},{"date_produced":"2023-09-11","Candidate":"Kamala Harris","spend":117002163,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-11","Daily Spend":13888,"x":1694390400000,"y":13888,"fill":"#293ad6"},{"date_produced":"2023-09-12","Candidate":"Kamala Harris","spend":117027089,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-12","Daily Spend":24926,"x":1694476800000,"y":24926,"fill":"#293ad6"},{"date_produced":"2023-09-13","Candidate":"Kamala Harris","spend":117054066,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-13","Daily Spend":26977,"x":1694563200000,"y":26977,"fill":"#293ad6"},{"date_produced":"2023-09-14","Candidate":"Kamala Harris","spend":117084675,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-14","Daily Spend":30609,"x":1694649600000,"y":30609,"fill":"#293ad6"},{"date_produced":"2023-09-15","Candidate":"Kamala Harris","spend":117116741,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-15","Daily Spend":32066,"x":1694736000000,"y":32066,"fill":"#293ad6"},{"date_produced":"2023-09-16","Candidate":"Kamala Harris","spend":117145457,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-16","Daily Spend":28716,"x":1694822400000,"y":28716,"fill":"#293ad6"},{"date_produced":"2023-09-17","Candidate":"Kamala Harris","spend":117175145,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-17","Daily Spend":29688,"x":1694908800000,"y":29688,"fill":"#293ad6"},{"date_produced":"2023-09-18","Candidate":"Kamala Harris","spend":117202630,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-18","Daily Spend":27485,"x":1694995200000,"y":27485,"fill":"#293ad6"},{"date_produced":"2023-09-19","Candidate":"Kamala Harris","spend":117229969,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-19","Daily Spend":27339,"x":1695081600000,"y":27339,"fill":"#293ad6"},{"date_produced":"2023-09-20","Candidate":"Kamala Harris","spend":117256434,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-20","Daily Spend":26465,"x":1695168000000,"y":26465,"fill":"#293ad6"},{"date_produced":"2023-09-21","Candidate":"Kamala Harris","spend":117289666,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-21","Daily Spend":33232,"x":1695254400000,"y":33232,"fill":"#293ad6"},{"date_produced":"2023-09-22","Candidate":"Kamala Harris","spend":117327500,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-22","Daily Spend":37834,"x":1695340800000,"y":37834,"fill":"#293ad6"},{"date_produced":"2023-09-23","Candidate":"Kamala Harris","spend":117367773,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-23","Daily Spend":40273,"x":1695427200000,"y":40273,"fill":"#293ad6"},{"date_produced":"2023-09-24","Candidate":"Kamala Harris","spend":117412722,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-24","Daily Spend":44949,"x":1695513600000,"y":44949,"fill":"#293ad6"},{"date_produced":"2023-09-25","Candidate":"Kamala Harris","spend":117450295,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-25","Daily Spend":37573,"x":1695600000000,"y":37573,"fill":"#293ad6"},{"date_produced":"2023-09-26","Candidate":"Kamala Harris","spend":117482422,"total_spend":117482422,"colors":"#293ad6","Date":"2023-09-26","Daily Spend":32127,"x":1695686400000,"y":32127,"fill":"#293ad6"}],"type":"area"}],"xAxis":{"type":"datetime","title":{"text":"Date"},"categories":null},"colors":["#ee111a","#293ad6"],"tooltip":{"shared":true,"positioner":"function (labelWidth, labelHeight, point) {\n        return { x: 200, y: this.chart.plotTop };\n    }"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":["hc_opts.tooltip.positioner"],"jsHooks":[]}</script>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
