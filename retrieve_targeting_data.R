@@ -1,4 +1,6 @@
 source("utils.R")
+
+
 # ?get_targeting
 # get_targeting("41459763029", timeframe = "LAST_90_DAYS")
 # debugonce(get_targeting)
@@ -8,6 +10,29 @@ library(tidyverse)
 library(lubridate)
 library(httr2)
 
+
+if (!(Sys.info()[["effective_user"]] %in% c("fabio", "favstats"))) {
+  remove.packages("arrow")
+}
+
+
+Sys.setenv(LIBARROW_MINIMAL = "false")
+Sys.setenv("NOT_CRAN" = "true")
+
+print("##### please install arrow #####")
+
+options(
+  HTTPUserAgent =
+    sprintf(
+      "R/%s R (%s)",
+      getRversion(),
+      paste(getRversion(), R.version["platform"], R.version["arch"], R.version["os"])
+    )
+)
+if (!(Sys.info()[["effective_user"]] %in% c("fabio", "favstats"))) {
+  install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest")
+  arrow::install_arrow(verbose = F) # verbose output to debug install errors
+}
 
 get_page_insights <- function (pageid, timeframe = "LAST_30_DAYS", lang = "en-GB", 
           iso2c = "US", include_info = c("page_info", "targeting_info"), 
