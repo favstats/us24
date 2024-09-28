@@ -385,7 +385,7 @@ try({
   download.file(
     paste0(
       "https://github.com/favstats/meta_ad_reports/releases/download/",
-      sets$cntry,
+      "US",
       "-last_90_days/",
       latest$file_name
     ),
@@ -433,7 +433,7 @@ mark_list <- us_markers %>%
                                         "last_30_days",
                                         "last_90_days"))) %>% 
   arrange(tframe) %>% 
-  mutate(ds = as.Date(ds)) %>% 
+  # mutate(ds = as.Date(ds)) %>% 
   split(1:nrow(.)) %>% 
   map(~{
     thetframe <- .x$tframe
