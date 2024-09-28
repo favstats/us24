@@ -154,6 +154,17 @@ write_lines(lubridate::as_date(tstamp), "tstamp.txt")
 
 dir.create(paste0("historic/", new_ds), recursive = T)
 
+prepp <- function(tf) {
+  
+  unlink(paste0("targeting/", tf), recursive = T, force = T)
+  
+  dir.create(paste0("targeting/", tf))
+  
+  write_lines("_", paste0("targeting/", tf, "/", "_"))
+  
+  # }
+  
+}
 c(7, 30, 90) %>%
   walk(prepp)
 
