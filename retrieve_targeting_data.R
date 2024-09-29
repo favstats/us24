@@ -11,9 +11,9 @@ library(lubridate)
 library(httr2)
 
 
-if (!(Sys.info()[["effective_user"]] %in% c("fabio", "favstats"))) {
-  remove.packages("arrow")
-}
+# if (!(Sys.info()[["effective_user"]] %in% c("fabio", "favstats"))) {
+#   remove.packages("arrow")
+# }
 
 
 Sys.setenv(LIBARROW_MINIMAL = "false")
