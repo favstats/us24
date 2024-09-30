@@ -1,4 +1,5 @@
 # source("retrieve_targeting_data.R")
+install.packages("pacman")
 pacman::p_load(knitr, tidyverse, openxlsx, sf, rmarkdown, rvest)
 # setwd("C:/Users/fabio/Dropbox/postdoc/microdashboards/wtm_iq/")
 # setwd("..")
