@@ -112,8 +112,8 @@ gg <- col_each30  %>%
   add_count(target) %>%
   # filter(n == 3) %>%
   mutate(target = case_when(
-    target == "custom_audience" ~ "Custom Audiences",
-    target == "countries" ~ "GEOGRAPHY: Entire Country",
+      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
+      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",    target == "countries" ~ "GEOGRAPHY: Entire Country",
     target == "regions" ~ "GEOGRAPHY: Regions",
     target == "lookalike_audience" ~ "Lookalike Audiences",
     target == "interest" ~ "Detailed",
@@ -199,7 +199,8 @@ plot_geography <- function(x) {
   mutate(perc = spend_per/total*100) %>%
     filter(perc >= 0.5) %>%
     mutate(target = case_when(
-      target == "custom_audience" ~ "Custom Audiences",
+      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
+      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",
       target == "countries" ~ "GEOGRAPHY: Entire Country",
       target == "regions" ~ "GEOGRAPHY: Regions",
       target == "lookalike_audience" ~ "Lookalike Audiences",
@@ -344,8 +345,8 @@ gg <- col_each7  %>%
   add_count(target) %>%
   # filter(n == 3) %>%
   mutate(target = case_when(
-    target == "custom_audience" ~ "Custom Audiences",
-    target == "countries" ~ "GEOGRAPHY: Entire Country",
+      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
+      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",    target == "countries" ~ "GEOGRAPHY: Entire Country",
     target == "regions" ~ "GEOGRAPHY: Regions",
     target == "lookalike_audience" ~ "Lookalike Audiences",
     target == "interest" ~ "Detailed",

@@ -178,8 +178,13 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     mutate(target = paste0("Gender: ", value)) %>% 
     select(-value)
   
+  
+  
+  
+  
   howmuchcustom <- only_tags %>%
     filter(type == "custom_audience") %>%
+    filter(value == "Customer list Custom Audience") %>%
     filter(total_spend_pct != 0) %>%
     # filter(value != "All") %>%
     group_by(internal_id) %>%
@@ -192,8 +197,24 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     select(internal_id, spend_per, num_ads) %>%
     summarize(spend_per = sum(spend_per),
               ads_per = sum(num_ads)) %>%
-    mutate(target = "custom_audience")
-  
+    mutate(target = "custom_audience_thirdparty")
+ 
+  howmuchcustom2 <- only_tags %>%
+    filter(type == "custom_audience") %>%
+    filter(value != "Customer list Custom Audience") %>%
+    filter(total_spend_pct != 0) %>%
+    # filter(value != "All") %>%
+    group_by(internal_id) %>%
+    filter(total_spend_pct == max(total_spend_pct)) %>%
+    slice(1) %>%
+    ungroup() %>%
+    # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(spend_per = total_spend * total_spend_pct) %>%
+    select(internal_id, spend_per, num_ads) %>%
+    summarize(spend_per = sum(spend_per),
+              ads_per = sum(num_ads)) %>%
+    mutate(target = "custom_audience") 
   
   howmuchlookalike <- only_tags %>%
     filter(type == "lookalike_audience") %>%
@@ -233,6 +254,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     bind_rows(howmuchisage) %>%
     bind_rows(howmuchisgender) %>%
     bind_rows(howmuchcustom) %>%
+    bind_rows(howmuchcustom2) %>%
     bind_rows(howmuchlookalike) %>%
     bind_rows(howmuchlanguage) %>%
     mutate(total = total_sppppeen$total_spend) %>%
