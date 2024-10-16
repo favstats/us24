@@ -1,9 +1,11 @@
 if (Sys.info()[["effective_user"]] == "favstats" | Sys.info()[["effective_user"]] == "favoo") {
   source("retrieve_targeting_data.R")
+} else {
+  
+  install.packages("pacman")
 }
 
 
-install.packages("pacman")
 pacman::p_load(knitr, tidyverse, openxlsx, sf, rmarkdown, rvest)
 # setwd("C:/Users/fabio/Dropbox/postdoc/microdashboards/wtm_iq/")
 # setwd("..")

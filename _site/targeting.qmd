@@ -12,6 +12,9 @@ format:
 ```{r setup, include=FALSE}
 # here::i_am("wtm_gb.Rproj")
 
+
+the_currency <- "USD"
+
 ## Global options
 knitr::opts_chunk$set(
   cache = F,
@@ -29,12 +32,13 @@ library(tidyverse)
 library(highcharter)
 library(gt)
 
-pacman::p_load(knitr, tidyverse, rmarkdown, openxlsx, sf, shiny, rvest)
+pacman::p_load(knitr, tidyverse, rmarkdown, openxlsx, sf, shiny)
 
 
 source(here::here("utils.R"))
 source(here::here("party_utils.R"))
 
+calc_targeting2 <- possibly(calc_targeting, otherwise = tibble(no_data = T))
 ```
 
 
@@ -62,45 +66,56 @@ How much did the campaigns of political parties spend on different audiences? Th
 
 ```{r, fig.width=8, fig.height=5, dpi=300}
 
-
-library(tidytable)
-# if(Sys.info()[["user"]]=="fabio" | Sys.info()[["user"]]=="favoo"){
-#   col_each30 <- readRDS("col_each30.rds")
-# } else {
-  
-  
-election_dat30 <- election_dat30 %>% 
-    mutate(total_spend = total_spend_formatted) 
-# t1 <- Sys.time()
-
+if(Sys.info()[["user"]] == "favstats"){
+  col_each30 <- readRDS("col_each30.rds")
+} else {
   col_each30 <- election_dat30 %>%
-    mutate(cntry_party = paste0(cntry, "XXXXXXX", party)) %>% 
-    pull(cntry_party) %>% 
-    unique() %>% 
+    mutate(total_spend = total_spend_formatted) %>%
+    filter(main_currency == the_currency) %>%
+    group_split(internal_id) %>%
     map_dfr(~{
-      important <- str_split(.x, "XXXXXXX") %>% unlist()
-      the_dat <- election_dat30 %>% filter(cntry == important[1]) %>% filter(party == important[2])  
-      
-        calc_targeting(the_dat) %>%
+        calc_targeting(.x) %>%
             mutate(#coalition = .x$coalition[1],
-                   party = the_dat$party[1],
-                   internal_id = the_dat$internal_id[1],
-                   cntry = the_dat$cntry[1])
-    }, .progress = T) %>% 
+                   party = .x$party[1],
+                   internal_id = .x$internal_id[1])
+    }) %>% 
   filter(target != "Gender: All") %>% 
   filter(target != "Unknown")
 
-# t2 <- Sys.time()
-# t2-t1
-#   
 
-# saveRDS(col_each30, "col_each30.rds")
+saveRDS(col_each30, "col_each30.rds")
 
 
 
+  col_each30_excl <- election_dat30 %>%
+    mutate(total_spend = total_spend_formatted) %>%
+    filter(main_currency == the_currency) %>%
+    group_split(internal_id) %>%
+    map_dfr(~{
+        calc_targeting2(.x, exclude = T) %>%
+            mutate(#coalition = .x$coalition[1],
+                   party = .x$party[1],
+                   internal_id = .x$internal_id[1]) 
+    }) 
+  
+  saveRDS(col_each30_excl, "col_each30_excl.rds")
+
+  col_each30_incl <- election_dat30 %>%
+    mutate(total_spend = total_spend_formatted) %>%
+    filter(main_currency == the_currency) %>%
+    group_split(internal_id) %>%
+    map_dfr(~{
+        calc_targeting2(.x, exclude = F) %>%
+            mutate(#coalition = .x$coalition[1],
+                   party = .x$party[1],
+                   internal_id = .x$internal_id[1]) 
+    }) 
+  
+  saveRDS(col_each30_incl, "col_each30_incl.rds")
   
   
-# }
+}
+
 
 all_spend <- col_each30  %>% 
   distinct(internal_id, .keep_all = T) %>% 
@@ -112,20 +127,20 @@ gg <- col_each30  %>%
   add_count(target) %>%
   # filter(n == 3) %>%
   mutate(target = case_when(
-      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
-      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",    target == "countries" ~ "GEOGRAPHY: Entire Country",
-    target == "regions" ~ "GEOGRAPHY: Regions",
+    target == "custom_audience" ~ "Custom Audiences",
+    target == "countries" ~ "Entire Country",
+    target == "regions" ~ "Regions",
     target == "lookalike_audience" ~ "Lookalike Audiences",
-    target == "interest" ~ "Detailed",
+    target == "interest" ~ "Interests",
     target == "age" ~ "Age",
-    target == "zips" ~ "GEOGRAPHY: Postal Code",
-    target == "CITY" ~ "GEOGRAPHY: City",
+    target == "zips" ~ "Postal Code",
+    target == "CITY" ~ "City",
     target == "language" ~ "Language",
     target == "gender" ~ "Gender",
-    target == "COMUNE" ~ "GEOGRAPHY: Municipality",
-    target == "electoral_districts" ~ "GEOGRAPHY: Electoral Districts",
-    target == "COUNTY" ~ "GEOGRAPHY: Counties",
-    str_detect(target, "NEIGHBOR") ~ "GEOGRAPHY: Neighborhood",
+    target == "COMUNE" ~ "Municipality",
+    target == "electoral_districts" ~ "Electoral Districts",
+    target == "COUNTY" ~ "Counties",
+    str_detect(target, "NEIGHBOR") ~ "Neighborhood",
     T ~ target
   )) %>%
     filter(target != "Unknown") %>%
@@ -185,35 +200,41 @@ library(highcharter)
 library(dplyr)
 
 plot_geography <- function(x) {
+  
+byparty <- x %>%
+  distinct(internal_id, party, .keep_all = T) %>%
+  group_by(party) %>%
+  summarize(total_spenderino = sum(total)) %>%
+  ungroup() %>%
+  select(party, total_spenderino)
+  
   # x <- col_each30
    gg <- x %>%
   filter(target != "countries") %>% 
-  # group_by(internal_id, target, party) %>% 
-  # arrange(desc(perc)) %>% 
-  # slice(1) %>% 
-  # ungroup() %>% 
   group_by(target, party) %>% 
-  summarize(spend_per = sum(spend_per),
-            total = sum(total))  %>% 
+  summarize(spend_per = sum(spend_per)) %>% 
   ungroup() %>% 
-  mutate(perc = spend_per/total*100) %>%
+  left_join(byparty) %>% 
+  mutate(perc = spend_per/total_spenderino*100) %>% 
     filter(perc >= 0.5) %>%
     mutate(target = case_when(
-      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
-      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",
-      target == "countries" ~ "GEOGRAPHY: Entire Country",
-      target == "regions" ~ "GEOGRAPHY: Regions",
-      target == "lookalike_audience" ~ "Lookalike Audiences",
-      target == "interest" ~ "Detailed",
-      target == "age" ~ "Age",
-      target == "zips" ~ "GEOGRAPHY: Postal Code",
-      target == "CITY" ~ "GEOGRAPHY: City",
-      target == "language" ~ "Language",
-      target == "gender" ~ "Gender",
-      target == "COMUNE" ~ "GEOGRAPHY: Municipality",
-      target == "electoral_districts" ~ "GEOGRAPHY: Electoral Districts",
-      target == "COUNTY" ~ "GEOGRAPHY: Counties",
-      str_detect(target, "NEIGHBOR") ~ "GEOGRAPHY: Neighborhood",
+target == "custom_audience" ~ "Custom Audiences",
+target == "countries" ~ "Whole Country",
+target == "regions" ~ "Regions",
+target == "lookalike_audience" ~ "Lookalike Audiences",
+target == "interest" ~ "Interests",
+target == "age" ~ "Age",
+target == "zips" ~ "Zip Code",
+target == "CITY" ~ "City",
+target == "language" ~ "Language",
+target == "gender" ~ "Gender",
+target == "Gender: Men" ~ "Men",
+target == "Gender: Women" ~ "Women",
+target == "COMUNE" ~ "Municipality",
+target == "electoral_districts" ~ "Electoral Districts",
+target == "COUNTY" ~ "Counties",
+target == "BOROUGH" ~ "Borough",
+str_detect(target, "NEIGHBOR") ~ "Neighborhood",
       TRUE ~ target
     )) %>%
     filter(target != "Unknown") %>%
@@ -249,7 +270,7 @@ plot_geography <- function(x) {
       
       hchart(daaat, type = "bar", hcaes(x = target, y = perc), color = the_color) %>%
             hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-            hc_yAxis(title = list(text = "% party budget spent on targeting method"), max = 100, min = 0) %>%
+            hc_yAxis(title = list(text = "% Party Budget spent on targeting method"), max = 100, min = 0) %>%
             hc_xAxis(title = "", labels = list(style = list(fontSize = "10px"))) %>%
             hc_add_theme(hc_theme_google()) %>%
            highcharter::hc_tooltip(
@@ -314,26 +335,16 @@ tags$div(class = "container", do.call(tags$div, rows))
 
 
 ```{r, fig.width=8, fig.height=5, dpi=300}
-election_dat7 <- election_dat7 %>% 
-    mutate(total_spend = total_spend_formatted) 
-# t1 <- Sys.time()
-
-  col_each7 <- election_dat7 %>%
-    mutate(cntry_party = paste0(cntry, "XXXXXXX", party)) %>% 
-    pull(cntry_party) %>% 
-    unique() %>% 
+col_each7 <- election_dat7 %>%
+    mutate(total_spend = total_spend_formatted) %>%
+    filter(main_currency == the_currency) %>%
+    group_split(internal_id) %>%
     map_dfr(~{
-      important <- str_split(.x, "XXXXXXX") %>% unlist()
-      the_dat <- election_dat7 %>% filter(cntry == important[1]) %>% filter(party == important[2])  
-      
-        calc_targeting(the_dat) %>%
+        calc_targeting(.x) %>%
             mutate(#coalition = .x$coalition[1],
-                   party = the_dat$party[1],
-                   internal_id = the_dat$internal_id[1],
-                   cntry = the_dat$cntry[1])
-    }, .progress = T) %>% 
-  filter(target != "Gender: All") %>% 
-  filter(target != "Unknown")
+                   party = .x$party[1],
+                   internal_id = .x$internal_id[1])
+    })
 
 all_spend <- col_each7  %>% 
   distinct(internal_id, .keep_all = T) %>% 
@@ -345,20 +356,20 @@ gg <- col_each7  %>%
   add_count(target) %>%
   # filter(n == 3) %>%
   mutate(target = case_when(
-      target == "custom_audience" ~ "Custom Audiences (Internal Data)",
-      target == "custom_audience_thirdparty" ~ "Custom Audiences (Uploaded Data)",    target == "countries" ~ "GEOGRAPHY: Entire Country",
-    target == "regions" ~ "GEOGRAPHY: Regions",
+    target == "custom_audience" ~ "Custom Audiences",
+    target == "countries" ~ "Entire Country",
+    target == "regions" ~ "Regions",
     target == "lookalike_audience" ~ "Lookalike Audiences",
-    target == "interest" ~ "Detailed",
+    target == "interest" ~ "Interests",
     target == "age" ~ "Age",
-    target == "zips" ~ "GEOGRAPHY: Postal Code",
-    target == "CITY" ~ "GEOGRAPHY: City",
+    target == "zips" ~ "Postal Code",
+    target == "CITY" ~ "City",
     target == "language" ~ "Language",
     target == "gender" ~ "Gender",
-    target == "COMUNE" ~ "GEOGRAPHY: Municipality",
-    target == "electoral_districts" ~ "GEOGRAPHY: Electoral Districts",
-    target == "COUNTY" ~ "GEOGRAPHY: Counties",
-    str_detect(target, "NEIGHBOR") ~ "GEOGRAPHY: Neighborhood",
+    target == "COMUNE" ~ "Municipality",
+    target == "electoral_districts" ~ "Electoral Districts",
+    target == "COUNTY" ~ "Counties",
+    str_detect(target, "NEIGHBOR") ~ "Neighborhood",
     T ~ target
   )) %>%
     filter(target != "Unknown") %>%
@@ -473,7 +484,7 @@ overall_spend <- col_each30 %>%
 
 hchart(overall_spend, type = "bar", hcaes(x = max_calc, y = perc), color = "grey") %>%
             hc_plotOptions(bar = list(horizontal = TRUE, stacking = "normal")) %>%
-            hc_yAxis(title = list(text = "% party budget spent on targeting method"), max = 100, min = 0) %>%
+            hc_yAxis(title = list(text = "% Party Budget spent on targeting method"), max = 100, min = 0) %>%
             hc_xAxis(title = "", labels = list(style = list(fontSize = "10px"))) %>%
             hc_add_theme(hc_theme_google()) %>%
            highcharter::hc_tooltip(
@@ -486,6 +497,8 @@ hchart(overall_spend, type = "bar", hcaes(x = max_calc, y = perc), color = "grey
       enabled = TRUE
     )
 ```
+
+
 ```{r, eval = F}
 col_each30 %>% 
   filter(target != "countries") %>% 
@@ -532,4 +545,3 @@ col_each30 %>%
   theme(legend.position = "none")
 
 ```
-

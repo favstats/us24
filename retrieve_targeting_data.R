@@ -196,7 +196,7 @@ c(7, 30, 90) %>%
 # wtm_data <-
 #   openxlsx::read.xlsx("data/Presidential candidates, last 30 days.xlsx", sheet = 2) %>% janitor::clean_names()
 
-uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip") 
+uswtm <- read_csv("data/a3d6948c-6a5b-4766-b574-676e3e654eeb.csv.gzip") 
   # count(enti)
 
   wtm_data <-

@@ -1,0 +1,620 @@
+---
+title: "Overview"
+description-meta: "How do political parties chase your vote, what do they want to keep hidden, and how much money do they spend on it? In the lead-up to the elections, we monitor political microtargeting."
+format:
+  html:
+    toc: true
+    toc-location: right
+    page-layout: full
+---
+
+```{r setup, include=FALSE}
+# here::i_am("wtm_gb.Rproj")
+
+## Global options
+knitr::opts_chunk$set(
+  cache = F,
+  echo = F,
+  warning = F,
+  message = F,
+  cache.lazy = FALSE
+)
+
+
+
+# pacman::p_load(tidyverse, highcharter)
+library(tidyverse)
+library(highcharter)
+library(gt)
+library(reactablefmtr)
+
+
+pacman::p_load(knitr, tidyverse, rmarkdown, openxlsx, sf, shiny)
+
+source(here::here("utils.R"))
+source(here::here("party_utils.R"))
+
+color_dat <- color_dat %>% 
+  mutate(colors = case_when(
+    colors == "orange" ~ "#f77604",
+    colors == "green" ~ "#7aba2d",
+    T ~ colors
+  ))
+
+# election_dat30 %>% 
+#   count(party)
+the_currency <- "USD"
+```
+
+```{r}
+
+# Render a bar chart with a label on the left
+bar_chart <- function(label, width = "100%", height = "1rem", fill = "#4fd0e8", background = NULL) {
+  bar <- div(style = list(background = fill, width = width, height = height))
+  chart <- div(style = list(flexGrow = 1, marginLeft = "0.5rem", background = background), bar)
+  div(style = list(display = "flex", alignItems = "center"), label, chart)
+}
+
+detailed_colors <- c(
+  "INTERESTS" = "#FFDDC1",
+  "DEMOGRAPHICS" = "#C1E1C1",
+  "BEHAVIOURS" = "#C1E3E1",
+  "AUDIENCES" = "#A1E3E1",
+  "GEOGRAPHY" = "#C1D4E1"
+)
+
+
+
+
+byparty30 <- election_dat30 %>%
+  distinct(internal_id, party, .keep_all = T) %>%
+  group_by(party) %>%
+  summarize(total_spenderino = sum(total_spend_formatted)) %>%
+  ungroup() %>%
+  select(party, total_spenderino)
+
+col_each30 <- readRDS("col_each30.rds")
+col_each30_excl <- readRDS("col_each30_excl.rds")
+col_each30_incl <- readRDS("col_each30_incl.rds")
+
+
+interest_targeting30 <-  election_dat30 %>%
+    mutate(total_spend = total_spend_formatted) %>%
+    filter(type == "detailed") %>%
+    mutate(target_spend = total_spend * total_spend_pct) %>%
+    filter(main_currency == the_currency)  %>%
+    arrange(desc(total_spend))  %>%
+  filter(total_spend >= 1) %>%
+  mutate(perc = target_spend/total_spend) %>%
+  mutate(detailed_type = case_when(
+    detailed_type == "INTERESTS" ~ "INTERESTS",
+    detailed_type == "DEMOGRAPHICS" ~ "DEMOGRAPHICS",
+    detailed_type == "BEHAVIOURS" ~ "BEHAVIOURS",
+    T ~ detailed_type
+  ))
+
+
+findat <- interest_targeting30 %>% 
+  mutate(perc_ads = num_ads / total_num_ads,
+         perc = target_spend/total_spend_formatted) %>% 
+  select(internal_id, detailed_type, target = value, is_exclusion, ads_per = num_ads, spend_per = target_spend, party, perc, perc_ads)  %>% 
+  bind_rows(col_each30_incl %>%
+  mutate(perc = perc/100,
+         perc_ads = perc_ads/100,
+         is_exclusion = F) %>%
+  filter(perc != 0)) %>%
+  bind_rows(col_each30_excl %>%
+  mutate(perc = perc/100,
+         perc_ads = perc_ads/100,
+         is_exclusion = T)) %>%
+  bind_rows(col_each30 %>%
+  mutate(perc = perc/100,
+         perc_ads = perc_ads/100) %>%
+    filter(target %in% c("Gender: Men", "Gender: Women", "age", "language")) %>%
+           mutate(is_exclusion = F)) %>%
+  # bind_rows(col_each30 %>% 
+  # mutate(perc = perc/100, 
+  #        perc_ads = perc_ads/100)) %>%
+  filter(perc != 0)  %>%
+  distinct(detailed_type, target, internal_id, is_exclusion, .keep_all = T) %>% 
+  filter(target != "countries") %>% 
+  filter(target != "interest") %>% 
+  filter(target != "Gender: All") %>% 
+  # filter(n == 3) %>%
+  mutate(detailed_type = case_when(
+target == "custom_audience" ~ "AUDIENCES",
+target == "regions" ~ "GEOGRAPHY",
+target == "lookalike_audience" ~ "AUDIENCES",
+target == "interest" ~ "INTERESTS",
+target == "age" ~ "DEMOGRAPHICS",
+target == "zips" ~ "GEOGRAPHY",
+target == "CITY" ~ "GEOGRAPHY",
+target == "language" ~ "DEMOGRAPHICS",
+target == "gender" ~ "DEMOGRAPHICS",
+target == "Gender: Men" ~ "DEMOGRAPHICS",
+target == "Gender: Women" ~ "DEMOGRAPHICS",
+target == "Men" ~ "DEMOGRAPHICS",
+target == "Women" ~ "DEMOGRAPHICS",
+target == "COMUNE" ~ "GEOGRAPHY",
+target == "electoral_districts" ~ "GEOGRAPHY",
+target == "COUNTY" ~ "GEOGRAPHY",
+str_detect(target, "NEIGHBOR|BOROUGH") ~ "GEOGRAPHY",
+target == "MUNICIPALITY" ~ "GEOGRAPHY",
+T ~ detailed_type
+)) %>% 
+mutate(target = case_when(
+target == "custom_audience" ~ "Custom Audiences",
+target == "countries" ~ "Whole Country",
+target == "regions" ~ "Regions",
+target == "lookalike_audience" ~ "Lookalike Audiences",
+target == "interest" ~ "Interests",
+target == "age" ~ "Age",
+target == "zips" ~ "Zip Code",
+target == "CITY" ~ "City",
+target == "language" ~ "Language",
+target == "gender" ~ "Gender",
+target == "Gender: Men" ~ "Men",
+target == "Gender: Women" ~ "Women",
+target == "COMUNE" ~ "Municipality",
+target == "electoral_districts" ~ "Electoral Districts",
+target == "COUNTY" ~ "Counties",
+target == "BOROUGH" ~ "Borough",
+str_detect(target, "NEIGHBOR") ~ "Neighborhood",
+    T ~ target
+  )) %>% 
+    filter(target != "Unknown") %>% 
+  mutate(is_exclusion = ifelse(!is_exclusion, "✅", "❌")) %>% 
+  left_join(data.frame(detailed_colors ) %>%
+              rownames_to_column() %>%
+              rename(detailed_type = rowname)) %>% 
+  mutate(is_exclusion = case_when(
+    target == "Language" ~ "✅", 
+    target == "Gender" ~ "✅", 
+    target == "Men" ~ "✅", 
+    target == "Women" ~ "✅", 
+    target == "Age" ~ "✅", 
+    T ~ is_exclusion
+  ))
+
+with_tooltip <- function(value, tooltip) {
+  tags$abbr(style = "text-decoration: underline; text-decoration-style: dotted; cursor: help",
+            title = tooltip, value)
+}
+
+make_tab <- function(tp = "N-VA") {
+  
+yes <<-  election_dat30 %>%
+  select(-type) %>% 
+  # left_join(lts %>% select(-party, -page_name) %>% 
+  #             rename(internal_id = page_id), 
+  #           by = "internal_id") %>%
+  # mutate(type = str_remove_all(type, "Lijsttrekkers_")) %>% 
+  filter(party == tp) %>%
+  filter(main_currency == the_currency) %>%
+  distinct(internal_id, .keep_all = TRUE) %>%
+  arrange(desc(total_spend_formatted)) %>%
+  # mutate(total_spend_formatted = scales::comma(total_spend_formatted)) %>%
+  select(page_name, total_num_ads, total_spend_formatted, internal_id) %>%
+  set_names(c("Page", "Ads", "Spent ($)", "internal_id"))
+
+
+table_id <- paste0(make.names(tp), "-table")
+  page_search_id <- paste0(make.names(tp), "-page-search")
+  target_search_id <- paste0(make.names(tp), "-target-search")
+ toggle_button_id <- paste0(make.names(tp), "-toggle-button")
+
+  search_bar_style <- "
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+  "
+
+button_style <- "
+  padding: 8px 12px; /* Reduced padding for a more normal size */
+  font-size: 16px; /* Keep the font size the same */
+  border: 2px solid #ddd; /* Keep the border color */
+  border-radius: 5px; /* More subtle rounding for a modern look */
+  background-color: #ffcc80; /* Light shade of orange */
+  cursor: pointer;
+  margin-top: 5px; /* Added top margin */
+  margin-bottom: 5px; /* Added bottom margin */
+  margin-right: 10px;
+"
+
+
+
+  search_container <- htmltools::div(
+    style = "display: flex; justify-content: center; margin-bottom: 20px;",
+    htmltools::tags$input(
+      id = page_search_id,
+      type = "text",
+      placeholder = "Search Pages...",
+      style = search_bar_style,
+      oninput = sprintf("Reactable.setSearch('%s', this.value)", table_id)
+    ),
+    htmltools::tags$button(
+      id = toggle_button_id,
+      "Expand All",
+      style = button_style,
+      onclick = sprintf("toggleExpandCollapse('%s', '%s', '%s')", table_id, toggle_button_id, target_search_id)
+    ),
+    htmltools::tags$input(
+      id = target_search_id,
+      type = "text",
+      placeholder = "Search Targeting Criteria...",
+      style = paste(search_bar_style, "display: none;"),
+      oninput = sprintf("filterTargetRows('%s', this.value)", table_id)
+    )
+  )
+
+
+# Assuming `election_dat30` and `lts` are your data frames
+styled_reactable <- yes %>%
+  # select(-internal_id) %>%
+  reactable(
+    fullWidth = T,
+     elementId = table_id,
+      searchable = FALSE,
+      filterable = FALSE,
+      pagination = F,
+      # defaultPageSize = I,
+    defaultSorted = "Spent ($)",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    defaultExpanded  = F,  # This will expand all rows by default
+    columns = list(
+      Pagina = colDef(
+        name = "Page",
+        cell = function(value) {
+          internal_id <- yes$internal_id[yes$Page == value]
+
+          url <- glue::glue(    "https://www.facebook.com/ads/library/?active_status=all&ad_type=political_and_issue_ads&country=GB&view_all_page_id={internal_id}&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&search_type=page&media_type=all"
+  )
+          tags$a(href = url, target = "_blank", value)
+        }
+      ),
+      `Advertenties` = colDef(
+        defaultSortOrder = "desc",
+        name = "Ads",
+        cell = data_bars(
+          data = .,
+          round_edges = TRUE,
+              fill_color = "#ff5444",
+          background = "transparent",
+          text_position = "outside-end",
+          # text_color = text_color,
+          fill_gradient = FALSE,
+          # fill_color_ref = "energy_source_color",
+          number_fmt = scales::label_number(big.mark = ","),
+          bar_height = 10
+        )
+      ),
+      `Spent ($)` = colDef(
+        header = with_tooltip("Spent ($)", last30days_string),
+        defaultSortOrder = "desc", 
+        cell = data_bars(
+            data = .,
+                fill_color = "#ff5444",
+            round_edges = TRUE,
+            background = "transparent",
+            text_position = "outside-end",
+            # text_color = text_color,
+            fill_gradient = FALSE,
+            # fill_color_ref = "energy_source_color",
+            number_fmt = scales::label_number(big.mark = ","),
+            bar_height = 10
+          )
+        ),
+        # Race = colDef(
+        #   name = "Race",
+        #   cell = color_tiles(data = .,
+        #                      color_ref = 'election_type_colors')
+        # ),
+        # election_type_colors = colDef(show = FALSE),
+        internal_id = colDef(show = FALSE)
+      ),
+      # compact = TRUE,
+      class = "styled-table",
+      details = function(index) {
+        plant_data <- findat[findat$internal_id == yes$internal_id[index],]
+        withindat <<- plant_data %>% select(detailed_type, target, is_exclusion, spend_per, perc, detailed_colors)
+        htmltools::div(
+          style = "padding: 1rem",
+          reactable(
+            withindat,
+            # outlined = TRUE,
+            pagination = F,
+            fullWidth = T,
+            defaultColDef = colDef(headerClass = "header", align = "left"),
+            defaultSorted = "perc",
+            columns = list(
+              detailed_type = colDef(name = "Type",
+                            cell = color_tiles(data = withindat,
+                                               color_ref = 'detailed_colors'), width = 180), 
+                  detailed_colors = colDef(show = FALSE),
+              target = colDef(header = "Target"),
+              is_exclusion = colDef(header = "Included", width = 100),
+  
+              
+                  spend_per = colDef(show = FALSE),
+              perc = colDef(
+                header = "% Budget",
+                defaultSortOrder = "desc",
+                # format = colFormat(percent = TRUE, digits = 1),
+                                            cell = data_bars(
+                data = withindat,
+                fill_color = "#ff5444",
+                background = '#ffa50033',  text_size = 12,
+                # text_color = "white",
+                brighten_text = T,
+                min_value = 0,
+                max_value = 1,
+                text_position = 'center',
+                number_fmt = scales::percent,
+            bar_height = 20)
+              )#,
+            ),
+            # compact = TRUE,
+            class = "styled-table"
+          )
+        )
+      }
+    )
+  
+  
+filter_script <- htmltools::tags$script(HTML(sprintf("
+console.log('Script initialized for table');
+
+// Define the function to toggle expand/collapse of rows in the table
+function toggleExpandCollapse(tableId, buttonId, searchId) {
+  console.log('Toggle function called for table:', tableId);
+  const table = document.getElementById(tableId);
+  const button = document.getElementById(buttonId);
+  const searchInput = document.getElementById(searchId);
+  const isExpanded = button.textContent === 'Collapse All';
+  
+  console.log('Current state:', isExpanded ? 'expanded' : 'collapsed');
+
+  const rows = table.querySelectorAll('.rt-tr-group');
+
+  rows.forEach(row => {
+    const expander = row.querySelector('.rt-expander');
+    if (expander) {
+      if (isExpanded && row.classList.contains('rt-expanded')) {
+        expander.click(); // Collapse
+      } else if (!isExpanded && !row.classList.contains('rt-expanded')) {
+        expander.click(); // Expand
+      }
+    }
+  });
+
+  // Update button text and search input visibility based on the current state
+  button.textContent = isExpanded ? 'Expand All' : 'Collapse All';
+  searchInput.style.display = isExpanded ? 'none' : 'inline-block';
+
+  console.log(isExpanded ? 'Collapsing all rows' : 'Expanding all rows');
+}
+
+// Define the function to filter rows in the table based on input value
+function filterTargetRows(tableId, value) {
+  console.log('Filtering rows for table:', tableId, 'with value:', value);
+  const table = document.getElementById(tableId);
+  const rows = table.querySelectorAll('.rt-tr-group');
+  const searchTerm = value.toLowerCase();
+  
+  rows.forEach((row, index) => {
+    console.log('Processing row', index + 1);
+    const detailsRows = row.querySelectorAll('.rt-tr');
+    
+    let found = false;
+    detailsRows.forEach((detailRow, detailIndex) => {
+      const cells = detailRow.querySelectorAll('.rt-td');
+      
+      cells.forEach((cell, cellIndex) => {
+        const cellText = cell.textContent.toLowerCase();
+        if (cellText.includes(searchTerm)) {
+          found = true;
+          console.log(`Match found in row ${index + 1}, detail ${detailIndex + 1}, cell ${cellIndex + 1}`);
+        }
+      });
+    });
+    
+    // Show/hide row based on search result
+    row.style.display = searchTerm && !found ? 'none' : '';
+    console.log(`Row ${index + 1} display: ${row.style.display}`);
+  });
+}
+
+// Attach the filter function to the target search input
+document.getElementById('%s').addEventListener('input', function(e) {
+  console.log('Target search input changed:', e.target.value);
+  filterTargetRows('%s', e.target.value);
+});
+
+console.log('Script fully loaded for table');
+", table_id, target_search_id, table_id, table_id)))
+  
+    htmltools::tagList(
+      search_container,
+      styled_reactable,
+      filter_script
+    )
+  }
+
+
+# debugonce(make_tab)
+# styled_reactable
+
+
+ 
+```
+
+In this section you can explore all the targeting criteria for each individual page that we track.
+
+::: {.panel-tabset}
+
+## Donald Trump
+
+```{r}
+make_tab("Donald Trump")
+
+```
+
+## Kamala Harris
+
+```{r}
+make_tab("Kamala Harris")
+
+```
+
+## Democrats
+
+```{r}
+
+make_tab("Democrats")
+
+```
+
+
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM fully loaded and parsed');
+
+  // Hide all content initially
+  document.querySelectorAll('.region-content').forEach(function(el) {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('.party-content').forEach(function(el) {
+    el.style.display = 'none';
+  });
+</script>
+```
+```{=html}
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.highcharts-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.highcharts-root {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.panel-tabset .tab-content {
+  border-top: none; /* Adds a subtle top border */
+  border-bottom: none; /* Adds a subtle top border */
+  border-left: none; /* Adds a subtle top border */
+  border-right: none; /* Adds a subtle top border */    
+}
+
+
+.panel-tabset {
+  border-top: none; /* Adds a top border to the whole set for continuity */
+}
+
+
+/* CSS for the styled reactable */
+
+/* Styles for the table container, title, and subtitle */
+.styled-table {
+  /* Center the table */
+  margin: 0 auto;
+  /* Reduce the table width */
+  font-family: Karla, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* CSS for the styled reactable */
+
+/* Styles for the table container, title, and subtitle */
+.styled-table {
+  /* Center the table */
+  margin: 0 auto;
+  /* Reduce the table width */
+  font-family: Karla, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header {
+  border-bottom: 2px solid #555;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.header:hover {
+  background-color: #eee;
+}
+
+/* Styles for the bar charts */
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-family: "Fira Mono", Consolas, Monaco, monospace;
+  font-size: 0.84375rem;
+  white-space: pre;
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 0.375rem;
+  height: 0.875rem;
+}
+
+.bar {
+  height: 100%;
+  background-color: #3fc1c9;
+}
+
+.number-cell {
+  text-align: right;
+  font-family: monospace;
+}
+
+.type-cell {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.styled-table a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.styled-table a:hover,
+.styled-table a:focus {
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+}
+
+.panel-tabset .tab-content {
+  border-top: none; /* Adds a subtle top border */
+  border-bottom: none; /* Adds a subtle top border */
+  border-left: none; /* Adds a subtle top border */
+  border-right: none; /* Adds a subtle top border */
+}
+
+.nav-tabs {
+  border-top: none; /* Adds a subtle top border */
+  border-bottom: none; /* Adds a subtle top border */
+  border-left: none; /* Adds a subtle top border */
+  border-right: none; /* Adds a subtle top border */
+}
+
+</style>
+```
