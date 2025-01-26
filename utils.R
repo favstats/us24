@@ -1,7 +1,3 @@
-library(data.table)
-
-
-
 calc_targeting <- function(only_tags, exclude = NULL) {
   
   if(sets$cntry=="TW"){
@@ -27,7 +23,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
   total_sppppeen <- only_tags %>%
     distinct(internal_id, .keep_all = T)  %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     select(internal_id, total_spend, total_num_ads) %>%
     arrange(desc(total_spend)) %>%
     summarize(total_spend = sum(total_spend),
@@ -49,7 +45,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, num_ads) %>%
     arrange(desc(spend_per)) %>%
@@ -64,7 +60,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, location_type, num_ads) %>%
     arrange(desc(spend_per)) %>%
@@ -95,40 +91,19 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     ## TODO: BUT WHYYYYY?
   } else if (!all(howmuchisage$total_spend_pct==1)){
     howmuchisage <- howmuchisage %>% 
-      filter(n_ages == 48) %>%
+      # filter(n_ages <= 47) %>%
       group_by(internal_id) %>%
       filter(total_spend_pct == min(total_spend_pct)) %>%
       slice(1) %>%
       ungroup() %>%
       # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-      mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+      mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
       mutate(spend_per = total_spend * (1-total_spend_pct)) %>%
-      mutate(ads_per = total_sppppeen$num_ads-num_ads) %>% 
-      select(internal_id, spend_per, ads_per) %>% 
-      ### TODO: this is new
-      bind_rows(howmuchisage %>% 
-                  filter(n_ages <= 47) %>%
-                  distinct(internal_id, .keep_all = T) %>% 
-                  mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
-                  mutate(spend_per = total_spend) %>%
-                  select(internal_id, spend_per, num_ads) %>%
-                  summarize(spend_per = sum(spend_per),
-                            ads_per = sum(num_ads)) %>%
-                  mutate(target = "age"))  %>% 
-      ### TODO: this is new
-      bind_rows(howmuchisage %>% 
-                  filter(n_ages > 48) %>%
-                  distinct(internal_id, .keep_all = T) %>% 
-                  mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
-                  mutate(spend_per = 0) %>%
-                  mutate(num_ads = 0) %>%
-                  select(internal_id, spend_per, num_ads) %>%
-                  summarize(spend_per = sum(spend_per),
-                            ads_per = sum(num_ads)) %>%
-                  mutate(target = "age")) %>% 
+      select(internal_id, spend_per, num_ads) %>%
       summarize(spend_per = sum(spend_per),
-                ads_per = sum(ads_per)) %>%
-      mutate(target = "age") 
+                ads_per = sum(num_ads)) %>%
+      mutate(ads_per = total_sppppeen$num_ads-ads_per) %>% 
+      mutate(target = "age")
   } else if (all(howmuchisage$total_spend_pct==1)){
     
     howmuchisage <- howmuchisage %>% mutate(spend_per = total_spend, ads_per = total_num_ads, target = "age") %>% select(spend_per, target, ads_per) %>% slice(1)
@@ -153,7 +128,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
   #     # slice(1) %>%
   #     # ungroup() %>%
   #     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-  #     mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+  #     mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
   #     mutate(spend_per = total_spend * total_spend_pct) %>%
   #     select(internal_id, spend_per) %>%
   #     summarize(spend_per = sum(spend_per))  %>%
@@ -167,7 +142,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, value, num_ads) %>%
     arrange(desc(spend_per)) %>%
@@ -178,13 +153,8 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     mutate(target = paste0("Gender: ", value)) %>% 
     select(-value)
   
-  
-  
-  
-  
   howmuchcustom <- only_tags %>%
     filter(type == "custom_audience") %>%
-    filter(value == "Customer list Custom Audience") %>%
     filter(total_spend_pct != 0) %>%
     # filter(value != "All") %>%
     group_by(internal_id) %>%
@@ -192,29 +162,13 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, num_ads) %>%
     summarize(spend_per = sum(spend_per),
               ads_per = sum(num_ads)) %>%
-    mutate(target = "custom_audience_thirdparty")
- 
-  howmuchcustom2 <- only_tags %>%
-    filter(type == "custom_audience") %>%
-    filter(value != "Customer list Custom Audience") %>%
-    filter(total_spend_pct != 0) %>%
-    # filter(value != "All") %>%
-    group_by(internal_id) %>%
-    filter(total_spend_pct == max(total_spend_pct)) %>%
-    slice(1) %>%
-    ungroup() %>%
-    # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
-    mutate(spend_per = total_spend * total_spend_pct) %>%
-    select(internal_id, spend_per, num_ads) %>%
-    summarize(spend_per = sum(spend_per),
-              ads_per = sum(num_ads)) %>%
-    mutate(target = "custom_audience") 
+    mutate(target = "custom_audience")
+  
   
   howmuchlookalike <- only_tags %>%
     filter(type == "lookalike_audience") %>%
@@ -225,7 +179,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, num_ads) %>%
     summarize(spend_per = sum(spend_per),
@@ -242,7 +196,7 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     slice(1) %>%
     ungroup() %>%
     # mutate(total_spend = readr::parse_number(total_spend_formatted)) %>%
-    mutate(total_spend = ifelse(total_spend == 100, 1, total_spend)) %>%
+    mutate(total_spend = ifelse(total_spend == 100, 50, total_spend)) %>%
     mutate(spend_per = total_spend * total_spend_pct) %>%
     select(internal_id, spend_per, num_ads) %>%
     summarize(spend_per = sum(spend_per),
@@ -254,7 +208,6 @@ calc_targeting <- function(only_tags, exclude = NULL) {
     bind_rows(howmuchisage) %>%
     bind_rows(howmuchisgender) %>%
     bind_rows(howmuchcustom) %>%
-    bind_rows(howmuchcustom2) %>%
     bind_rows(howmuchlookalike) %>%
     bind_rows(howmuchlanguage) %>%
     mutate(total = total_sppppeen$total_spend) %>%
@@ -265,9 +218,6 @@ calc_targeting <- function(only_tags, exclude = NULL) {
   
   return(targeting_on_each)
 }
-
-
-
 
 relationshipstuff <- "Widowed|Recently moved|Away|[r|R]elationship|Parents|Partner|Separated|Divorced|Single|Complicated|Married|Engaged|Newlywed|Civil Union|Unspecified|Newly engaged"
 
@@ -291,13 +241,13 @@ add_ribbons <- function(x, adv, col) {
 
 
 
-get_targeting <- function(id, timeframe = "LAST_30_DAYS", lang = "en-GB") {
+get_targeting <- function(id, timeframe = "LAST_30_DAYS") {
   
   url <- "https://www.facebook.com/api/graphql/"
   
   heads_up <- httr::add_headers(`User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
                                 Accept = "*/*",
-                                `Accept-Language` = paste0(lang, ',', stringr::str_split(lang, "-") %>% unlist() %>% .[1],';q=0.5'),
+                                `Accept-Language` = 'en-GB,en;q=0.5',
                                 `X-FB-Friendly-Name` = "AdLibraryPageAudienceTabQuery",
                                 `X-FB-LSD`= "AVrNiQCSUnA",
                                 `Alt-Used`= "www.facebook.com",
@@ -328,7 +278,7 @@ get_targeting <- function(id, timeframe = "LAST_30_DAYS", lang = "en-GB") {
     
     heads_up <- httr::add_headers(`User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
                                   Accept = "*/*",
-                                  `Accept-Language` = paste0(lang, ',', stringr::str_split(lang, "-") %>% unlist() %>% .[1],';q=0.5'),
+                                  `Accept-Language` = 'en-US,en;q=0.5',
                                   `X-FB-Friendly-Name` = "AdLibraryPageAudienceTabQuery",
                                   `X-FB-LSD`= "AVrNiQCSUnA",
                                   `Alt-Used`= "www.facebook.com",
@@ -350,7 +300,7 @@ get_targeting <- function(id, timeframe = "LAST_30_DAYS", lang = "en-GB") {
   
   contentwise <- httr::content(posted)
   
-  rate_limit <- str_detect(as.character(contentwise), "Rate limit exceeded")
+  rate_limit <<- str_detect(as.character(contentwise), "Rate limit exceeded")
   if(rate_limit){
     stop(as.character(contentwise))
   }
@@ -466,7 +416,7 @@ map_dfr_progress <- function(.x, .f, ...) {
   .f <- purrr::as_mapper(.f, ...)
   pb <- progress::progress_bar$new(
     total = length(.x), 
-    format = " (:spin) [:bar] :percent | :current / :total | eta: :eta",
+    format = glue::glue(" (:spin) [:bar] :percent | :current / :total | eta: :eta"),
     # format = " downloading [:bar] :percent eta: :eta",
     force = TRUE)
   
@@ -492,4 +442,852 @@ map_chr_progress <- function(.x, .f, ...) {
   purrr::map_chr(.x, f, ...)
 }
 
+
+library(gh)
+get_all_assets <- function(owner, repo, release_id, token) {
+  page <- 1
+  all_assets <- list()
+  
+  repeat {
+    assets <- gh::gh("GET /repos/:owner/:repo/releases/:release_id/assets",
+                     owner = owner, repo = repo, release_id = release_id, 
+                     .token = token, .params = list(page = page, per_page = 100))
+    
+    if (length(assets) == 0) {
+      break
+    }
+    
+    all_assets <- c(all_assets, assets)
+    page <- page + 1
+  }
+  
+  return(all_assets)
+}
+
+# Function to delete a release asset by filename
+delete_asset_by_filename <- function(owner, repo, release_id, filename, .token  = gh::gh_token()) {
+  # Retrieve all assets for the specified release
+  
+  
+  # Use the function
+  assets <- get_all_assets(owner, repo, release_id, .token)
+  
+  # assets <- gh::gh("GET /repos/:owner/:repo/releases/:release_id/assets",
+  #              owner = owner, repo = repo, release_id = release_id, .token = .token)
+  # 
+  # print(all_assets)
+  
+  # Find the asset by filename
+  asset <- purrr::keep(assets, ~ .x$name == filename)
+  
+  print(glimpse(asset))
+  
+  # Check if the asset was found
+  if (length(asset) == 1) {
+    # Extract the asset ID
+    asset_id <- asset[[1]]$id
+    
+    # Delete the asset
+    gh::gh("DELETE /repos/:owner/:repo/releases/assets/:id",
+           owner = owner, repo = repo, id = asset_id, .token = .token)
+    
+    message("Asset deleted successfully.")
+  } else {
+    stop("Asset not found or multiple assets with the same name exist.")
+  }
+}
+
+# Example usage
+# Note: Replace 'owner', 'repo', 'release_id', 'filename', and '.token' with actual values
+# delete_asset_by_filename(owner = "your_username", repo = "your_repo", release_id = "your_release_id", filename = "your_filename", .token = "your_token")
+
+# df <- releases[releases$tag == "DE-last_90_days",]
+# 
+# assets <- gh::gh("GET /repos/:owner/:repo/releases/:release_id/assets",
+#                  owner = "favstats", repo = "meta_ad_targeting", release_id = df$release_id)
+# 
+# asset <- purrr::keep(assets, ~ .x$name == "2024-03-16.parquet")
+
+
+pb_upload_file_fr <- function (file, repo, tag, .token = gh::gh_token(), releases, dir = NULL, skip  = F) {
+  # Construct the file path
+  file_path <- do.call(file.path, compact(list(dir, file)))
+  
+  # Check if the file exists
+  if (!file.exists(file_path)) {
+    stop("File does not exist: ", file_path)
+  }
+  # full_repos$file_name
+  # Obtain release information
+  # releases <- pb_releases(repo = repo, .token = .token)
+  upload_url <- releases$upload_url[releases$tag == tag][1]
+  # print(upload_url)
+  
+  if(is.na(upload_url)){
+    return(NULL)
+  }
+  # Set up the request
+  rsd <- httr::POST(
+    # "POST",
+    url = sub("\\{.+$", "", upload_url),
+    query = list(name = basename(file_path)),
+    httr::add_headers(Authorization = paste("token", .token)),
+    body = httr::upload_file(file_path)
+  )
+  
+  r <- piggyback:::parse_repo(repo)
+  
+  if(!is.null(httr::content(rsd)$errors[[1]]$code)){
+    # tag <- "EE-last_7_days"
+    print(httr::content(rsd)$errors[[1]])
+    
+    df <- releases[releases$tag == tag,]
+    
+    if(!skip){
+      
+      delete_asset_by_filename(owner = r[1], repo = r[2], release_id = df$release_id, filename = file_path)
+      
+      # df <- piggyback:::pb_info(repo = repo, tag = tag, .token = .token)
+      # i <- which(stringr::str_detect(dfs$file_name, str_remove(file_path, ".parquet")))
+      # if (length(i) > 0) {
+      # if (use_timestamps) {
+      #   local_timestamp <- fs::file_info(file_path)$modification_time
+      #   no_update <- local_timestamp <= df[i, "timestamp"]
+      #   if (no_update) {
+      #     cli::cli_warn("Matching or more recent version of {.file {file_path}} found on GH, not uploading.")
+      #     return(invisible(NULL))
+      #   }
+      # }
+      # if (overwrite) {
+      # gh::gh("DELETE /repos/:owner/:repo/releases/assets/:id", 
+      #        owner = r[1], repo = r[2], 
+      #        id = df$id[i], .token = .token)
+      # }
+      # else {
+      #   cli::cli_warn("Skipping upload of {.file {df$file_name[i]}} as file exists on GitHub and {.code overwrite = FALSE}")
+      #   return(invisible(NULL))
+      # }
+      # }
+      rsd <- httr::POST(
+        # "POST",
+        url = sub("\\{.+$", "", upload_url),
+        query = list(name = basename(file_path)),
+        httr::add_headers(Authorization = paste("token", .token)),
+        body = httr::upload_file(file_path)
+      )
+      
+      # } else {
+      #   print("already there so we skip")
+      # }
+      
+      httr::warn_for_status(rsd)
+      # invisible(rsd)
+      
+      return(rsd)
+      
+    }
+    
+    
+    
+    
+  }
+  
+  print(paste0("Status CODE: ", httr::status_code(rsd)))
+  # Handle response
+  httr::warn_for_status(rsd)
+  return(rsd)
+}
+
+
+
+pb_release_create_fr <- function (repo, tag, commit = NULL, name = tag, 
+                                  body = "Data release", draft = FALSE, prerelease = FALSE, releases,
+                                  .token = gh::gh_token()) {
+  if(is.null(releases)){
+    releases <- pb_releases(repo = repo, .token = .token, verbose = FALSE)
+  }
+  
+  if (nrow(releases) > 0 && tag %in% releases$tag) {
+    cli::cli_warn("Failed to create release: {.val {tag}} already exists!")
+    return(invisible(releases[tag %in% releases$tag, 
+    ]))
+  }
+  r <- piggyback:::parse_repo(repo)
+  payload <- compact(list(tag_name = tag, target_commitish = commit, 
+                          name = name, body = body, draft = draft, prerelease = prerelease))
+  resp <- httr::RETRY(verb = "POST", url = glue::glue("https://api.github.com/repos/{r[[1]]}/{r[[2]]}/releases"), 
+                      httr::add_headers(Authorization = paste("token", .token)), 
+                      body = jsonlite::toJSON(payload, auto_unbox = TRUE), 
+                      terminate_on = c(400, 401, 403, 404, 422))
+  if (httr::http_error(resp)) {
+    cli::cli_warn(c(`!` = "Failed to create release: HTTP error {.val {httr::status_code(resp)}}.", 
+                    "See returned error messages for more details"))
+    # httr::content(resp)$errors[[1]]$code=="already_exists"
+    return(httr::content(resp))
+  }
+  piggyback:::.pb_cache_clear()
+  release <- httr::content(resp)
+  cli::cli_alert_success("Created new release {.val {name}}.")
+  return(invisible(release))
+}
+
+
+
+
+pb_info_fr <- function(repo = guess_repo(),
+                       tag = NULL,
+                       .token = gh::gh_token()) {
+  
+  r <- piggyback:::parse_repo(repo)
+  
+  # get all releases
+  releases <- piggyback::pb_releases(repo = repo, .token = .token, verbose = FALSE)
+  
+  # if no releases return empty df
+  if(nrow(releases) == 0) {
+    return(
+      data.frame(
+        file_name = "",
+        size = 0L,
+        timestamp = .as_datetime(0),
+        tag = "",
+        owner = r[[1]],
+        repo = r[[2]],
+        upload_url = "",
+        browser_download_url = "",
+        api_download_url = "",
+        id = "",
+        state = "",
+        stringsAsFactors = FALSE
+      ))
+  }
+  
+  # if tag is "latest" (and no tag is literally named "latest"), set tag to
+  # GitHub's idea of latest release tag
+  if(identical(tag, "latest") && !"latest" %in% releases$tag_name) {
+    tag <- releases$tag_name[releases$latest]
+  }
+  
+  # if tag is present, filter the releases to search to just the tags requested
+  if(!is.null(tag)) releases <- releases[releases$tag_name %in% tag,]
+  
+  # get release assets and metadata for each release
+  info <- piggyback:::get_release_assets(releases = releases, r = r, .token = .token)  %>% 
+    bind_rows(releases %>% 
+                select(tag = release_name,
+                       id = release_id,
+                       upload_url)) %>% 
+    distinct(tag, id, upload_url, .keep_all = T)
+  
+  return(info)
+}
+
+
+# Define a function to perform the operation
+get_full_release <- function() {
+  # tryCatch({
+  # Your original operation
+  full_repos <- pb_info_fr("favstats/meta_ad_targeting") %>% as_tibble()
+  
+  return(full_repos)  # return the result
+  # }, error = function(e) {
+  #   # Print the error message
+  #   print(paste("Error occurred: ", e$message))
+  #   
+  #   # Wait for an hour (3600 seconds)
+  #   # print("Waiting for 1 hour before retrying...")
+  #   # Sys.sleep(3600)
+  #   
+  #   # Retry the operation
+  #   return(get_full_release())
+  # })
+}
+
+
+
+source("https://raw.githubusercontent.com/favstats/appendornot/master/R/save.R")
+
+# Function to generate and save an encryption key to the environment
+generate_and_store_key <- function() {
+  key <- openssl::rand_bytes(32) # Generate a 32-byte encryption key
+  Sys.setenv("ENCRYPTION_KEY" = base64_enc(key)) # Save as base64 to environment
+}
+
+# Function to encrypt a file
+encrypt_file <- function(input_file, output_file) {
+  print("check key")
+  key <- base64_dec(Sys.getenv("ENCRYPTION_KEY")) # Retrieve the encryption key securely
+  print("key checked")
+  data <- read_lines(input_file) %>% paste(collapse = "\n") # Read file content
+  encrypted_data <- aes_cbc_encrypt(charToRaw(data), key) # Encrypt the data
+  writeBin(as.raw(encrypted_data), output_file) # Ensure encrypted data is written as raw binary
+  message("File encrypted and saved to: ", output_file)
+}
+# Function to decrypt a file and return its content
+decrypt_file <- function(input_file) {
+  key <- base64_dec(Sys.getenv("ENCRYPTION_KEY")) # Retrieve the encryption key securely
+  encrypted_data <- readBin(input_file, what = "raw", n = file.info(input_file)$size) # Read encrypted data
+  decrypted_data <- aes_cbc_decrypt(encrypted_data, key) # Decrypt the data
+  
+  # Remove NULL characters and convert back to character
+  cleaned_data <- rawToChar(decrypted_data[decrypted_data != as.raw(0)])
+  
+  return(cleaned_data)
+}
+
+
+
+
+#' Get Page Insights
+#'
+#' Retrieves insights for a given Facebook page within a specified timeframe, language, and country. 
+#' It allows for fetching specific types of information and optionally joining page info with targeting info.
+#'
+#' @param pageid A string specifying the unique identifier of the Facebook page.
+#' @param timeframe A string indicating the timeframe for the insights. Valid options include predefined 
+#'        timeframes such as "LAST_30_DAYS". The default value is "LAST_30_DAYS".
+#' @param lang A string representing the language locale to use for the request, formatted as language 
+#'        code followed by country code (e.g., "en-GB" for English, United Kingdom). The default is "en-GB".
+#' @param iso2c A string specifying the ISO-3166-1 alpha-2 country code for which insights are requested. 
+#'        The default is "US".
+#' @param include_info A character vector specifying the types of information to include in the output. 
+#'        Possible values are "page_info" and "targeting_info". By default, both types of information are included.
+#' @param join_info A logical value indicating whether to join page info and targeting info into a single 
+#'        data frame (if TRUE) or return them as separate elements in a list (if FALSE). The default is TRUE.
+#'
+#' @return If \code{join_info} is TRUE, returns a data frame combining page and targeting information for 
+#'         the specified Facebook page. If \code{join_info} is FALSE, returns a list with two elements: 
+#'         \code{page_info} and \code{targeting_info}, each containing the respective data as a data frame.
+#'         In case of errors or no data available, the function may return a simplified data frame or list 
+#'         indicating the absence of data.
+#'
+#' @examples
+#' insights <- get_page_insights(pageid="123456789", timeframe="LAST_30_DAYS", lang="en-GB", iso2c="US", 
+#'                               include_info=c("page_info", "targeting_info"), join_info=TRUE)
+#'
+#' @export
+#'
+#' @importFrom httr2 request req_headers req_body_raw req_perform
+#' @importFrom jsonlite fromJSON
+#' @importFrom rvest html_element html_text
+#' @importFrom dplyr mutate_all select bind_cols left_join slice
+#' @importFrom purrr set_names flatten discard imap_dfr is_empty
+#' @importFrom stringr str_split str_remove
+#' @importFrom tibble as_tibble
+
+
+
+
+get_proxy <- function(prxs) {
+  stringr::str_split_1(prxs[[1]][1], ":")
+}
+
+get_proxy_user <- function(prxs) {
+  stringr::str_split_1(prxs[[1]][2], ":")
+}
+
+# Initialize a global counter in the environment
+if (!exists("consecutive_error_count", envir = .GlobalEnv)) {
+  assign("consecutive_error_count", 0, envir = .GlobalEnv)
+}
+
+get_page_insights <- function(pageid, timeframe = "LAST_30_DAYS", lang = "en-GB",
+                              iso2c = "US", include_info = c("page_info", "targeting_info"),
+                              join_info = T, max_consecutive_errors = 5) 
+{
+  # Terminate R session if the maximum error count is reached
+  if (consecutive_error_count >= max_consecutive_errors) {
+    # message("Max consecutive errors reached. Exiting session.")
+    return(tibble())
+  }
+  ua_list <- c("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36",
+               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36")
+  
+  ua <- sample(ua_list, 1)
+  resp <- request("https://www.facebook.com/api/graphql/") %>%
+    req_headers(`Accept-Language` = paste0(lang, ",", stringr::str_split(lang,
+                                                                         "-") %>% unlist() %>% .[1], ";q=0.5"), `sec-fetch-site` = "same-origin",
+                `user-agent` = ua) %>% 
+    req_body_raw(glue::glue("av=0&_aaid=0&user=0&a=1&req=3&hs=19797.BP%3ADEFAULT.2.0..0.0&dpr=1&ccg=EXCELLENT&rev=1012093869&s=sbbnic%3Awquopy%3A7r1j3c&hsi=7346737420686302672&dyn=7xe6Eiw_K9zo5ObwKBAgc9o2exu13wqojyUW3qi4EoxW4E7SewXwCwfW7oqx60Vo1upEK12wvk1bwbG78b87C2m3K2y11wBw5Zx62G3i1ywdl0Fw4Hwp8kwyx2cU8EmwoHwrUcUjwVw9O7bK2S2W2K4EG1Mxu16wciaw4JwJwSyES0gq0K-1LwqobU2cwmo6O1Fw44wt8&csr=&lsd=AVo6-wl7l1Q&jazoest=2881&spin_r=1012093869&spin_b=trunk&spin_t=1710545602&_jssesw=1&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=AdLibraryMobileFocusedStateProviderQuery&variables=%7B%22adType%22%3A%22POLITICAL_AND_ISSUE_ADS%22%2C%22audienceTimeframe%22%3A%22{timeframe}%22%2C%22country%22%3A%22{iso2c}%22%2C%22viewAllPageID%22%3A%22{pageid}%22%2C%22fetchPageInfo%22%3Atrue%2C%22fetchSharedDisclaimers%22%3Atrue%2C%22active_status%22%3A%22ALL%22%2C%22ad_type%22%3A%22POLITICAL_AND_ISSUE_ADS%22%2C%22bylines%22%3A%5B%5D%2C%22collation_token%22%3A%227ca3912f-0148-43ce-83e4-9a68ef656e4d%22%2C%22content_languages%22%3A%5B%5D%2C%22count%22%3A30%2C%22countries%22%3A%5B%22{iso2c}%22%5D%2C%22excluded_ids%22%3A%5B%5D%2C%22full_text_search_field%22%3A%22ALL%22%2C%22group_by_modes%22%3A%5B%5D%2C%22image_id%22%3Anull%2C%22location%22%3Anull%2C%22media_type%22%3A%22ALL%22%2C%22page_ids%22%3A%5B%5D%2C%22pagination_mode%22%3Anull%2C%22potential_reach_input%22%3Anull%2C%22publisher_platforms%22%3A%5B%5D%2C%22query_string%22%3A%22%22%2C%22regions%22%3A%5B%5D%2C%22search_type%22%3A%22PAGE%22%2C%22session_id%22%3A%221678877b-700b-485a-abb0-60efcb6b4019%22%2C%22sort_data%22%3A%7B%22mode%22%3A%22SORT_BY_RELEVANCY_MONTHLY_GROUPED%22%2C%22direction%22%3A%22ASCENDING%22%7D%2C%22source%22%3Anull%2C%22start_date%22%3Anull%2C%22view_all_page_id%22%3A%22{pageid}%22%7D&server_timestamps=true&doc_id=7193625857423421"),
+                 "application/x-www-form-urlencoded") %>% req_perform()
+  
+  out <- resp %>% httr2::resp_body_html() %>% rvest::html_element("p") %>%
+    rvest::html_text() %>% str_split_1("(?<=\\})\\s*(?=\\{)") %>%
+    map(jsonlite::fromJSON)
+  
+  # Check for errors in the response
+  if (!is.null(out[[1]][["errors"]][["description"]])) {
+    # Increment global error counter
+    consecutive_error_count <- get("consecutive_error_count", envir = .GlobalEnv)
+    consecutive_error_count <- consecutive_error_count + 1
+    assign("consecutive_error_count", consecutive_error_count, envir = .GlobalEnv)
+    
+    message(sprintf("Encountered error %d/%d: %s", 
+                    consecutive_error_count, max_consecutive_errors, 
+                    out[[1]][["errors"]][["description"]]))
+    
+    
+    # Return early or continue logic if needed
+    return(NULL)
+  }
+  
+  # Reset the global error counter on success
+  assign("consecutive_error_count", 0, envir = .GlobalEnv)
+  
+  if ("page_info" %in% include_info) {
+    page_info1 <- out[[1]][["data"]][["ad_library_page_info"]][["page_info"]]
+    if (is.null(page_info1)) {
+      if ("page_info" %in% include_info & "targeting_info" %in%
+          include_info) {
+        if (join_info) {
+          return(tibble(page_id = pageid, no_data = T))
+        }
+        else {
+          return(list(page_info = tibble(page_id = pageid,
+                                         no_data = T), targeting_info = tibble(page_id = pageid,
+                                                                               no_data = T)))
+        }
+      }
+      else {
+        return(tibble(page_id = pageid, no_data = T))
+      }
+    }
+    my_dataframe <- as.data.frame(t(unlist(page_info1)),
+                                  stringsAsFactors = FALSE) %>% dplyr::mutate_all(as.character)
+    page_info2_raw <- out[[2]][["data"]][["page"]][["shared_disclaimer_info"]][["shared_disclaimer_pages"]][["page_info"]]
+    if (!is.null(page_info2_raw)) {
+      page_info2 <- page_info2_raw %>% tibble::as_tibble() %>%
+        dplyr::mutate_all(as.character) %>% dplyr::mutate(shared_disclaimer_info = pageid[1])
+    }
+    else {
+      page_info2 <- tibble(no_shared_disclaimer = T)
+    }
+    creat_times <- out[[1]][["data"]][["page"]][["pages_transparency_info"]][["history_items"]] %>%
+      dplyr::mutate(event = paste0(item_type, ": ", as.POSIXct(event_time,
+                                                               origin = "1970-01-01", tz = "UTC"))) %>% dplyr::select(event) %>%
+      unlist() %>% t() %>% as.data.frame()
+    about_text <- out[[1]][["data"]][["page"]][["about"]] %>%
+      purrr::set_names("about")
+    address_raw <- out[[1]][["data"]][["page"]][["confirmed_page_owner"]][["information"]]
+    if (!is.null(address_raw)) {
+      address <- address_raw %>% purrr::flatten()
+    }
+    else {
+      address <- tibble(no_address = T)
+    }
+    sdis_raw <- out[[2]][["data"]][["page"]][["shared_disclaimer_info"]][["shared_disclaimer_pages"]][["page_info"]]
+    if (!is.null(sdis_raw)) {
+      sdis <- sdis_raw %>% dplyr::mutate_all(as.character) %>%
+        dplyr::mutate(shared_disclaimer_page_id = pageid[1]) %>%
+        jsonlite::toJSON() %>% as.character()
+    }
+    else {
+      sdis <- "[]"
+    }
+    page_info <- my_dataframe %>% dplyr::mutate(shared_disclaimer_info = sdis) %>%
+      dplyr::bind_cols(about_text) %>% dplyr::bind_cols(creat_times) %>%
+      dplyr::bind_cols(address)
+  }
+  if ("targeting_info" %in% include_info) {
+    out_raw <- out[[1]][["data"]][["page"]][["ad_library_page_targeting_insight"]]
+    summary_dat <- out_raw %>% purrr::pluck("ad_library_page_targeting_summary") %>%
+      dplyr::bind_rows()
+    if (nrow(summary_dat) > 1) {
+      summary_dat <- summary_dat %>% dplyr::slice(which(summary_dat$detailed_spend$currency ==
+                                                          summary_dat$main_currency)) %>% dplyr::select(-detailed_spend)
+    }
+    targeting_details_raw <- out_raw[!(names(out_raw) %in%
+                                         c("ad_library_page_targeting_summary", "ad_library_page_has_siep_ads"))]
+    targeting_info <- targeting_details_raw %>% purrr::discard(purrr::is_empty) %>%
+      purrr::imap_dfr(~{
+        .x %>% dplyr::mutate(type = .y %>% stringr::str_remove("ad_library_page_targeting_"))
+      }) %>% dplyr::bind_cols(summary_dat) %>% dplyr::mutate(page_id = pageid)
+  }
+  if ("page_info" %in% include_info & "targeting_info" %in%
+      include_info) {
+    if (join_info) {
+      fin <- page_info %>% left_join(targeting_info, by = "page_id")
+    }
+    else {
+      fin <- list(page_info, targeting_info)
+    }
+  }
+  else if ("page_info" %in% include_info) {
+    return(page_info)
+  }
+  else if ("targeting_info" %in% include_info) {
+    return(targeting_info)
+  }
+  
+  assign("consecutive_error_count", 0, envir = .GlobalEnv)
+  
+  
+  return(fin)
+}
+
+
+# fin <- arrow::read_parquet("https://github.com/favstats/meta_ad_targeting/releases/download/TW-last_30_days/2024-07-01.parquet")
+# 
+# fin %>% count(page_id)
+
+
+#' Retrieve Reports Data Metadata from GitHub Repository
+#'
+#' This function retrieves metadata about report data releases for a specific
+#' country and timeframe from a GitHub repository. It processes the metadata 
+#' into a structured format, including file names, sizes, and timestamps.
+#'
+#' @param country_code Character. The ISO country code (e.g., "DE", "US").
+#' @param timeframe Character. The desired timeframe: "yesterday", "7", "30", "90", or "lifelong".
+#' @param base_url Character. The base URL for the GitHub repository. Defaults to
+#' `"https://github.com/favstats/meta_ad_reports/releases/expanded_assets/"`.
+#' @return A data frame containing metadata about the available report data, including
+#' file names, file sizes, timestamps, and release tags.
+#' @importFrom httr GET content
+#' @importFrom rvest html_elements html_text
+#' @importFrom dplyr transmute mutate filter mutate_all
+#' @importFrom tibble tibble
+#' @export
+#'
+#' @examples
+#' # Retrieve metadata for Germany for the last 90 days
+#' result <- retrieve_reports_data("DE", "90")
+#' print(result)
+#'
+#' # Retrieve metadata for Germany for yesterday's data
+#' result <- retrieve_reports_data("DE", "yesterday")
+#' print(result)
+retrieve_reports_data <- function(country_code, 
+                                  timeframe, 
+                                  base_url = "https://github.com/favstats/meta_ad_reports/releases/expanded_assets/") {
+  # Validate inputs
+  if (missing(country_code)) {
+    stop("Parameter `country_code` is required.")
+  }
+  
+  if (missing(timeframe) || !timeframe %in% c("yesterday", "7", "30", "90", "lifelong")) {
+    stop("`timeframe` must be one of: 'yesterday', '7', '30', '90', or 'lifelong'.")
+  }
+  
+  # Map timeframe to the corresponding suffix
+  timeframe_suffix <- switch(timeframe,
+                             "yesterday" = "-yesterday",
+                             "7" = "-last_7_days",
+                             "30" = "-last_30_days",
+                             "90" = "-last_90_days",
+                             "lifelong" = "-lifelong")
+  
+  # Construct the full URL
+  url <- paste0(base_url, country_code, timeframe_suffix)
+  
+  # Fetch the data
+  response <- httr::GET(url)
+  
+  # Check for successful response
+  if (httr::status_code(response) != 200) {
+    stop("Failed to retrieve data for: ", timeframe, ". Status code: ", httr::status_code(response))
+  }
+  
+  # Parse the response content as HTML
+  content <- httr::content(response, as = "text", encoding = "UTF-8")
+  html_content <- xml2::read_html(content)
+  
+  # Extract data elements
+  raw_elements <- rvest::html_elements(html_content, ".Box-row") %>%
+    rvest::html_text()
+  
+  suppressWarnings(
+    # Process the content into a structured format
+    processed <- tibble::tibble(raw = raw_elements) %>%
+      dplyr::mutate(raw = strsplit(as.character(raw), "\n")) %>%
+      dplyr::transmute(
+        filename = sapply(raw, function(x) trimws(x[3])),
+        file_size = sapply(raw, function(x) trimws(x[6])),
+        timestamp = sapply(raw, function(x) trimws(x[7]))
+      ) %>%
+      dplyr::filter(filename != "Source code") %>%
+      dplyr::mutate(release = paste0(country_code, timeframe_suffix)) %>%
+      dplyr::mutate_all(as.character) %>%
+      dplyr::rename(tag = release,
+                    file_name = filename) %>%
+      dplyr::arrange(dplyr::desc(tag)) %>%
+      tidyr::separate(
+        tag,
+        into = c("country", "timeframe"),
+        remove = F,
+        sep = "-"
+      ) %>%
+      dplyr::filter(stringr::str_detect(file_name, "rds")) %>%
+      dplyr::mutate(day  = stringr::str_remove(file_name, "\\.rds|\\.zip|\\.parquet") %>% lubridate::ymd()) %>%
+      dplyr::arrange(desc(day))     
+  )
+  
+  
+  return(processed)
+}
+
+#' Retrieve Metadata for Targeting Data
+#'
+#' This function retrieves metadata for targeting data releases for a specific
+#' country and timeframe from a GitHub repository.
+#'
+#' @param country_code Character. The ISO country code (e.g., "DE", "US").
+#' @param timeframe Character. The timeframe to filter (e.g., "7", "30", or "90").
+#' @param base_url Character. The base URL for the GitHub repository. Defaults to
+#' `"https://github.com/favstats/meta_ad_targeting/releases/"`.
+#' @return A data frame containing metadata about available targeting data,
+#' including file names, sizes, timestamps, and tags.
+#' @importFrom httr GET content
+#' @importFrom rvest html_elements html_text
+#' @importFrom dplyr transmute mutate filter rename arrange separate
+#' @importFrom tibble tibble
+#' @export
+#'
+#' @examples
+#' # Retrieve metadata for Germany for the last 30 days
+#' metadata <- retrieve_targeting_metadata("DE", "30")
+#' print(metadata)
+
+retrieve_targeting_metadata <- function(country_code, 
+                                        timeframe, 
+                                        base_url = "https://github.com/favstats/meta_ad_targeting/releases/expanded_assets/") {
+  # Validate inputs
+  if (missing(country_code)) {
+    stop("Parameter `country_code` is required.")
+  }
+  
+  if (missing(timeframe) || !timeframe %in% c("7", "30", "90")) {
+    stop("`timeframe` must be one of: '7', '30', or '90'.")
+  }
+  
+  # Timeframe suffix for filtering
+  timeframe_suffix <- paste0("-last_", timeframe, "_days")
+  
+  # Construct the full URL
+  url <- paste0(base_url, country_code, timeframe_suffix)
+  
+  # Fetch the data
+  response <- httr::GET(url)
+  
+  if (httr::status_code(response) != 200) {
+    stop("Failed to retrieve metadata from: ", url, ". Status code: ", httr::status_code(response))
+  }
+  
+  html_content <- xml2::read_html(httr::content(response, as = "text", encoding = "UTF-8"))
+  
+  raw_elements <- rvest::html_elements(html_content, ".Box-row") %>%
+    rvest::html_text()
+  
+  metadata <- tibble::tibble(raw = raw_elements) %>%
+    dplyr::mutate(raw = strsplit(as.character(raw), "\n")) %>%
+    dplyr::transmute(
+      filename = sapply(raw, function(x) trimws(x[3])),
+      file_size = sapply(raw, function(x) trimws(x[6])),
+      timestamp = sapply(raw, function(x) trimws(x[7]))
+    ) %>%
+    dplyr::filter(filename != "Source code") %>%
+    dplyr::mutate(release = paste0(country_code, timeframe_suffix)) %>%
+    dplyr::mutate_all(as.character) %>%
+    dplyr::rename(tag = release, file_name = filename) %>%
+    dplyr::arrange(desc(tag)) %>%
+    tidyr::separate(tag, into = c("cntry", "tframe"), sep = "-", remove = FALSE) %>%
+    dplyr::mutate(ds = stringr::str_remove(file_name, "\\.rds|\\.zip|\\.parquet")) %>%
+    dplyr::distinct(cntry, ds, tframe) %>%
+    tidyr::drop_na(ds) %>%
+    dplyr::arrange(desc(ds))  
+  
+  return(metadata)
+}
+
+
+
+#' Retrieve Targeting Data from GitHub Repository
+#'
+#' This function retrieves targeting data for a specific country and timeframe
+#' from a GitHub repository hosting parquet files. The function uses the `arrow`
+#' package to read the parquet file directly from the specified URL.
+#'
+#' @param the_cntry Character. The ISO country code (e.g., "DE", "US").
+#' @param tf Numeric or character. The timeframe in days (e.g., "30" or "LAST_30_DAYS").
+#' @param ds Character. A timestamp or identifier used to construct the file path (e.g., "2024-12-25").
+#' @return A data frame containing the targeting data from the parquet file.
+#' @importFrom arrow read_parquet
+#' @export
+#'
+#' @examples
+#' # Example usage
+#' latest_data <- get_targeting_db(
+#'   the_cntry = "DE",
+#'   tf = 30,
+#'   ds = "2024-10-25"
+#' )
+#' print(head(latest_data))
+get_targeting_db <- function(the_cntry, tf, ds, remove_nas = T, verbose = F) {
+  # Validate inputs
+  if (missing(the_cntry) || missing(tf) || missing(ds)) {
+    stop("All parameters (`the_cntry`, `tf`, `ds`) are required.")
+  }
+  
+  # Construct the URL
+  url <- paste0(
+    "https://github.com/favstats/meta_ad_targeting/releases/download/",
+    the_cntry,        # Country code
+    "-last_", tf,     # Timeframe in days
+    "_days/",         # Fixed URL segment
+    ds,               # Date or identifier
+    ".parquet"        # File extension
+  )
+  
+  if(verbose){
+    message("Constructed URL: ", url)
+  }
+  # Attempt to read the parquet file
+  tryCatch({
+    data <- arrow::read_parquet(url)
+    if(verbose){
+      message("Data successfully retrieved.")
+    }
+    if(remove_nas){
+      if("no_data" %in% names(data)){
+        data <- data %>% dplyr::filter(is.na(no_data))
+        if(verbose){
+          message("Missing data successfully removed.")
+        }
+      }
+    }
+    return(data)
+  }, error = function(e) {
+    stop("Failed to retrieve or parse the parquet file. Error: ", e$message)
+  })
+}
+
+# # Define example parameters
+# the_cntry <- "DE"
+# tf <- 30
+# ds <- "2024-10-25"
+#
+# # Call the function
+# latest_data <- get_targeting_db(the_cntry, tf, ds)
+#
+# # Inspect the data
+# print(head(latest_data))
+# library(tidyverse)
+# latest_data %>% filter(is.na(no_data))
+
+
+
+
+#' Retrieve Report Data from GitHub Repository
+#'
+#' This function retrieves a report for a specific country and timeframe
+#' from a GitHub repository hosting RDS files. The file is downloaded
+#' to a temporary location, read into R, and then deleted.
+#'
+#' @param the_cntry Character. The ISO country code (e.g., "DE", "US").
+#' @param timeframe Character. One of "-yesterday", "-last_7_days", "-last_30_days", "-last_90_days", or "-lifelong".
+#' @param file_name Character. The name of the RDS file to download (e.g., "report_2024-12-25.rds").
+#' @param verbose Logical. Whether to print messages about the process. Default is `FALSE`.
+#' @return A data frame or object read from the RDS file.
+#' @export
+#'
+#' @examples
+#' # Example usage
+#' report_data <- get_report_db(
+#'   the_cntry = "DE",
+#'   timeframe = "-last_30_days",
+#'   file_name = "report_2024-12-25.rds",
+#'   verbose = TRUE
+#' )
+#' print(head(report_data))
+#' Retrieve Report Data from GitHub Repository
+#'
+#' This function retrieves a report for a specific country and timeframe
+#' from a GitHub repository hosting RDS files. The file is downloaded
+#' to a temporary location, read into R, and then deleted.
+#'
+#' @param the_cntry Character. The ISO country code (e.g., "DE", "US").
+#' @param timeframe Character or Numeric. Timeframe in days (e.g., "30", "90") or "yesterday" / "lifelong".
+#' @param ds Character. A timestamp or identifier used to construct the file name (e.g., "2024-12-25").
+#' @param verbose Logical. Whether to print messages about the process. Default is `FALSE`.
+#' @return A data frame or object read from the RDS file.
+#' @export
+#'
+#' @examples
+#' # Example usage
+#' report_data <- get_report_db(
+#'   the_cntry = "DE",
+#'   timeframe = 30,
+#'   ds = "2024-12-25",
+#'   verbose = TRUE
+#' )
+#' print(head(report_data))
+get_report_db <- function(the_cntry, timeframe, ds, verbose = FALSE) {
+  # Validate inputs
+  if (missing(the_cntry) || missing(timeframe) || missing(ds)) {
+    stop("All parameters (`the_cntry`, `timeframe`, `ds`) are required.")
+  }
+  
+  # Construct the timeframe string
+  if (is.numeric(timeframe)) {
+    tf_string <- paste0("-last_", timeframe, "_days")
+  } else if (timeframe %in% c("yesterday", "lifelong")) {
+    tf_string <- paste0("-", timeframe)
+  } else {
+    stop("Invalid `timeframe` value. Must be numeric (e.g., 30, 90) or 'yesterday' / 'lifelong'.")
+  }
+  
+  # Construct the file name
+  file_name <- paste0(ds, ".rds")
+  
+  # Construct the URL
+  url <- paste0(
+    "https://github.com/favstats/meta_ad_reports/releases/download/",
+    the_cntry, tf_string, "/",
+    file_name
+  )
+  
+  # Temporary file path
+  temp_file <- tempfile(fileext = ".rds")
+  
+  if (verbose) {
+    message("Constructed URL: ", url)
+    message("Downloading to temporary file: ", temp_file)
+  }
+  
+  # Attempt to download and read the RDS file
+  tryCatch({
+    download.file(url, destfile = temp_file, mode = "wb")
+    if (verbose) {
+      message("File successfully downloaded.")
+    }
+    
+    # Read the RDS file
+    data <- readRDS(temp_file)
+    if (verbose) {
+      message("Data successfully read from the RDS file.")
+    }
+    
+    # Return the data
+    return(data)
+  }, error = function(e) {
+    stop("Failed to retrieve or parse the RDS file. Error: ", e$message)
+  }, finally = {
+    # Ensure the temporary file is deleted
+    if (file.exists(temp_file)) {
+      file.remove(temp_file)
+      if (verbose) {
+        message("Temporary file deleted.")
+      }
+    }
+  })
+}
+
+
+# report_data <- get_report_db(
+#   the_cntry = "DE",
+#   timeframe = 7,
+#   ds = "2024-10-25",
+#   verbose = TRUE
+# )
 

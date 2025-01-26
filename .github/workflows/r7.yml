@@ -1,14 +1,14 @@
-name: "30 Timeframe"
+name: "7 Timeframe"
 
 on:
   schedule:
-    - cron: '0 11 * * *'
+    - cron: '0 3 * * *'
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     env:
-      TF: "30"  # Timeframe variable for easy global reference
+      TF: "7"  # Timeframe variable for easy global reference
       GITHUB_PAT: ${{ secrets.GH_PAT }}      
       TELEGRAM_BOT_ID: ${{ secrets.TELEGRAM_BOT_ID }}
       TELEGRAM_GROUP_ID: ${{ secrets.TELEGRAM_GROUP_ID }}
@@ -147,7 +147,6 @@ jobs:
 
           # Load the persisted RESUME_COUNT from the environment
           echo "Using Resume Count: $RESUME_COUNT"
-
 
           # Check if RESUME_COUNT is empty
           if [ -z "$RESUME_COUNT" ]; then

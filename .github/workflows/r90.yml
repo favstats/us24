@@ -1,14 +1,14 @@
-name: "30 Timeframe"
+name: "90 Timeframe"
 
 on:
   schedule:
-    - cron: '0 11 * * *'
+    - cron: '0 7 * * *'
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     env:
-      TF: "30"  # Timeframe variable for easy global reference
+      TF: "90"  # Timeframe variable for easy global reference
       GITHUB_PAT: ${{ secrets.GH_PAT }}      
       TELEGRAM_BOT_ID: ${{ secrets.TELEGRAM_BOT_ID }}
       TELEGRAM_GROUP_ID: ${{ secrets.TELEGRAM_GROUP_ID }}
