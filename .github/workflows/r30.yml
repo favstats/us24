@@ -1,11 +1,4 @@
 name: "7 Timeframe"
-on:
-  schedule:
-    # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '0 13 * * *'
-  push:
-    branches:
-      - main
 
 jobs:
   update-data:

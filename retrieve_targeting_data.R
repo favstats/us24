@@ -196,7 +196,7 @@ c(7, 30, 90) %>%
 # wtm_data <-
 #   openxlsx::read.xlsx("data/Presidential candidates, last 30 days.xlsx", sheet = 2) %>% janitor::clean_names()
 
-uswtm <- read_csv("data/1dd84cee-7d36-43f7-a6fb-f71e4fbd8040.csv.gzip") 
+uswtm <- read_csv("data/fcc44691-5b62-4e5f-9bd8-393a51449e58.csv.gzip") 
   # count(enti)
 
   wtm_data <-
@@ -588,11 +588,17 @@ mark_list <- us_markers %>%
 # get_page_insights("153080620724", timeframe = "LAST_30_DAYS", include_info = "targeting_info") %>%
 #   as_tibble()
 # 
+
+
 da7 <- mark_list[[1]]
 da30 <- mark_list[[2]]
 da90 <- mark_list[[3]]
 # 
 # da7 %>%  filter(page_id == "153080620724")
+
+da7 <- readRDS("historic/2024-11-06/7.rds")
+da30 <- readRDS("historic/2024-11-06/30.rds")
+da90 <- readRDS("historic/2024-11-06/90.rds")
 
 
 saveRDS(da90, "data/election_dat90.rds")
