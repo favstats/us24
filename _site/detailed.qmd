@@ -194,7 +194,7 @@ generate_plots <- function(data, exclusion = F) {
           align = "left",
           style = list(fontWeight = "bold")
         ) %>%
-        hc_size(height = 300) %>%
+        hc_size(height = 500) %>%
         hc_exporting(enabled = TRUE)
     })
 
