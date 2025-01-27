@@ -1,9 +1,9 @@
-if (Sys.info()[["effective_user"]] == "favstats" | Sys.info()[["effective_user"]] == "favoo") {
-  source("retrieve_targeting_data.R")
-} else {
-  
-  install.packages("pacman")
-}
+# if (Sys.info()[["effective_user"]] == "favstats" | Sys.info()[["effective_user"]] == "favoo") {
+#   source("retrieve_targeting_data.R")
+# } else {
+#   
+#   install.packages("pacman")
+# }
 
 
 pacman::p_load(knitr, tidyverse, openxlsx, sf, rmarkdown, rvest)
